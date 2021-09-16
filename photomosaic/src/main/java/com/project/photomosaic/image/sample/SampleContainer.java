@@ -1,23 +1,18 @@
 package com.project.photomosaic.image.sample;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 //Contains all the Images used to build the original
 public class SampleContainer {
-	public static final String SAMPLE_DEFAULT_PATH = System.getProperty("user.dir") + "/images/sample";
-	public static final String[] ACCEPTED_EXTENSIONS = new String[] { ".gif", ".png", ".tif", ".jpg" };
-
-	private File directory;
 	private ArrayList<Sample> samples;
-	private String fileNames[];
+	SampleIO sampleIO;
 
 	public SampleContainer(String pathToSamples) throws Exception {
 		samples = new ArrayList<Sample>();
-		directory = new File(pathToSamples);
-		fileNames = directory.list((dir, name) -> matchExtension(name));
-		for (String fileName : fileNames) {
+		sampleIO = new SampleIO(pathToSamples);
+
+		for (String fileName : sampleIO.getFileNames()) {
 			try {
 				samples.add(new Sample(pathToSamples + "/" + fileName));
 			} catch (IOException e) {
@@ -27,35 +22,19 @@ public class SampleContainer {
 	}
 
 	// return the image best matching the RGB Value
-	public int getBest(int RGB) {
+	public int getBestImage(int RGB) {
 		return 0;
-	}
-
-	public int getBest(int r, int g, int b) {
-		return 0;
-	}
-
-	public File getDirectory() {
-		return directory;
-	}
-
-	public String[] getFileNames() {
-		return fileNames;
 	}
 
 	@Override
 	public String toString() {
-		return "File Directory: " + directory.toPath() + "\n" + "Total Number of Samples: " + fileNames.length + "\n"
-				+ "Listed File names:\n" + String.join("\n", fileNames);
+		return "File Directory: " + sampleIO.getDirectory().toPath() + "\n" + "Total Number of Samples: "
+				+ sampleIO.getFileNames().length + "\n" + "Listed File names:\n"
+				+ String.join("\n", sampleIO.getFileNames());
 	}
 
-	private static boolean matchExtension(String fileName) { // returns true if the file matches any of the acccepted
-																// extensions
-		for (String extension : ACCEPTED_EXTENSIONS) {
-			if (fileName.endsWith(extension)) {
-				return true;
-			}
-		}
-		return false;
+	public String[] getFileNames() {
+		return sampleIO.getFileNames();
 	}
+
 }

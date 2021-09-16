@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import com.project.photomosaic.image.Photomosaic;
-import com.project.photomosaic.image.sample.SampleContainer;
+import com.project.photomosaic.image.sample.SampleIO;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -19,7 +19,7 @@ public class DitheringTest extends Application {
 			add("duck.jpg");
 		}
 	};
-	private File sample = new File(SampleContainer.SAMPLE_DEFAULT_PATH + "/test");
+	private File sample = new File(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
 	private File original = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/" + files.get(0));
 
 	@Test

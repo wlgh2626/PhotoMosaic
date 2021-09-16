@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import com.project.photomosaic.image.sample.SampleContainer;
+import com.project.photomosaic.image.sample.SampleIO;
 
 public class SampleContainerTest {
 	public static ArrayList<String> filesExpected = new ArrayList<String>() {
@@ -22,7 +23,7 @@ public class SampleContainerTest {
 
 	@Test
 	public void simpleContainerTest() throws Exception {
-		SampleContainer sampleImages = new SampleContainer(SampleContainer.SAMPLE_DEFAULT_PATH + "/test");
+		SampleContainer sampleImages = new SampleContainer(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
 		System.out.println(sampleImages.toString());
 
 		for (String fileName : sampleImages.getFileNames()) {

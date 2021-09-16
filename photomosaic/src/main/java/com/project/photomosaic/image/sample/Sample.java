@@ -6,21 +6,33 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import org.imgscalr.Scalr;
+
 //stores the image, and its average RGB value of the image
 public class Sample {
-	private BufferedImage image;
-	private long averageRGB;
+	public static final int DEFAULT_DIMENSION = 160;
+	private final BufferedImage image;
+	private final long averageRGB;
+	private BufferedImage downSampled;
 
 	public Sample(String path) throws IOException {
 		image = ImageIO.read(new File(path));
 
-		long totalRGB = 0;
+		int totalRed = 0;
+		int totalGreen = 0;
+		int totalBlue = 0;
 		for (int y = 0; y < image.getHeight(); y++) {
 			for (int x = 0; x < image.getWidth(); x++) {
-				totalRGB += image.getRGB(x, y);
+				int rgb = image.getRGB(x, y);
+				totalRed = (rgb >> 16) & 0xFF;
+				totalGreen = (rgb >> 8) & 0xFF;
+				totalBlue = rgb & 0xFF;
 			}
 		}
-		averageRGB = totalRGB / (image.getHeight() * image.getWidth());
+		long totalPixels = (image.getHeight() * image.getWidth());
+
+		averageRGB = (totalRed / totalPixels) << 16 + (totalGreen / totalPixels) << 8 + (totalBlue / totalPixels);
+		setDownSampleDim(DEFAULT_DIMENSION);
 	}
 
 	public int getAverageRGB() {
@@ -30,4 +42,13 @@ public class Sample {
 	public BufferedImage getImage() {
 		return image;
 	}
+
+	public void setDownSampleDim(int dimension) {
+		downSampled = Scalr.resize(image, dimension);
+	}
+
+	public BufferedImage getDownSampled() {
+		return downSampled;
+	}
+
 }
