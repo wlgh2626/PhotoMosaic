@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import com.project.photomosaic.image.Photomosaic;
+import com.project.photomosaic.image.sample.SampleContainer;
 import com.project.photomosaic.image.sample.SampleIO;
 
 import javafx.application.Application;
@@ -13,14 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class DitheringTest extends Application {
-	public static final ArrayList<String> files = new ArrayList<String>() {
-		{
-			add("duck.jpg");
-		}
-	};
+public class DownSampleTest extends Application {
 	private File sample = new File(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
-	private File original = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/" + files.get(0));
 
 	@Test
 	public void balloonsIFDTest() throws Exception {
@@ -29,8 +24,8 @@ public class DitheringTest extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Photomosaic photomosaic = new Photomosaic(original, sample);
-		ImageDisplay display = new ImageDisplay(photomosaic.getImage());
+		SampleContainer samples = new SampleContainer(sample.toString());
+		ImageDisplay display = new ImageDisplay(samples.getSampleList().get(0).getDownSampled());
 
 		HBox hbox = new HBox(display.getImageView());
 		Scene scene = new Scene(hbox);

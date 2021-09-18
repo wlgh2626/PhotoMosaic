@@ -3,7 +3,7 @@ package com.project.photomosaic.image.dither;
 import java.awt.image.BufferedImage;
 
 public class DitheredImage {
-	public static final int DEFAULT_DITHER_SIZE = 4;
+	public static final int DEFAULT_DITHER_SIZE = 16;
 	private BufferedImage original;
 	private int[][] ditherData;
 	private int ditherSize;
@@ -29,6 +29,10 @@ public class DitheredImage {
 				ditherData[j % ditherSize][i % ditherSize] += image.getRGB(i, j) / ditherSize;
 			}
 		}
+	}
+
+	public int getSize() {
+		return ditherSize;
 	}
 
 	public int getHeight() {
