@@ -5,46 +5,46 @@ import java.awt.image.BufferedImage;
 public class DitheredImage {
 	public static final int DEFAULT_DITHER_SIZE = 16;
 	private BufferedImage original;
-	private int[][] ditherData;
-	private int ditherSize;
+	private long[][] data;
+	private int size;	//original image gets sectioned to (size x size)
 
 	public DitheredImage(BufferedImage image) {
-		ditherSize = DEFAULT_DITHER_SIZE;
+		size = DEFAULT_DITHER_SIZE;
 		build(image);
 	}
 
 	public DitheredImage(BufferedImage image, int ditherSize) {
-		this.ditherSize = ditherSize;
+		this.size = ditherSize;
 		build(image);
 	}
 
 	public void build(BufferedImage image) {
 		original = image;
-		int x = (int) Math.ceil((double) image.getWidth() / ditherSize);
-		int y = (int) Math.ceil((double) image.getHeight() / ditherSize);
-		ditherData = new int[y][x];
+		int length = (int) Math.ceil((double) original.getWidth() / size);
+		int height = (int) Math.ceil((double) original.getHeight() / size);
+		data = new long[height][length];
 
-		for (int i = 0; i < image.getWidth(); i++) {
-			for (int j = 0; j < image.getHeight(); j++) {
-				ditherData[j % ditherSize][i % ditherSize] += image.getRGB(i, j) / ditherSize;
+		for(int y = 0 ; y < original.getHeight() ; y++) {
+			for(int x = 0 ; x < original.getWidth() ; x++) {
+				data[y % height][x % length] += original.getRGB(x, y) & 0xFFFFFF;
 			}
 		}
 	}
 
 	public int getSize() {
-		return ditherSize;
+		return size;
 	}
 
 	public int getHeight() {
-		return ditherData.length;
+		return data.length;
 	}
 
 	public int getLength() {
-		return ditherData[0].length;
+		return data[0].length;
 	}
 
 	public int getRGB(int x, int y) {
-		return ditherData[y][x];
+		return (int)( data[y][x] / (size*size));
 	}
 
 	public BufferedImage getOriginalImage() {

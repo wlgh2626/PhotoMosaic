@@ -12,41 +12,44 @@ import org.imgscalr.Scalr;
 
 //stores the image, and its average RGB value of the image
 public class Sample {
-	public static final int DEFAULT_DIMENSION = 80;
-	private int dimension;
+	public static final int DEFAULT_DIMENSION = 40;
+	
 	private final BufferedImage image;
 	private final long averageRGB;
+	private int dimension;
 	private BufferedImage downSampled;
 
 	public Sample(String path) throws IOException {
 		image = ImageIO.read(new File(path));
 		dimension = DEFAULT_DIMENSION;
-		int totalRed = 0;
-		int totalGreen = 0;
-		int totalBlue = 0;
+		long totalRGB = 0;
 		for (int y = 0; y < image.getHeight(); y++) {
 			for (int x = 0; x < image.getWidth(); x++) {
-				int rgb = image.getRGB(x, y);
-				totalRed = (rgb >> 16) & 0xFF;
-				totalGreen = (rgb >> 8) & 0xFF;
-				totalBlue = rgb & 0xFF;
+				totalRGB += image.getRGB(x, y) & 0xFFFFFF ;
 			}
 		}
+		
 		long totalPixels = (image.getHeight() * image.getWidth());
 
-		averageRGB = (totalRed / totalPixels) << 16 + (totalGreen / totalPixels) << 8 + (totalBlue / totalPixels);
+		averageRGB = totalRGB / totalPixels;
 		setDownSampleDim(DEFAULT_DIMENSION);
 	}
 
-	public int getAverageRGB() {
+	//returns the average RGB value of the sample
+	public int getRGB() {
 		return (int) averageRGB;
 	}
 
 	public BufferedImage getOriginal() {
 		return image;
 	}
+	
+	public int getDimension() {
+		return dimension;
+	}
 
 	public void setDownSampleDim(int dimension) {
+		this.dimension = dimension;
 		Image temp = image.getScaledInstance( dimension , dimension , Image.SCALE_SMOOTH);
 		downSampled = new BufferedImage(dimension , dimension , BufferedImage.TYPE_INT_RGB);
 		Graphics g = downSampled.createGraphics();
@@ -58,4 +61,9 @@ public class Sample {
 		return downSampled;
 	}
 
+	@Override
+	public String toString() {
+		return "Down Sample Dimension: "+ dimension + "\n" +
+			    "Average RGB Value: " + averageRGB + "\n";
+	}
 }

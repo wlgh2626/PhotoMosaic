@@ -14,13 +14,8 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class DitheringTest extends Application {
-	public static final ArrayList<String> files = new ArrayList<String>() {
-		{
-			add("duck.jpg");
-		}
-	};
 	private File sample = new File(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
-	private File original = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/" + files.get(0));
+	private File original = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/" + ImageDisplay.ORIGINAL_TEST_FILES.get(0));
 
 	@Test
 	public void balloonsIFDTest() throws Exception {
