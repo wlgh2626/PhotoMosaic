@@ -47,6 +47,18 @@ public class Sample extends BaseImage{
 	public int getYUV() {
 		return (int) averageYUV;
 	}
+	
+	public int getR() {
+		return (((int) averageRGB) >> 16) & 0xFF;
+	}
+	
+	public int getG() {
+		return (((int) averageRGB) >> 8) & 0xFF;
+	}
+	
+	public int getB() {
+		return ((int) averageRGB) & 0xFF;
+	}
 
 	@Override
 	public String toString() {

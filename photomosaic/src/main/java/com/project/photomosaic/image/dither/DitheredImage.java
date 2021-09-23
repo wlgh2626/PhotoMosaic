@@ -3,7 +3,7 @@ package com.project.photomosaic.image.dither;
 import java.awt.image.BufferedImage;
 
 public class DitheredImage {
-	public static final int DEFAULT_DITHER_SIZE = 16;
+	public static final int DEFAULT_DITHER_SIZE = 10;
 	private BufferedImage original;
 	private BufferedImage dithered;
 	private long[][] data;

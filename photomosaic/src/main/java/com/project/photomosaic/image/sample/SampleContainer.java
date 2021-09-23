@@ -9,6 +9,8 @@ import java.util.Comparator;
 
 import javax.imageio.ImageIO;
 
+import com.project.photomosaic.image.RGB;
+
 //Contains all the Images used to build the original
 public class SampleContainer {
 	int sampleDimension;
@@ -33,15 +35,19 @@ public class SampleContainer {
 		samples.sort(Comparator.comparing(Sample::getRGB));
 	}
 
-	// return the image best matching the RGB Value
+	
 	public BufferedImage getBestImage(int targetRGB) {
-		int[] samplesRGB = samples.stream().mapToInt(Sample::getRGB).toArray();
-		
+		RGB rgb = new RGB(targetRGB);
 		int index = 0;
-		int currentBest = Integer.MAX_VALUE;
-		for(int i = 0 ; i < samplesRGB.length ; i++) {
-			if(Math.abs(samplesRGB[i] - targetRGB) < currentBest) {
-				currentBest = samplesRGB[i];
+		double currentBest = Double.MAX_VALUE;
+		for(int i = 0 ; i < samples.size() ; i++) {
+			Sample sample = samples.get(i);
+			double distR = rgb.getR() - sample.getR();
+			double distG = rgb.getG() - sample.getG();
+			double distB = rgb.getB() - sample.getB();
+			double avg = Math.pow(distR, 2.0) + Math.pow(distG, 2.0) + Math.pow(distB, 2.0);
+			if(avg < currentBest) {
+				currentBest = avg;
 				index = i;
 			}
 		}
@@ -61,18 +67,6 @@ public class SampleContainer {
 		return samples;
 	}
 	
-	private int binarySearch(int[] samplesRGB , int targetRGB) {
-		int index = Arrays.binarySearch( samplesRGB , targetRGB);
-		if(index < 0) {
-			index = (index*-1) - 2;
-		} 
-		
-		if(index < 0) {
-			index++;
-		}
-		return index;
-	}
-
 	@Override
 	public String toString() {
 		return "File Directory: " + sampleIO.getDirectory().toPath() + "\n" + "Total Number of Samples: "
