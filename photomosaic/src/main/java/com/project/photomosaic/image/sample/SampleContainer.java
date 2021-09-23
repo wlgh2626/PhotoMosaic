@@ -1,10 +1,13 @@
 package com.project.photomosaic.image.sample;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+
+import javax.imageio.ImageIO;
 
 //Contains all the Images used to build the original
 public class SampleContainer {
@@ -20,7 +23,9 @@ public class SampleContainer {
 
 		for (String fileName : sampleIO.getFileNames()) {
 			try {
-				samples.add(new Sample(pathToSamples + "/" + fileName));
+				File file = new File(pathToSamples + "/" + fileName);
+				Sample sample = new Sample(ImageIO.read(file));
+				samples.add(sample);
 			} catch (IOException e) {
 				throw new Exception("The file: " + fileName + " could not be found in " + pathToSamples);
 			}

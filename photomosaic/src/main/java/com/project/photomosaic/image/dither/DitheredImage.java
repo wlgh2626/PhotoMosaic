@@ -29,7 +29,7 @@ public class DitheredImage {
 		for(int y = 0 ; y < original.getHeight() ; y++) {
 			for(int x = 0 ; x < original.getWidth() ; x++) {
 				int RGB = (original.getRGB(x, y) & 0xFFFFFF);
-				data[y/size][x/size] += RGB / (size*size);	//NOT CORRECT
+				data[y/size][x/size] += RGB / (size*size);	
 			}
 		}
 		
@@ -62,7 +62,6 @@ public class DitheredImage {
 		return original;
 	}
 	
-	//returns image with SizeXSize block average pixel of that section
 	public BufferedImage getDitheredImage() {
 		return dithered;
 	}
@@ -75,5 +74,6 @@ public class DitheredImage {
 			   "Dithering Size: " + size + "\n";
 				
 	}
+	
 
 }
