@@ -4,8 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 
 import javax.imageio.ImageIO;
 
@@ -13,60 +11,54 @@ import com.project.photomosaic.image.RGB;
 
 //Contains all the Images used to build the original
 public class SampleContainer {
-	int sampleDimension;
-	private ArrayList<Sample> samples;
-	SampleIO sampleIO;
+	private int sampleDimension = Sample.DEFAULT_DIMENSION;
+	private ArrayList<Sample> samples =  new ArrayList<Sample>();
+	private SampleIO sampleIO;
 
 	public SampleContainer(String pathToSamples) throws Exception {
-		sampleDimension = Sample.DEFAULT_DIMENSION;
-		samples = new ArrayList<Sample>();
 		sampleIO = new SampleIO(pathToSamples);
-		
-
-		for (String fileName : sampleIO.getFileNames()) {
+		for(File file : sampleIO.getFileList()) {
 			try {
-				File file = new File(pathToSamples + "/" + fileName);
 				Sample sample = new Sample(ImageIO.read(file));
 				samples.add(sample);
 			} catch (IOException e) {
-				throw new Exception("The file: " + fileName + " could not be found in " + pathToSamples);
+				throw new Exception("Could not read a file");
 			}
 		}
-		samples.sort(Comparator.comparing(Sample::getRGB));
 	}
 
-	
 	public BufferedImage getBestImage(int targetRGB) {
 		RGB rgb = new RGB(targetRGB);
 		int index = 0;
 		double currentBest = Double.MAX_VALUE;
-		for(int i = 0 ; i < samples.size() ; i++) {
+		for (int i = 0; i < samples.size(); i++) {
 			Sample sample = samples.get(i);
-			double distR = rgb.getR() - sample.getR();
-			double distG = rgb.getG() - sample.getG();
-			double distB = rgb.getB() - sample.getB();
-			double avg = Math.pow(distR, 2.0) + Math.pow(distG, 2.0) + Math.pow(distB, 2.0);
-			if(avg < currentBest) {
+			double distR = rgb.r() - sample.getRGB().r();
+			double distG = rgb.g() - sample.getRGB().g();
+			double distB = rgb.b() - sample.getRGB().b();
+			
+			double avg = Math.sqrt( distR*distR + distG*distG + distB*distB);
+			if (avg < currentBest) {
 				currentBest = avg;
 				index = i;
 			}
 		}
-		
+
 		return samples.get(index).getDownSampled();
 	}
 
 	public String[] getFileNames() {
 		return sampleIO.getFileNames();
 	}
-	
+
 	public int getDimension() {
 		return sampleDimension;
 	}
-	
-	public ArrayList<Sample> getSampleList(){
+
+	public ArrayList<Sample> getSampleList() {
 		return samples;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "File Directory: " + sampleIO.getDirectory().toPath() + "\n" + "Total Number of Samples: "

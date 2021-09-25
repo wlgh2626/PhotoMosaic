@@ -19,19 +19,19 @@ public class RGB {
 		this.b = b;
 	}
 	
-	public int getR() {
+	public int r() {
 		return r;
 	}
 	
-	public int getG() {
+	public int g() {
 		return g;
 	}
 	
-	public int getB() {
+	public int b() {
 		return b;
 	}
 	
-	public int getRGB() {
+	public int rgb() {
 		return rgb;
 	}
 }

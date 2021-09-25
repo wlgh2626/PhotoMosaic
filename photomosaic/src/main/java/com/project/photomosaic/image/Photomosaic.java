@@ -23,23 +23,23 @@ public class Photomosaic {
 	}
 
 	private void build() {
-		int length = dithered.getLength()*samples.getDimension();
-		int height = dithered.getHeight()*samples.getDimension();
-		photoMosaic = new BufferedImage( length, height, BufferedImage.TYPE_INT_RGB);
-		
+		int length = dithered.getLength() * samples.getDimension();
+		int height = dithered.getHeight() * samples.getDimension();
+		photoMosaic = new BufferedImage(length, height, BufferedImage.TYPE_INT_RGB);
+
 		Graphics graphic = photoMosaic.createGraphics();
 		for (int y = 0; y < dithered.getHeight(); y++) {
 			for (int x = 0; x < dithered.getLength(); x++) {
-				BufferedImage bestMatching = samples.getBestImage(dithered.getRGB(x, y) & 0xFFFFFF);
-				graphic.drawImage(bestMatching , x*bestMatching.getWidth() , y*bestMatching.getHeight() , null);
+				BufferedImage bestMatching = samples.getBestImage(dithered.getRGB(x, y));
+				graphic.drawImage(bestMatching, x * bestMatching.getWidth(), y * bestMatching.getHeight(), null);
 			}
 		}
 	}
 
 	public BufferedImage getOriginalImage() {
-		return dithered.getOriginalImage();
+		return dithered.getOriginal();
 	}
-	
+
 	public BufferedImage getImage() {
 		return photoMosaic;
 	}
