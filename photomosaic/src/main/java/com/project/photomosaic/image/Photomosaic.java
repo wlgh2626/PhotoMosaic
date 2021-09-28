@@ -15,18 +15,30 @@ public class Photomosaic {
 	private DitheredImage dithered;
 	private SampleContainer samples;
 	private BufferedImage photoMosaic;
+	private int length, height;
 
 	public Photomosaic(File original, File sample) throws Exception {
-		dithered = new DitheredImage(ImageIO.read(original));
 		samples = new SampleContainer(sample.getPath());
+		BufferedImage originalImage = ImageIO.read(original);
+		
+		
+		int ditherSize = DitheredImage.DEFAULT_DITHER_SIZE;
+		while(true) {
+			ditherSize = (int) Math.ceil( (double)ditherSize * 1.5);
+			length = (originalImage.getWidth()/ditherSize) * samples.getDimension();
+			height = (originalImage.getHeight()/ditherSize) * samples.getDimension();
+			if((long) length * (long) height < Integer.MAX_VALUE/4) {
+				break;
+			}
+		}
+		
+		dithered = new DitheredImage(originalImage , ditherSize);
+		photoMosaic = new BufferedImage(length, height, BufferedImage.TYPE_INT_RGB);
+		
 		build();
 	}
 
 	private void build() {
-		int length = dithered.getLength() * samples.getDimension();
-		int height = dithered.getHeight() * samples.getDimension();
-		photoMosaic = new BufferedImage(length, height, BufferedImage.TYPE_INT_RGB);
-
 		Graphics graphic = photoMosaic.createGraphics();
 		for (int y = 0; y < dithered.getHeight(); y++) {
 			for (int x = 0; x < dithered.getLength(); x++) {

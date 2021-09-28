@@ -15,7 +15,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class SampleTest extends Application{
-	private File file = new File(SampleIO.SAMPLE_DEFAULT_PATH + "/test/autumn.tif");
+	private File file = new File(ImageDisplay.SAMPLE.getPath() + "/autumn.tif");
 	@Test
 	public void SampleTests() throws Exception {
 		simpleSampleTest();

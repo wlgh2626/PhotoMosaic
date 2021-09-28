@@ -2,12 +2,9 @@ package com.project.photomosaic;
 
 import java.io.File;
 
-import javax.imageio.ImageIO;
-
 import org.junit.Test;
 
 import com.project.photomosaic.image.Photomosaic;
-import com.project.photomosaic.image.dither.DitheredImage;
 import com.project.photomosaic.image.sample.SampleIO;
 
 import javafx.application.Application;
@@ -17,16 +14,19 @@ import javafx.stage.Stage;
 
 public class PhotoMosaicTest extends Application{
 	private File sample = new File(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
-	private File original = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/" + ImageDisplay.ORIGINAL_TEST_FILES.get(0));
+	
 
 	@Test
-	public void DitheringTest() throws Exception {
+	public void photoMosaicTest() throws Exception {
 		launch();
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Photomosaic mosaic = new Photomosaic(original , sample);
+		long start = System.currentTimeMillis();
+		Photomosaic mosaic = new Photomosaic( ImageDisplay.DUCK , sample);
+		long end = System.currentTimeMillis();
+		System.out.println("Time to construct PhotoMosaic: " + (end - start)/1000.0 + " seconds");
 		ImageDisplay display = new ImageDisplay(mosaic.getImage());
 
 		HBox hbox = new HBox(display.getImageView());

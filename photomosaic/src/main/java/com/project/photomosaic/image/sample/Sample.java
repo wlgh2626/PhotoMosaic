@@ -9,7 +9,7 @@ import com.project.photomosaic.image.base.ModifiedImage;
 
 //stores the image, and its average RGB value of the image
 public class Sample extends ModifiedImage {
-	public static final int DEFAULT_DIMENSION = 80;
+	public static final int DEFAULT_DIMENSION = 40;	// Bigger takes longer time to get AverageRGB
 
 	private final RGB rgb;
 	private int dimension;

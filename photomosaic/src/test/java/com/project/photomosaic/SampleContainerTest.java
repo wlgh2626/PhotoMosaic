@@ -24,7 +24,7 @@ public class SampleContainerTest {
 	@Test
 	public void simpleContainerTest() throws Exception {
 		long start = System.currentTimeMillis();
-		SampleContainer sampleImages = new SampleContainer(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
+		SampleContainer sampleImages = new SampleContainer(ImageDisplay.SAMPLE.getPath());
 		long end = System.currentTimeMillis();
 		System.out.println("Time to load Samples: " + (end - start)/1000.0 + " seconds");
 		System.out.println(sampleImages.toString());
@@ -32,10 +32,5 @@ public class SampleContainerTest {
 		for (String fileName : sampleImages.getFileNames()) {
 			assertTrue(filesExpected.contains(fileName));
 		}
-	}
-	
-	@Test
-	public void containerPerformanceTest() {
-		
 	}
 }

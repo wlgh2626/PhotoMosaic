@@ -17,8 +17,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class DitheringTest extends Application {
-	private File sample = new File(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
-	private File original = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/" + ImageDisplay.ORIGINAL_TEST_FILES.get(0));
 
 	@Test
 	public void DitheringTest() throws Exception {
@@ -27,7 +25,10 @@ public class DitheringTest extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		DitheredImage dithered = new DitheredImage(ImageIO.read(original));
+		long start = System.currentTimeMillis();
+		DitheredImage dithered = new DitheredImage(ImageIO.read(ImageDisplay.DUCK));
+		long end = System.currentTimeMillis();
+		System.out.println("Time to load Samples: " + (end - start)/1000.0 + " seconds");
 		System.out.println(dithered.toString());
 		ImageDisplay display = new ImageDisplay(dithered.getDitheredImage());
 

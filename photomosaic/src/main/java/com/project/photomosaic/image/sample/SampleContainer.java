@@ -17,14 +17,10 @@ public class SampleContainer {
 
 	public SampleContainer(String pathToSamples) throws Exception {
 		sampleIO = new SampleIO(pathToSamples);
-		for(File file : sampleIO.getFileList()) {
-			try {
-				Sample sample = new Sample(ImageIO.read(file));
-				samples.add(sample);
-			} catch (IOException e) {
-				throw new Exception("Could not read a file");
-			}
-		}
+		ArrayList<BufferedImage> images = sampleIO.generateImage();
+		
+		SampleFactory factory = new SampleFactory(images);
+		samples.addAll(factory.generateSamples());
 	}
 
 	public BufferedImage getBestImage(int targetRGB) {

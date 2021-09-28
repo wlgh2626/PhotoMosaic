@@ -1,12 +1,21 @@
 package com.project.photomosaic.image.sample;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+
+
 /**
  * Given a path, manages the all Files intended to be used as a sample
  *
  */
 public class SampleIO {
+	public static final int DEFAULT_THREAD_COUNT = 2;
 	public static final String SAMPLE_DEFAULT_PATH = System.getProperty("user.dir") + "/images/sample";
 	public static final String[] ACCEPTED_EXTENSIONS = new String[] { ".gif", ".png", ".tif", ".jpg" };
 
@@ -23,7 +32,7 @@ public class SampleIO {
 			fileList.add(file);
 		}
 	}
-
+	
 	public File getDirectory() {
 		return directory;
 	}
@@ -44,5 +53,16 @@ public class SampleIO {
 			}
 		}
 		return false;
+	}
+	public ArrayList<BufferedImage> generateImage() throws InterruptedException {
+		ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
+		for(File file : fileList) {
+			try {
+				images.add(ImageIO.read(file));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return images;
 	}
 }

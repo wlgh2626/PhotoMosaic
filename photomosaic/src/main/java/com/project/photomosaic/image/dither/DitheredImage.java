@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import com.project.photomosaic.image.base.ModifiedImage;
 
 public class DitheredImage extends ModifiedImage {
-	public static final int DEFAULT_DITHER_SIZE = 16;	//Will tile every 16x16 of the image
+	public static final int DEFAULT_DITHER_SIZE = 2;	//Will tile every 16x16 of the image
 	private BufferedImage dithered;
 	private long[][] data;
 	private int ditherSize; // original image gets sectioned to (size x size)

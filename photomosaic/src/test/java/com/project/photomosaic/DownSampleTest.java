@@ -15,7 +15,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class DownSampleTest extends Application {
-	private File sample = new File(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
 
 	@Test
 	public void balloonsIFDTest() throws Exception {
@@ -24,7 +23,7 @@ public class DownSampleTest extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		SampleContainer samples = new SampleContainer(sample.toString());
+		SampleContainer samples = new SampleContainer(ImageDisplay.SAMPLE.getPath());
 		ImageDisplay display = new ImageDisplay(samples.getSampleList().get(0).getDownSampled());
 
 		HBox hbox = new HBox(display.getImageView());
