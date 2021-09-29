@@ -1,4 +1,4 @@
-package com.project.photomosaic.image;
+package com.project.photomosaic.image.model;
 
 public class RGB {
 	private int rgb;

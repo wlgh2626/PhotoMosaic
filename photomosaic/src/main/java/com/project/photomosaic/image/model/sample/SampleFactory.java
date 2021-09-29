@@ -1,10 +1,10 @@
-package com.project.photomosaic.image.sample;
+package com.project.photomosaic.image.model.sample;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class SampleFactory{
-	public static final int DEFAULT_THREAD_COUNT = 2;
+	public static final int DEFAULT_THREAD_COUNT = 1;
 	private SampleRunnable[] runnables;
 	private ArrayList<BufferedImage> images;
 	

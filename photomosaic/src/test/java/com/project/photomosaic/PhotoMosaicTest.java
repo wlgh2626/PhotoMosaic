@@ -4,8 +4,8 @@ import java.io.File;
 
 import org.junit.Test;
 
-import com.project.photomosaic.image.Photomosaic;
-import com.project.photomosaic.image.sample.SampleIO;
+import com.project.photomosaic.image.model.Photomosaic;
+import com.project.photomosaic.image.model.sample.SampleIO;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

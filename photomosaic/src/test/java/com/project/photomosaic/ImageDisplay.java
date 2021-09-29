@@ -4,8 +4,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 
-import com.project.photomosaic.image.Photomosaic;
-import com.project.photomosaic.image.sample.SampleIO;
+import com.project.photomosaic.image.model.Photomosaic;
+import com.project.photomosaic.image.model.sample.SampleIO;
 
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 public class ImageDisplay {
 	public static File DUCK = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/duck.jpg");
-	public static File LENA = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/lena.jpg");
+	public static File LENA = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/lena.tif");
 	public static File SAMPLE = new File(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
 	
 	private ImageView imageView;

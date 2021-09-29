@@ -1,4 +1,4 @@
-package com.project.photomosaic.image.sample;
+package com.project.photomosaic.image.model.sample;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -48,7 +48,7 @@ public class SampleIO {
 	private static boolean matchExtension(String fileName) { // returns true if the file matches any of the acccepted
 		// extensions
 		for (String extension : ACCEPTED_EXTENSIONS) {
-			if (fileName.endsWith(extension)) {
+			if (fileName.toLowerCase().endsWith(extension)) {
 				return true;
 			}
 		}

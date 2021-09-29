@@ -1,11 +1,11 @@
-package com.project.photomosaic.image.sample;
+package com.project.photomosaic.image.model.sample;
 
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-import com.project.photomosaic.image.RGB;
-import com.project.photomosaic.image.base.ModifiedImage;
+import com.project.photomosaic.image.model.RGB;
+import com.project.photomosaic.image.model.base.ModifiedImage;
 
 //stores the image, and its average RGB value of the image
 public class Sample extends ModifiedImage {

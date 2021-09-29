@@ -7,9 +7,9 @@ import javax.imageio.ImageIO;
 
 import org.junit.Test;
 
-import com.project.photomosaic.image.Photomosaic;
-import com.project.photomosaic.image.dither.DitheredImage;
-import com.project.photomosaic.image.sample.SampleIO;
+import com.project.photomosaic.image.model.Photomosaic;
+import com.project.photomosaic.image.model.dither.DitheredImage;
+import com.project.photomosaic.image.model.sample.SampleIO;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -26,7 +26,7 @@ public class DitheringTest extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		long start = System.currentTimeMillis();
-		DitheredImage dithered = new DitheredImage(ImageIO.read(ImageDisplay.DUCK));
+		DitheredImage dithered = new DitheredImage(ImageIO.read(ImageDisplay.LENA));
 		long end = System.currentTimeMillis();
 		System.out.println("Time to load Samples: " + (end - start)/1000.0 + " seconds");
 		System.out.println(dithered.toString());

@@ -8,8 +8,8 @@ import javax.imageio.ImageIO;
 
 import org.junit.Test;
 
-import com.project.photomosaic.image.sample.Sample;
-import com.project.photomosaic.image.sample.SampleIO;
+import com.project.photomosaic.image.model.sample.Sample;
+import com.project.photomosaic.image.model.sample.SampleIO;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

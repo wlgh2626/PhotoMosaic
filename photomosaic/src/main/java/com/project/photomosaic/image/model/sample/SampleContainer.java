@@ -1,4 +1,4 @@
-package com.project.photomosaic.image.sample;
+package com.project.photomosaic.image.model.sample;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import com.project.photomosaic.image.RGB;
+import com.project.photomosaic.image.model.RGB;
 
 //Contains all the Images used to build the original
 public class SampleContainer {
@@ -16,6 +16,7 @@ public class SampleContainer {
 	private SampleIO sampleIO;
 
 	public SampleContainer(String pathToSamples) throws Exception {
+		ImageIO.setUseCache(false);
 		sampleIO = new SampleIO(pathToSamples);
 		ArrayList<BufferedImage> images = sampleIO.generateImage();
 		

@@ -1,4 +1,4 @@
-package com.project.photomosaic.image;
+package com.project.photomosaic.image.model;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -6,8 +6,8 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-import com.project.photomosaic.image.dither.DitheredImage;
-import com.project.photomosaic.image.sample.SampleContainer;
+import com.project.photomosaic.image.model.dither.DitheredImage;
+import com.project.photomosaic.image.model.sample.SampleContainer;
 
 //main class for interacting and creating photomosaic
 public class Photomosaic {
