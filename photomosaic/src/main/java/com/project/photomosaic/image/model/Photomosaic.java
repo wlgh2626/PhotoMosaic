@@ -6,6 +6,8 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
+import org.springframework.stereotype.Component;
+
 import com.project.photomosaic.image.model.dither.DitheredImage;
 import com.project.photomosaic.image.model.sample.SampleContainer;
 
