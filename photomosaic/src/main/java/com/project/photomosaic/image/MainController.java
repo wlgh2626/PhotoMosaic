@@ -32,7 +32,7 @@ public class MainController {
 		Photomosaic photomosaic = context.getBean("testPhotomosaic" , Photomosaic.class );  
 		
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		ImageIO.write(photomosaic.getImage() , "jpeg", os);                          
+		ImageIO.write(photomosaic.getImage() , "png", os);                          
 		InputStream is = new ByteArrayInputStream(os.toByteArray());
 		
 		return IOUtils.toByteArray(is);

@@ -1,15 +1,11 @@
 package com.project.photomosaic;
 
-import java.io.File;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
 import org.junit.Test;
 
-import com.project.photomosaic.image.model.Photomosaic;
 import com.project.photomosaic.image.model.dither.DitheredImage;
-import com.project.photomosaic.image.model.sample.SampleIO;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
