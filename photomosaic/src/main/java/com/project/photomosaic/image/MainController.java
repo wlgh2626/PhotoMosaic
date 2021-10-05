@@ -13,6 +13,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,9 +27,9 @@ public class MainController {
 		return "pong";
 	}
 	
-	
-	@GetMapping(value = "/testImage",produces = MediaType.IMAGE_PNG_VALUE)
-	public @ResponseBody byte[] test() throws IOException {
+	/*
+	@GetMapping(value = "/searchimage", produces = MediaType.IMAGE_PNG_VALUE)
+	public @ResponseBody byte[] searchImage( @RequestParam(name = "q") String searchQuery) throws IOException {
 		ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 		Photomosaic photomosaic = context.getBean("testPhotomosaic" , Photomosaic.class );  
 		
@@ -38,13 +39,18 @@ public class MainController {
 		
 		return IOUtils.toByteArray(is);
 	}
+	*/
 	
-	@GetMapping(value = "/testSearch")
-	public @ResponseBody String testSearch() {
+	@GetMapping(value = "/search")
+	public @ResponseBody String search(@RequestParam(name = "q") String searchQuery) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
-		CustomSearch search = context.getBean("testSearchEngine" , CustomSearch.class);
+		CustomSearch search = context.getBean("search" , CustomSearch.class);
 		
-		return search.search("onion");
+		String result = "";
+		for(String link : search.search(searchQuery)) {
+			result += link + "\n";
+		}
+		return result;
 	}
 	
 	

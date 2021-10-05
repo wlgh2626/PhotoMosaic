@@ -1,4 +1,4 @@
-package com.project.photomosaic;
+package com.project.photomosaic.model.dither;
 
 
 import javax.imageio.ImageIO;
@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 import org.junit.Test;
 
 import com.project.photomosaic.image.model.dither.DitheredImage;
+import com.project.photomosaic.util.ImageDisplay;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

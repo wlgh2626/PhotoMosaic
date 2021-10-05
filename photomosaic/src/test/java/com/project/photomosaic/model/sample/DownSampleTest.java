@@ -1,4 +1,4 @@
-package com.project.photomosaic;
+package com.project.photomosaic.model.sample;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -8,6 +8,7 @@ import org.junit.Test;
 import com.project.photomosaic.image.model.Photomosaic;
 import com.project.photomosaic.image.model.sample.SampleContainer;
 import com.project.photomosaic.image.model.sample.SampleIO;
+import com.project.photomosaic.util.ImageDisplay;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

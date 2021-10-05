@@ -1,4 +1,4 @@
-package com.project.photomosaic;
+package com.project.photomosaic.model.sample;
 
 import static org.junit.Assert.assertTrue;
 
@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.project.photomosaic.image.model.sample.SampleContainer;
 import com.project.photomosaic.image.model.sample.SampleIO;
+import com.project.photomosaic.util.ImageDisplay;
 
 public class SampleContainerTest {
 	public static ArrayList<String> filesExpected = new ArrayList<String>() {

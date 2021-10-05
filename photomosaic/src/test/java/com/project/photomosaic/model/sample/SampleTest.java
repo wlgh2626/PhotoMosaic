@@ -1,4 +1,4 @@
-package com.project.photomosaic;
+package com.project.photomosaic.model.sample;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import com.project.photomosaic.image.model.sample.Sample;
 import com.project.photomosaic.image.model.sample.SampleIO;
+import com.project.photomosaic.util.ImageDisplay;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
