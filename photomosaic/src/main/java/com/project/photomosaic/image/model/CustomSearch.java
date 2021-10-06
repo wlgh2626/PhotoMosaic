@@ -1,5 +1,6 @@
 package com.project.photomosaic.image.model;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -11,6 +12,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+
+import javax.imageio.ImageIO;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -45,6 +48,8 @@ public class CustomSearch {
 			connection.setRequestProperty("Accept", "application/json");
 		    BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
 		    links = extractLinks(br);
+		    
+		    
 			
 		} catch (MalformedURLException e) {
 			logger.warning(BASE_URL + query + " is malformed URL. Thus could not be parsed properly");
@@ -56,6 +61,26 @@ public class CustomSearch {
 			connection.disconnect();
 		}
 		return links;
+	}
+	
+	public ArrayList<BufferedImage> searchImage(ArrayList<String> links) throws IOException {
+		ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
+		
+		for(String link : links) {
+			try {
+				link = link.replace("\"", "");
+				URL url = new URL(link);
+				images.add(ImageIO.read(url));
+			} catch (MalformedURLException e) {
+				logger.warning(e.toString());
+			}
+		}
+		
+		return images; 
+	}
+	
+	public ArrayList<BufferedImage> searchImage(String searchQuery) throws IOException {
+		return searchImage( search(searchQuery) );
 	}
 	
 	public static ArrayList<String> extractLinks(BufferedReader br) throws IOException {

@@ -46,7 +46,6 @@ public class TestConfig {
 		return null;
 	}
 	
-	
 	@Bean(name = "onionLinks")
 	public ArrayList<String> sampleOnionLinks() throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/json/example.json"));
