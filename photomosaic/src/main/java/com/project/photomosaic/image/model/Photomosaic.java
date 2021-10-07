@@ -6,8 +6,6 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-import org.springframework.stereotype.Component;
-
 import com.project.photomosaic.image.model.dither.DitheredImage;
 import com.project.photomosaic.image.model.sample.SampleContainer;
 
@@ -29,7 +27,7 @@ public class Photomosaic {
 			ditherSize = (int) Math.ceil( (double)ditherSize * 1.5);
 			length = (originalImage.getWidth()/ditherSize) * samples.getDimension();
 			height = (originalImage.getHeight()/ditherSize) * samples.getDimension();
-			if((long) length * (long) height < Integer.MAX_VALUE/4) {
+			if((long) length * (long) height < Integer.MAX_VALUE/4) {	//reduce the size if it exceeds limit
 				break;
 			}
 		}
@@ -37,10 +35,9 @@ public class Photomosaic {
 		dithered = new DitheredImage(originalImage , ditherSize);
 		photoMosaic = new BufferedImage(length, height, BufferedImage.TYPE_INT_RGB);
 		
-		build();
 	}
 
-	private void build() {
+	public void build() {
 		Graphics graphic = photoMosaic.createGraphics();
 		for (int y = 0; y < dithered.getHeight(); y++) {
 			for (int x = 0; x < dithered.getLength(); x++) {
@@ -57,4 +54,5 @@ public class Photomosaic {
 	public BufferedImage getImage() {
 		return photoMosaic;
 	}
+	
 }

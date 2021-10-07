@@ -35,6 +35,9 @@ public class CustomSearch {
 		searchType = "searchType=image";
 	}
 	
+	/*
+	 * Connects to Google's Custom Search Engine and retrieves image link
+	 */	
 	public ArrayList<String> search(String searchQuery){
 		ArrayList<String> links = new ArrayList<String>();
 		String search = "q=" + String.join( "+" , searchQuery.split(" "));
@@ -48,9 +51,7 @@ public class CustomSearch {
 			connection.setRequestProperty("Accept", "application/json");
 		    BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
 		    links = extractLinks(br);
-		    
-		    
-			
+		 
 		} catch (MalformedURLException e) {
 			logger.warning(BASE_URL + query + " is malformed URL. Thus could not be parsed properly");
 		} catch (ProtocolException e) {
@@ -68,7 +69,7 @@ public class CustomSearch {
 		
 		for(String link : links) {
 			try {
-				link = link.replace("\"", "");
+				link = link.replace("\"", "");	//remove double quotes from url link
 				URL url = new URL(link);
 				images.add(ImageIO.read(url));
 			} catch (MalformedURLException e) {

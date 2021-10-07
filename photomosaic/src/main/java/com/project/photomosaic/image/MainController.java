@@ -3,6 +3,7 @@ package com.project.photomosaic.image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.photomosaic.image.model.CustomSearch;
 import com.project.photomosaic.image.model.Photomosaic;
+import com.project.photomosaic.image.model.sample.SampleIO;
 
 @RestController
 @ContextConfiguration(classes = {Config.class} )
@@ -51,10 +53,14 @@ public class MainController {
 	
 	@GetMapping(value = "/search", produces = MediaType.IMAGE_PNG_VALUE)
 	public @ResponseBody byte[] search(@RequestParam(name = "q") String searchQuery) throws IOException {
-		ArrayList<BufferedImage> images = cse.searchImage(searchQuery);
-	
+		int i = 0;
+		for(BufferedImage image : cse.searchImage(searchQuery)) {
+			SampleIO.write( image, "sample" + (i++));
+		}
+		
 		ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 		Photomosaic photomosaic = context.getBean("photomosaic" , Photomosaic.class);
+		photomosaic.build();
 		
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		ImageIO.write(photomosaic.getImage() , "png", output);

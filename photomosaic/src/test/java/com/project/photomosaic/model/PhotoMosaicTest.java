@@ -26,6 +26,7 @@ public class PhotoMosaicTest extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		long start = System.currentTimeMillis();
 		Photomosaic mosaic = new Photomosaic( ImageDisplay.DUCK , sample);
+		mosaic.build();
 		long end = System.currentTimeMillis();
 		System.out.println("Time to construct PhotoMosaic: " + (end - start)/1000.0 + " seconds");
 		ImageDisplay display = new ImageDisplay(mosaic.getImage());

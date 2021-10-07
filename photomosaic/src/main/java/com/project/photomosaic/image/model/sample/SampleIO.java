@@ -65,4 +65,13 @@ public class SampleIO {
 		}
 		return images;
 	}
+	
+	public static void write(BufferedImage image, String fileName) {
+		try {
+			fileName  = SampleIO.SAMPLE_DEFAULT_PATH + "/" + fileName + ".jpg";
+			ImageIO.write(image, "jpg", new File(fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

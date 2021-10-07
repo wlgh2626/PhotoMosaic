@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.logging.Logger;
 
 import org.springframework.context.annotation.Bean;
@@ -20,10 +19,10 @@ import com.project.photomosaic.image.model.sample.SampleIO;
 public class Config {
 	private Logger logger = Logger.getLogger(Config.class.getName());
 	
-	@Bean(name = "photomosaic")
+	@Bean(name = "photomosaic")	//Make sure to remove /test
 	public Photomosaic getTestPhotomosaic() throws Exception {
-		File LENA = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/lena.tif");
-		File SAMPLE = new File(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
+		File LENA = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/lena.tif");
+		File SAMPLE = new File(SampleIO.SAMPLE_DEFAULT_PATH);
 		return new Photomosaic(LENA , SAMPLE);
 	}
 	
