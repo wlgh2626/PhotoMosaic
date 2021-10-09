@@ -1,0 +1,36 @@
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 700px 100px 500px auto 
+}
+
+header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 20px;
+}
+
+main {
+    background: coral;
+}
+
+footer {
+    font-family: 'Brush Script MT', cursive;
+    background: #333333;
+    padding: 2rem;
+    text-align: center;
+}
+
+span {
+    margin-right: 10px;
+}
+
+img {
+    border: none;
+    width: 200px;
+    height: 200px;
+}
+
+.search-side{
+    background: green;
+}

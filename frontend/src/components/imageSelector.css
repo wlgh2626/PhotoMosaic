@@ -1,0 +1,19 @@
+.image-display {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.selector-label{
+    border-radius:10%/100%;
+    border: 1px solid #ccc;
+    background-color: #34568B;
+    display: inline-block;
+    padding: 6px 12px;
+    color: white;
+}
+
+.selector-button {
+    opacity: 0;
+    position: absolute;
+}

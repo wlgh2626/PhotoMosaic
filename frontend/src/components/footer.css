@@ -1,0 +1,10 @@
+a:link {
+    color: gray;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.icons{
+    width : 20px;
+    height: 20px;
+}
