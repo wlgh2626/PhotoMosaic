@@ -1,0 +1,10 @@
+.user-options{
+    min-width: 100%;
+}
+
+.option-icons{
+    display: block;
+    margin: 0 auto;
+    padding: 30px;
+    width: 30px;
+}

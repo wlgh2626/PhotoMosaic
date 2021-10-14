@@ -1,5 +1,5 @@
 a:link {
-    color: gray;
+    color: #A0A0A0;
     background-color: transparent;
     text-decoration: none;
 }
@@ -7,4 +7,11 @@ a:link {
 .icons{
     width : 20px;
     height: 20px;
+}
+
+footer {
+    padding: 30px;
+    color: black;
+    font-size: 10px;
+    text-align: center;
 }

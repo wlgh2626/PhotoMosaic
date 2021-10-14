@@ -9,7 +9,7 @@ export default class Footer extends Component {
                 <span>Jiho Shin</span>   
                 <span>
                     <a href="https://github.com/wlgh2626/PhotoMosaic"> 
-                        <img className="icons" src={github}/> 
+                        <img className="icons" src={github} alt="github-icon"/> 
                     </a>
                 </span>
             </div>
