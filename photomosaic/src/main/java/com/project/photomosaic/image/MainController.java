@@ -69,5 +69,18 @@ public class MainController {
 		return IOUtils.toByteArray(is);
 	}
 	
+	@GetMapping(value = "/request", produces = MediaType.IMAGE_PNG_VALUE)
+	public @ResponseBody byte[] request(@RequestParam(name = "s3") String s3URL) throws IOException {
+		ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+		Photomosaic photomosaic = context.getBean("photomosaic" , Photomosaic.class);
+		photomosaic.build();
+		
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		ImageIO.write(photomosaic.getImage() , "png", output);
+		InputStream is = new ByteArrayInputStream(output.toByteArray());
+		
+		return IOUtils.toByteArray(is);
+	}
+	
 	
 }
