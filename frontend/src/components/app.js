@@ -11,6 +11,7 @@ import S3Uploader from "./s3Uploader";
 
 
 export default function App() {
+    const [photoMosaic , setPhotoMosaic] = useState();
     const [originalImage, setOriginal] = useState();
     const [sampleList, setSamples] = useState([]);
     return (
@@ -18,10 +19,13 @@ export default function App() {
             <header><h1>Photo Mosaic</h1></header>
             <main>
                 <ImageSelecter selectedImage={originalImage} setImage={setOriginal}/>
-                <div>
-                    
-                        <S3Uploader originalImage={originalImage} sampleList={sampleList}/>
-                    
+                <div>    
+                        <S3Uploader 
+                            photoMosaic={photoMosaic} 
+                            setPhotoMosaic={setPhotoMosaic} 
+                            originalImage={originalImage} 
+                            sampleList={sampleList}
+                        />
                 </div>
             </main>
             <Options/>

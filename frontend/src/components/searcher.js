@@ -4,14 +4,16 @@ import xbutton from "./icons/xbutton.png"
 import "./searcher.css"
 
 class imageFile {
-  constructor(url){
-    this.preview = url;
+  constructor(file){
+    this.file = file;
+    this.name = file.name;
+    this.preview = URL.createObjectURL(file);
   }
 }
 export default function Searcher( {fileList, setFile }) {
     function addFiles(files){
       var newImages = files.map((file) =>
-        new imageFile(URL.createObjectURL(file)) 
+        new imageFile(file) 
       )
       setFile( fileList => [...fileList , ...newImages]); 
     }

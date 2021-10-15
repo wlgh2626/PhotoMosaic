@@ -4,7 +4,7 @@ import "./imageSelector.css"
 
 export default function ImageSelecter( {selectedImage , setImage}) {
     function imageSelected(event){
-        setImage(URL.createObjectURL(event.target.files[0]));
+        setImage(event.target.files[0]);
     }
     
     return (
