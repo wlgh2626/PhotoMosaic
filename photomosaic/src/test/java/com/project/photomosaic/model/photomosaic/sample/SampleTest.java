@@ -1,4 +1,4 @@
-package com.project.photomosaic.model.sample;
+package com.project.photomosaic.model.photomosaic.sample;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -8,8 +8,8 @@ import javax.imageio.ImageIO;
 
 import org.junit.Test;
 
-import com.project.photomosaic.image.model.sample.Sample;
-import com.project.photomosaic.image.model.sample.SampleIO;
+import com.project.photomosaic.image.model.photomosaic.sample.Sample;
+import com.project.photomosaic.image.model.photomosaic.sample.SampleIO;
 import com.project.photomosaic.util.ImageDisplay;
 
 import javafx.application.Application;

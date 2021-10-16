@@ -1,8 +1,6 @@
-package com.project.photomosaic.image.model.base;
+package com.project.photomosaic.image.model.photomosaic.base;
 
 import java.awt.image.BufferedImage;
-
-import com.project.photomosaic.image.model.RGB;
 
 /**
  * Common functions among classes that modifies the base image

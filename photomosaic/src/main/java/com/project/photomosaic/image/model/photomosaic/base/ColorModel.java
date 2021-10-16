@@ -1,4 +1,4 @@
-package com.project.photomosaic.image.model.base;
+package com.project.photomosaic.image.model.photomosaic.base;
 
 import java.lang.RuntimeException;
 /**

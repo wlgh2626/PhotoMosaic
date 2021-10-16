@@ -1,4 +1,4 @@
-package com.project.photomosaic.image.model;
+package com.project.photomosaic.image.model.cse;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;

@@ -4,8 +4,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 
-import com.project.photomosaic.image.model.Photomosaic;
-import com.project.photomosaic.image.model.sample.SampleIO;
+import com.project.photomosaic.image.model.photomosaic.Photomosaic;
+import com.project.photomosaic.image.model.photomosaic.sample.SampleIO;
 
 import javafx.scene.Scene;
 import javafx.scene.image.Image;

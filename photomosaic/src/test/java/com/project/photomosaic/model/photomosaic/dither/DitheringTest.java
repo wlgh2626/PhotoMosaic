@@ -1,11 +1,11 @@
-package com.project.photomosaic.model.dither;
+package com.project.photomosaic.model.photomosaic.dither;
 
 
 import javax.imageio.ImageIO;
 
 import org.junit.Test;
 
-import com.project.photomosaic.image.model.dither.DitheredImage;
+import com.project.photomosaic.image.model.photomosaic.dither.DitheredImage;
 import com.project.photomosaic.util.ImageDisplay;
 
 import javafx.application.Application;

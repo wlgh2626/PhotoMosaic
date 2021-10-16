@@ -1,8 +1,8 @@
-package com.project.photomosaic.image.model.dither;
+package com.project.photomosaic.image.model.photomosaic.dither;
 
 import java.awt.image.BufferedImage;
 
-import com.project.photomosaic.image.model.base.ModifiedImage;
+import com.project.photomosaic.image.model.photomosaic.base.ModifiedImage;
 
 public class DitheredImage extends ModifiedImage {
 	public static final int DEFAULT_DITHER_SIZE = 2;	//Will tile every 16x16 of the image

@@ -4,17 +4,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.project.photomosaic.image.Config;
-import com.project.photomosaic.image.model.CustomSearch;
-import com.project.photomosaic.image.model.Photomosaic;
-import com.project.photomosaic.image.model.sample.SampleIO;
+import com.project.photomosaic.image.model.Config;
+import com.project.photomosaic.image.model.cse.CustomSearch;
+import com.project.photomosaic.image.model.photomosaic.Photomosaic;
+import com.project.photomosaic.image.model.photomosaic.sample.SampleIO;
 
 @Configuration
 public class TestConfig {
@@ -28,7 +27,7 @@ public class TestConfig {
 	}
 	
 	@Bean(name = "testSearch")
-	public CustomSearch testSearchEngine(){
+	public CustomSearch getTestSearchEngine(){
 		String csid = "" , apiKey = "";
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(CustomSearch.AUTH_PATH.getPath())) ){
@@ -42,12 +41,12 @@ public class TestConfig {
 	}
 	
 	@Bean(name = "testImageSearch")
-	public CustomSearch testImageSearch() {
+	public CustomSearch getTestImageSearch() {
 		return null;
 	}
 	
 	@Bean(name = "onionLinks")
-	public ArrayList<String> sampleOnionLinks() throws IOException {
+	public ArrayList<String> getSampleOnionLinks() throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/json/example.json"));
 		ArrayList<String> links = CustomSearch.extractLinks(br);
 		return links;

@@ -1,4 +1,4 @@
-package com.project.photomosaic.image.model.sample;
+package com.project.photomosaic.image.model.photomosaic.sample;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

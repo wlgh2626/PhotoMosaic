@@ -1,4 +1,4 @@
-package com.project.photomosaic.image;
+package com.project.photomosaic.image.model;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.project.photomosaic.image.model.CustomSearch;
-import com.project.photomosaic.image.model.Photomosaic;
-import com.project.photomosaic.image.model.sample.SampleIO;
+import com.project.photomosaic.image.model.cse.CustomSearch;
+import com.project.photomosaic.image.model.photomosaic.Photomosaic;
+import com.project.photomosaic.image.model.photomosaic.sample.SampleIO;
 
 @Configuration
 @ComponentScan

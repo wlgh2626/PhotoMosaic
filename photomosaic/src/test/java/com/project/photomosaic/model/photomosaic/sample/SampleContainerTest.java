@@ -1,4 +1,4 @@
-package com.project.photomosaic.model.sample;
+package com.project.photomosaic.model.photomosaic.sample;
 
 import static org.junit.Assert.assertTrue;
 
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import com.project.photomosaic.image.model.sample.SampleContainer;
-import com.project.photomosaic.image.model.sample.SampleIO;
+import com.project.photomosaic.image.model.photomosaic.sample.SampleContainer;
+import com.project.photomosaic.image.model.photomosaic.sample.SampleIO;
 import com.project.photomosaic.util.ImageDisplay;
 
 public class SampleContainerTest {

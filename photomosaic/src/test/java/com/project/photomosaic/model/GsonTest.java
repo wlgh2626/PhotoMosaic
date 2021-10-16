@@ -13,7 +13,7 @@ import org.junit.Test;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.project.photomosaic.image.model.CustomSearch;
+import com.project.photomosaic.image.model.cse.CustomSearch;
 
 public class GsonTest {
 	public static final File EXAMPLE_JSON = new File(System.getProperty("user.dir") + "/json/example.json");

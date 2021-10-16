@@ -1,11 +1,11 @@
-package com.project.photomosaic.model;
+package com.project.photomosaic.model.photomosaic;
 
 import java.io.File;
 
 import org.junit.Test;
 
-import com.project.photomosaic.image.model.Photomosaic;
-import com.project.photomosaic.image.model.sample.SampleIO;
+import com.project.photomosaic.image.model.photomosaic.Photomosaic;
+import com.project.photomosaic.image.model.photomosaic.sample.SampleIO;
 import com.project.photomosaic.util.ImageDisplay;
 
 import javafx.application.Application;
@@ -26,7 +26,7 @@ public class PhotoMosaicTest extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		long start = System.currentTimeMillis();
 		Photomosaic mosaic = new Photomosaic( ImageDisplay.DUCK , sample);
-		mosaic.build();
+		
 		long end = System.currentTimeMillis();
 		System.out.println("Time to construct PhotoMosaic: " + (end - start)/1000.0 + " seconds");
 		ImageDisplay display = new ImageDisplay(mosaic.getImage());
