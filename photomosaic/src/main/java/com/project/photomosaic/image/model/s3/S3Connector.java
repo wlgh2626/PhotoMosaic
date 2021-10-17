@@ -1,16 +1,5 @@
 package com.project.photomosaic.image.model.s3;
 
-import com.amazonaws.SdkClientException;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.s3.*;
-import com.amazonaws.services.s3.model.ObjectListing;
-import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.s3.model.S3ObjectSummary;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
@@ -23,49 +12,61 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.io.IOUtils;
 
+import com.amazonaws.SdkClientException;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.ObjectListing;
+import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 public class S3Connector {
 	private static final Logger logger = Logger.getLogger(S3Connector.class.getName());
-	private static final String AUTH_PATH = System.getProperty("user.dir") + "/apiKey/s3auth.js";
-	
-	private String bucketName, accessKey , secretKey, folderName;
+	private static final String AUTH_PATH = System.getProperty("user.dir") + "/apikey/s3auth.js";
+
+	private String bucketName, accessKey, secretKey, folderName;
 	private Regions region = Regions.US_EAST_2;
-	
+
 	private AmazonS3 s3;
-	public S3Connector(String folderName){
+
+	public S3Connector(String folderName) {
 		this.folderName = folderName;
-		
+
 		try {
-			JsonObject json = new Gson().fromJson( new FileReader(AUTH_PATH) , JsonObject.class);
+			JsonObject json = new Gson().fromJson(new FileReader(AUTH_PATH), JsonObject.class);
 			bucketName = json.get("bucketName").getAsString();
 			accessKey = json.get("accessKey").getAsString();
 			secretKey = json.get("secretKey").getAsString();
-			
+
 			BasicAWSCredentials credential = new BasicAWSCredentials(accessKey, secretKey);
-			s3 = AmazonS3ClientBuilder.standard()
-	                .withCredentials(new AWSStaticCredentialsProvider(credential))
-	                .withRegion(region)
-	                .build();
+			s3 = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credential))
+					.withRegion(region).build();
 		} catch (FileNotFoundException e) {
 			logger.warning("Could not successfully read JSON file for authentication");
+			e.printStackTrace();
 		}
 	}
-	
+
 	public BufferedImage getOriginalImage() {
-		return getS3ImageObjects(folderName + "/original").get(0);	
+		return getS3ImageObjects(folderName + "/original").get(0);
 	}
-	
+
 	public ArrayList<BufferedImage> getSamples() {
-		return getS3ImageObjects(folderName + "/sample");	
+		return getS3ImageObjects(folderName + "/sample");
 	}
-	
-	public ArrayList<BufferedImage> getS3ImageObjects(String prefix){
+
+	public ArrayList<BufferedImage> getS3ImageObjects(String prefix) {
 		ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
 		try {
 			ObjectListing s3Objects = s3.listObjects(bucketName, folderName);
-			
-			for(S3ObjectSummary summary : s3Objects.getObjectSummaries()) {
+
+			for (S3ObjectSummary summary : s3Objects.getObjectSummaries()) {
 				S3Object obj = s3.getObject(bucketName, summary.getKey());
-				byte[] bytes = IOUtils.toByteArray(obj.getObjectContent());	
+				byte[] bytes = IOUtils.toByteArray(obj.getObjectContent());
 				BufferedImage image = ImageIO.read(new ByteArrayInputStream(bytes));
 				images.add(image);
 			}
@@ -76,10 +77,9 @@ public class S3Connector {
 		}
 		return images;
 	}
-	
+
 	public void clean() {
 		// Delete the Images inside the folder.
 	}
-	
-	
+
 }
