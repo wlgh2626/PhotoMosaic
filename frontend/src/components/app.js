@@ -1,14 +1,10 @@
 import {useState} from "react"
-import {ID} from "./id.js"
 import Footer from "./footer"
 import ImageSelecter from "./imageSelector";
 import Samples from "./searcher";
 import Options from "./options"
-import S3 from "aws-sdk/clients/s3";
 import "./app.css"
-import S3Uploader from "./s3Uploader";
-
-
+import PhotoMosaic from "./photomosaic";
 
 export default function App() {
     const [photoMosaic , setPhotoMosaic] = useState();
@@ -20,7 +16,7 @@ export default function App() {
             <main>
                 <ImageSelecter selectedImage={originalImage} setImage={setOriginal}/>
                 <div>    
-                        <S3Uploader 
+                        <PhotoMosaic
                             photoMosaic={photoMosaic} 
                             setPhotoMosaic={setPhotoMosaic} 
                             originalImage={originalImage} 
