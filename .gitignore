@@ -28,4 +28,4 @@ photomosaic/images/sample
 
 #auth
 photomosaic/apikey/**
-**/id.js
+#**/id.js
