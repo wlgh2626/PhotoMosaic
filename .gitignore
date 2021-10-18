@@ -27,5 +27,5 @@ photomosaic/images/sample
 **/yarn-error.log*
 
 #auth
-photomosaic/apikey/**
+#photomosaic/apikey/**
 #**/id.js

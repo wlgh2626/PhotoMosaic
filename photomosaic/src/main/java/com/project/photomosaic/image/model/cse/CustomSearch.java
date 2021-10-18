@@ -23,35 +23,35 @@ import com.google.gson.JsonObject;
 // https://www.googleapis.com/customsearch/v1?key=INSERT_YOUR_API_KEY&cx=017576662512468239146:omuauf_lfve&q=lectures
 
 public class CustomSearch {
-	public static final File AUTH_PATH = new File(System.getProperty("user.dir") + "/apikey/auth.txt");
+	public static final File AUTH_PATH = new File(System.getProperty("user.dir") + "/apikey/cseAuth.js");
 	private static final Logger logger = Logger.getLogger(CustomSearch.class.getName());
 	public final String BASE_URL = "https://www.googleapis.com/customsearch/v1?";
-	
+
 	private String apiKey, customSearchID, searchType;
-	
-	public CustomSearch(String customSearchID , String apiKey) {
+
+	public CustomSearch(String customSearchID, String apiKey) {
 		this.apiKey = apiKey;
 		this.customSearchID = customSearchID;
 		searchType = "searchType=image";
 	}
-	
+
 	/*
 	 * Connects to Google's Custom Search Engine and retrieves image link
-	 */	
-	public ArrayList<String> search(String searchQuery){
+	 */
+	public ArrayList<String> search(String searchQuery) {
 		ArrayList<String> links = new ArrayList<String>();
-		String search = "q=" + String.join( "+" , searchQuery.split(" "));
-		String query = String.join( "&" , apiKey, customSearchID , searchType , search);
-		
+		String search = "q=" + String.join("+", searchQuery.split(" "));
+		String query = String.join("&", apiKey, customSearchID, searchType, search);
+
 		HttpURLConnection connection = null;
 		try {
 			URL url = new URL(BASE_URL + query);
 			connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
 			connection.setRequestProperty("Accept", "application/json");
-		    BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-		    links = extractLinks(br);
-		 
+			BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
+			links = extractLinks(br);
+
 		} catch (MalformedURLException e) {
 			logger.warning(BASE_URL + query + " is malformed URL. Thus could not be parsed properly");
 		} catch (ProtocolException e) {
@@ -63,32 +63,32 @@ public class CustomSearch {
 		}
 		return links;
 	}
-	
+
 	public ArrayList<BufferedImage> searchImage(ArrayList<String> links) throws IOException {
 		ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
-		
-		for(String link : links) {
+
+		for (String link : links) {
 			try {
-				link = link.replace("\"", "");	//remove double quotes from url link
+				link = link.replace("\"", ""); // remove double quotes from url link
 				URL url = new URL(link);
 				images.add(ImageIO.read(url));
 			} catch (MalformedURLException e) {
 				logger.warning(e.toString());
 			}
 		}
-		
-		return images; 
+
+		return images;
 	}
-	
+
 	public ArrayList<BufferedImage> searchImage(String searchQuery) throws IOException {
-		return searchImage( search(searchQuery) );
+		return searchImage(search(searchQuery));
 	}
-	
+
 	public static ArrayList<String> extractLinks(BufferedReader br) throws IOException {
 		ArrayList<String> links = new ArrayList<String>();
-		JsonObject jsonObject = new Gson().fromJson( br.lines().collect(Collectors.joining()) , JsonObject.class);
-			
-		for(JsonElement e :jsonObject.getAsJsonArray("items")) {
+		JsonObject jsonObject = new Gson().fromJson(br.lines().collect(Collectors.joining()), JsonObject.class);
+
+		for (JsonElement e : jsonObject.getAsJsonArray("items")) {
 			links.add(e.getAsJsonObject().get("link").toString());
 		}
 		return links;
