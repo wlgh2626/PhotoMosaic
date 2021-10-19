@@ -30,7 +30,8 @@ public class MainController {
 	@Qualifier("search")
 	private CustomSearch cse;
 
-	@GetMapping("/ping")
+	@GetMapping(value = "/ping")
+	@ResponseBody
 	public String ping() {
 		return "pong";
 	}
@@ -53,7 +54,8 @@ public class MainController {
 	 */
 
 	@GetMapping(value = "/request", produces = MediaType.IMAGE_PNG_VALUE)
-	public @ResponseBody byte[] request(@RequestParam(name = "s3") String s3URL) throws Exception {
+	@ResponseBody
+	public byte[] request(@RequestParam(name = "s3") String s3URL) throws Exception {
 		S3Connector s3 = new S3Connector(s3URL);
 		BufferedImage original = s3.getOriginalImage();
 		ArrayList<BufferedImage> samples = s3.getSamples();
