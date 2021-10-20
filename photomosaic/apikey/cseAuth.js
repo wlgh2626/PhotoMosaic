@@ -1,4 +1,4 @@
 {
-    "cx":"c04afbabc692dee05",
-    "key":"AIzaSyAPNYMrTza4CrNOWoNegw9SzPdw9bTgDAw"
+    "cx":"your-cs-id-here",
+    "key":"your-access-key-here"
 }
