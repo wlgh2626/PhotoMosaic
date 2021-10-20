@@ -30,8 +30,8 @@ public class CustomSearch {
 	private String apiKey, customSearchID, searchType;
 
 	public CustomSearch(String customSearchID, String apiKey) {
-		this.apiKey = apiKey;
-		this.customSearchID = customSearchID;
+		this.apiKey = "key=" + apiKey;
+		this.customSearchID = "cx=" + customSearchID;
 		searchType = "searchType=image";
 	}
 
