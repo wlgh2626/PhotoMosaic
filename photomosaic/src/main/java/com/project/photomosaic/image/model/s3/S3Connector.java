@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectListing;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.google.gson.Gson;
@@ -35,9 +37,8 @@ public class S3Connector {
 
 	private AmazonS3 s3;
 
-	public S3Connector(String folderName) {
-		this.folderName = folderName;
-
+	public S3Connector() {
+		folderName = "default";
 		try {
 			JsonObject json = new Gson().fromJson(new FileReader(AUTH_PATH), JsonObject.class);
 			bucketName = json.get("bucketName").getAsString();
@@ -51,6 +52,10 @@ public class S3Connector {
 			logger.warning("Could not successfully read JSON file for authentication");
 			e.printStackTrace();
 		}
+	}
+	
+	public void setFolderName(String folderName) {
+		this.folderName = folderName;
 	}
 
 	public BufferedImage getOriginalImage() {
@@ -80,8 +85,10 @@ public class S3Connector {
 		return images;
 	}
 	
-	public void uploadImage(File file) {
-		s3.putObject( bucketName , folderName +"/photomosaic.png", file);
+	public void uploadImage(InputStream is) {
+		ObjectMetadata meta = new ObjectMetadata();
+		meta.setContentType("image/png");
+		s3.putObject( bucketName , folderName +"/photomosaic.png", is, meta);
 	}
 	
 	public URL getResultURL() {

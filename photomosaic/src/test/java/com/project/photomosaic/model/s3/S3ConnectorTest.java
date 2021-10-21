@@ -19,7 +19,8 @@ public class S3ConnectorTest extends Application{
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		S3Connector s3 = new S3Connector("kurmd3fx");
+		S3Connector s3 = new S3Connector();
+		s3.setFolderName("kurmd3fx");
 		ImageDisplay display = new ImageDisplay(s3.getOriginalImage());
 
 		HBox hbox = new HBox(display.getImageView());

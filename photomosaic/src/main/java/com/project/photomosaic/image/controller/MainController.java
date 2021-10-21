@@ -32,6 +32,8 @@ import com.project.photomosaic.image.model.s3.S3Connector;
 @RestController
 @ContextConfiguration(classes = { Config.class })
 public class MainController {
+	S3Connector s3 = new S3Connector();
+	
 	@Autowired
 	@Qualifier("search")
 	private CustomSearch cse;
@@ -47,15 +49,17 @@ public class MainController {
 	@CrossOrigin
 	@ResponseBody
 	public String request(@RequestParam(name = "s3") String s3FolderName) throws Exception {
-		S3Connector s3 = new S3Connector(s3FolderName);
+		s3.setFolderName(s3FolderName);
 		BufferedImage original = s3.getOriginalImage();
 		ArrayList<BufferedImage> samples = s3.getSamples();
 
 		Photomosaic photomosaic = new Photomosaic(original, samples);
-		File file = new File("photomosaic.png");
-		ImageIO.write(photomosaic.getImage(), "png", file);
-		s3.uploadImage(file);
-
+		
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		ImageIO.write(photomosaic.getImage(), "png", os);
+		InputStream is = new ByteArrayInputStream(os.toByteArray());
+		s3.uploadImage(is);
+		
 		return s3.getResultURL().toString();
 	}
 
