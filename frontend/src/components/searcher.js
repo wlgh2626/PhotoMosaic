@@ -1,4 +1,4 @@
-import React, {useState , useCallback} from 'react'
+import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
 import xbutton from "./icons/xbutton.png"
 import "./searcher.css"

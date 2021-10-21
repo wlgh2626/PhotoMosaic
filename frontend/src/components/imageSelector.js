@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import "./imageSelector.css"
 
 export default function ImageSelecter( {selectedImage , setImage}) {
