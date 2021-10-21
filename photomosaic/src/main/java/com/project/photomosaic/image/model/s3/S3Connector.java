@@ -2,9 +2,11 @@ package com.project.photomosaic.image.model.s3;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
@@ -77,9 +79,13 @@ public class S3Connector {
 		}
 		return images;
 	}
-
-	public void clean() {
-		// Delete the Images inside the folder.
+	
+	public void uploadImage(File file) {
+		s3.putObject( bucketName , folderName +"/photomosaic.png", file);
+	}
+	
+	public URL getResultURL() {
+		return s3.getUrl(bucketName, folderName +"/photomosaic.png");
 	}
 
 }
