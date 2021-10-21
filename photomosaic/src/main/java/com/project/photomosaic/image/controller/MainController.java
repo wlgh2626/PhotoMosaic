@@ -50,16 +50,23 @@ public class MainController {
 	@ResponseBody
 	public String request(@RequestParam(name = "s3") String s3FolderName) throws Exception {
 		s3.setFolderName(s3FolderName);
-		BufferedImage original = s3.getOriginalImage();
-		ArrayList<BufferedImage> samples = s3.getSamples();
+		
+		try {
+			BufferedImage original = s3.getOriginalImage();
+			ArrayList<BufferedImage> samples = s3.getSamples();
 
-		Photomosaic photomosaic = new Photomosaic(original, samples);
-		
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		ImageIO.write(photomosaic.getImage(), "png", os);
-		InputStream is = new ByteArrayInputStream(os.toByteArray());
-		s3.uploadImage(is);
-		
+			Photomosaic photomosaic = new Photomosaic(original, samples);
+			
+			ByteArrayOutputStream os = new ByteArrayOutputStream();
+			ImageIO.write(photomosaic.getImage(), "png", os);
+			InputStream is = new ByteArrayInputStream(os.toByteArray());
+			s3.uploadImage(is);
+			
+			original.flush();
+		} catch (IndexOutOfBoundsException e) {
+			e.printStackTrace();
+			return "image not found!";
+		}
 		return s3.getResultURL().toString();
 	}
 

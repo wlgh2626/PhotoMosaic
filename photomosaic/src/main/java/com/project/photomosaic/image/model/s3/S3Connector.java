@@ -58,7 +58,7 @@ public class S3Connector {
 		this.folderName = folderName;
 	}
 
-	public BufferedImage getOriginalImage() {
+	public BufferedImage getOriginalImage() throws IndexOutOfBoundsException{
 		return getS3ImageObjects(folderName + "/original").get(0);
 	}
 
