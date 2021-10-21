@@ -1,9 +1,13 @@
 
-const targetURL = "http://ec2-3-16-232-112.us-east-2.compute.amazonaws.com:8080/";
+const port = "8081";
+const url = "http://ec2-3-16-232-112.us-east-2.compute.amazonaws.com";
+const targetURL = new URL(url + ":" + port);
+
 const params = {
-    mode: 'no-cors',
+    mode: "cors",
+    method: "get",
     headers: {
-      'Access-Control-Allow-Origin':'*'
+        "Access-Control-Allow-Origin": targetURL.origin
     }
 };
 
@@ -12,12 +16,17 @@ export default class BackEnd {
         this.directory = directory;
     }
 
-    async signalAndWait(){
-        fetch(targetURL + "/ping", params).then(res=> {
+    async getResultURL(){
+        fetch( targetURL.href + "photomosaic?s3=" + this.directory, params).then(res=> {
             if(res.ok){
-               return true; 
+                console.log("successful return");
+                res.text().then(body=>{
+                    console.log(body);
+                    return body;
+                })
             } else {
-               return false;     
+                console.log("unsuccessful return");
+                return false;     
             }
         })
     }

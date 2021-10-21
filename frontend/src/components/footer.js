@@ -1,5 +1,4 @@
 import React from "react";
-import { Component } from "react/cjs/react.production.min";
 import github from "./icons/github.png";
 import "./footer.css"
 export default function Footer(){

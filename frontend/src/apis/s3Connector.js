@@ -29,7 +29,7 @@ export default class S3Connector {
             Body: image,
         })
     
-        s3.putObject( params , function(err , data) {
+        s3.putObject( params , (err , data)=> {
             if (err) {
                 console.log("Error", err);
             } if (data) {
@@ -39,7 +39,7 @@ export default class S3Connector {
     }
 
     async uploadToS3(){
-        if((this.originalImage) && (this.sampleList.length != 0)){
+        if((this.originalImage) && (this.sampleList.length !== 0)){
             this.upload(this.originalImage , this.directory+"/original"+ Path.extname(this.originalImage.name))
     
             for(var i = 0 ; i < this.sampleList.length ; i ++){
@@ -50,4 +50,5 @@ export default class S3Connector {
             console.log("Missing images!");
         }
     }
+
 }

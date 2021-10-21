@@ -17,12 +17,13 @@ export default function App() {
                 <ImageSelecter selectedImage={originalImage} setImage={setOriginal}/>
                 <div>    
                         <PhotoMosaic
-                            photoMosaic={photoMosaic} 
                             setPhotoMosaic={setPhotoMosaic} 
                             originalImage={originalImage} 
                             sampleList={sampleList}
                         />
+                        <img src={photoMosaic} alt="result"/>
                 </div>
+                
             </main>
             <Options/>
             <Samples fileList={sampleList} setFile={setSamples}/>
