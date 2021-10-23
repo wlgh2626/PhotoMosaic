@@ -58,7 +58,17 @@ public class S3Connector {
 		this.folderName = folderName;
 	}
 
-	public BufferedImage getOriginalImage() throws IndexOutOfBoundsException{
+	public BufferedImage getOriginalImage() throws IndexOutOfBoundsException, InterruptedException{
+		int i = 0;
+		while(getS3ImageObjects(folderName + "/original").isEmpty()) {
+			logger.warning("Could not find the specified Image!");
+			logger.warning("Fetching again... Attempt " + (i++));
+			Thread.sleep(1000);
+			if(i == 4) {
+				logger.severe("Unsuccessful retrieval after " + i + " tries");
+				throw new IndexOutOfBoundsException();
+			}
+		}
 		return getS3ImageObjects(folderName + "/original").get(0);
 	}
 
