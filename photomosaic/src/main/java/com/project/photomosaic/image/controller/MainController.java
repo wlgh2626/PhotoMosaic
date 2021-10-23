@@ -49,9 +49,10 @@ public class MainController {
 	@CrossOrigin
 	@ResponseBody
 	public String request(@RequestParam(name = "s3") String s3FolderName) throws Exception {
-		s3.setFolderName(s3FolderName);
-		
 		try {
+			s3.setFolderName(s3FolderName);
+			s3.listAll();
+			
 			BufferedImage original = s3.getOriginalImage();
 			ArrayList<BufferedImage> samples = s3.getSamples();
 
