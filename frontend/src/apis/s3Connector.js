@@ -1,6 +1,6 @@
 import AWS from "aws-sdk";
 import {ID} from "../auth/id.js";
-import Path from "path";
+import Path, { resolve } from "path";
 
 const s3Region = "us-east-2";
 const s3BucketName = "js-image-storage";
@@ -15,40 +15,53 @@ AWS.config.update({
 })
 const s3 = new AWS.S3();
 
-export default class S3Connector {
-    constructor(directory , originalImage , sampleList){
-        this.directory = directory;
-        this.originalImage = originalImage;
-        this.sampleList = sampleList;
-    }
-
-    async upload(image , imageKey){
+export default async function S3Connector(directory , originalImage , sampleList) {
+    
+    async function upload(image , imageKey){
         var params = ({
             Bucket: s3BucketName,
             Key: imageKey,
             Body: image,
         })
-    
-        s3.putObject( params , (err , data)=> {
-            if (err) {
-                console.log("Error", err);
-            } if (data) {
-                console.log("Upload Success");
-            }
-        });  
+        
+        return new Promise((resolve,reject)=>{
+            s3.putObject( params , (err , data)=> {
+                if(data){
+                    console.log("Successfully uploaded");
+                    resolve(true);
+                } if(err) {
+                    reject(false);
+                }
+            });  
+        })     
     }
 
-    async uploadToS3(){
-        if((this.originalImage) && (this.sampleList.length !== 0)){
-            this.upload(this.originalImage , this.directory+"/original"+ Path.extname(this.originalImage.name))
-    
-            for(var i = 0 ; i < this.sampleList.length ; i ++){
-                var imageKey = this.directory + "/sample" + i + Path.extname(this.sampleList[i].name);  
-                this.upload( this.sampleList[i].file , imageKey)
-            }  
+    async function uploadMultiple(files, prefix){
+        var i = 0;
+        const promises = files.map(async file =>{
+            var imageKey = prefix + (i++) + Path.extname(file.name); 
+            const isUploaded = await upload(file.file , imageKey);
+
+            return isUploaded;
+        })
+
+        const results = await Promise.all(promises);
+        return results;
+    }
+
+    if((originalImage) && (sampleList.length !== 0)){
+
+        console.log("Started Uploading...")
+        const originalUploaded = await upload(originalImage , directory+"/original"+ Path.extname(originalImage.name))
+        const samplesUploaded = await uploadMultiple(sampleList , directory+"/sample");
+        if((originalUploaded && samplesUploaded)){
+            console.log("Finished All Uploads")
         } else {
-            console.log("Missing images!");
+            console.log("Uploading to S3 Failed...")
         }
+        return Promise.resolve( (originalUploaded && samplesUploaded));
+    } else {
+        return Promise.reject(false);
     }
 
 }

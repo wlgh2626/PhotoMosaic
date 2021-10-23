@@ -1,3 +1,4 @@
+import { useState } from "react/cjs/react.development";
 
 const port = "8081";
 const url = "http://ec2-3-16-232-112.us-east-2.compute.amazonaws.com";
@@ -11,23 +12,21 @@ const params = {
     }
 };
 
-export default class BackEnd {
-    constructor(directory){
-        this.directory = directory;
-    }
+export default async function BackEnd( directory ) {
 
-    async getResultURL(){
-        fetch( targetURL.href + "photomosaic?s3=" + this.directory, params).then(res=> {
+    return new Promise((resolve,reject) =>{
+        console.log("dr is:" + directory);
+        fetch( targetURL.href + "photomosaic?s3=" + directory, params).then(res=> {
             if(res.ok){
                 console.log("successful return");
                 res.text().then(body=>{
                     console.log(body);
-                    return body;
+                    resolve(body);
                 })
             } else {
-                console.log("unsuccessful return");
-                return false;     
+                console.log("unsuccessful return");   
+                reject("Failed to Retrieve");
             }
         })
-    }
+    })
 }

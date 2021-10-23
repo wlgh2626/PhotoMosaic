@@ -21,7 +21,7 @@ export default function App() {
                             originalImage={originalImage} 
                             sampleList={sampleList}
                         />
-                        <img src={photoMosaic} alt="result"/>
+                        <img className="result" src={photoMosaic} alt="image-here" />
                 </div>
                 
             </main>
