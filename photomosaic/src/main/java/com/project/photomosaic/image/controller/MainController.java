@@ -65,7 +65,7 @@ public class MainController {
 			original.flush();
 		} catch (IndexOutOfBoundsException e) {
 			e.printStackTrace();
-			return "image not found!";
+			return "Server couldnt successfully photo mosaic!";
 		}
 		return s3.getResultURL().toString();
 	}

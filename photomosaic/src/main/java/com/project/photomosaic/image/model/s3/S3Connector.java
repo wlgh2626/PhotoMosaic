@@ -79,7 +79,7 @@ public class S3Connector {
 	public ArrayList<BufferedImage> getS3ImageObjects(String prefix) {
 		ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
 		try {
-			ObjectListing s3Objects = s3.listObjects(bucketName, folderName);
+			ObjectListing s3Objects = s3.listObjects(bucketName, prefix);
 
 			for (S3ObjectSummary summary : s3Objects.getObjectSummaries()) {
 				S3Object obj = s3.getObject(bucketName, summary.getKey());
