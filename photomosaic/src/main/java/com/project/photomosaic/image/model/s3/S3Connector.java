@@ -110,7 +110,7 @@ public class S3Connector {
 		try {
 			ObjectListing s3Objects = s3.listObjects(bucketName, folderName);
 			for (S3ObjectSummary summary : s3Objects.getObjectSummaries()) {
-				logger.fine(summary.getKey());
+				logger.info(summary.getKey());
 			}
 		} catch (SdkClientException e) {
 			logger.severe("Could not sucessfully retrieve from S3: " + e.toString());
