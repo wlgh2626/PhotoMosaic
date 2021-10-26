@@ -1,24 +1,21 @@
 
+import React, {useCallback} from 'react'
+import {useDropzone} from 'react-dropzone'
 import "./imageSelector.css"
 
-export default function ImageSelecter( {selectedImage , setImage}) {
-    function imageSelected(event){
-        setImage(event.target.files[0]);
-    }
+export default function ImageSelecter( {setOriginal, setDisplay}) {
     
+    const onDrop = useCallback(acceptedFile => {
+        setDisplay(URL.createObjectURL(acceptedFile[0]));
+        setOriginal(URL.createObjectURL(acceptedFile[0]));
+    }, [])
+  
+    const {getRootProps, getInputProps} = useDropzone({noClick:true , onDrop})
+
     return (
-        <div className="selector-group">
-            <div>
-                <label className="selector-label">
-                    <input 
-                        className="selector-button" 
-                        type="file" 
-                        onChange={imageSelected} 
-                    />
-                    Choose Image
-                </label>
-            </div>      
+        <div className="main-selector" {...getRootProps()}>
+            <input {...getInputProps()} />
         </div>
     )
-     
+
 }
