@@ -1,4 +1,4 @@
-# backend
+# java backend
 photomosaic/target
 photomosaic/.classpath
 photomosaic/.settings
@@ -28,4 +28,4 @@ photomosaic/images/sample
 
 #auth
 **/apikey/**
-**/id.js
+**/.env

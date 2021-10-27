@@ -1,11 +1,10 @@
 import AWS from "aws-sdk";
-import {ID} from "../../../auth/id.js";
 import Path from "path";
 
 const s3Region = "us-east-2";
-const s3BucketName = "js-image-storage";
-const s3AccessKey = ID.accesskey;
-const s3SecretKey = ID.secretKey;
+const s3BucketName = process.env.REACT_APP_S3_BUCKET_NAME
+const s3AccessKey = process.env.REACT_APP_S3_ACCESS
+const s3SecretKey = process.env.REACT_APP_S3_SECRET
 
 //The exact attribute name is important!
 AWS.config.update({
