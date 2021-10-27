@@ -1,4 +1,3 @@
-import { useState } from "react/cjs/react.development";
 
 const port = "8081";
 const url = "http://ec2-3-16-232-112.us-east-2.compute.amazonaws.com";

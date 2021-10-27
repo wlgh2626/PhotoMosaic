@@ -10,7 +10,7 @@ export default function Display( {displayImage} ){
                 maxPositionY={1}
             >
                 <TransformComponent>
-                    <img className="display-image" src={displayImage} />
+                    <img className="display-image" src={displayImage} alt=""/>
                 </TransformComponent>
             </TransformWrapper>
         </div>

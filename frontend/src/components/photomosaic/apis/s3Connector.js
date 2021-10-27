@@ -1,6 +1,6 @@
 import AWS from "aws-sdk";
-import {ID} from "../auth/id.js";
-import Path, { resolve } from "path";
+import {ID} from "../../../auth/id.js";
+import Path from "path";
 
 const s3Region = "us-east-2";
 const s3BucketName = "js-image-storage";
@@ -41,7 +41,6 @@ export default async function S3Connector(directory , originalImage , sampleList
         const promises = files.map(async file =>{
             var imageKey = prefix + (i++) + Path.extname(file.name); 
             const isUploaded = await upload(file.file , imageKey);
-
             return isUploaded;
         })
 

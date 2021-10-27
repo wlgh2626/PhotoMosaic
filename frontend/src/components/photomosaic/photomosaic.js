@@ -1,11 +1,12 @@
-import S3Connector from "../apis/s3Connector"
-import BackEnd from "../apis/backEndConnector"
+import S3Connector from "./apis/s3Connector"
+import BackEnd from "./apis/backEndConnector"
  
-export default function Retrieve( {setPhotoMosaic , setDisplay, originalImage , sampleList} ){
+export default function Retrieve( {originalImage , sampleList , setPhotoMosaic , setDisplay } ){
 
-    async function photomosaic(setPhotoMosaic ,originalImage , sampleList){
+    async function photomosaic(originalImage, sampleList , setPhotoMosaic){
         const directory = (new Date()).getTime().toString(36);
 
+        console.log(originalImage);
         console.log(directory);
         const isUploaded = await S3Connector( directory , originalImage , sampleList);
         if(isUploaded){
@@ -17,9 +18,9 @@ export default function Retrieve( {setPhotoMosaic , setDisplay, originalImage , 
     }
 
     return (
-        <span>
-            <button onClick={()=> photomosaic(setPhotoMosaic, originalImage, sampleList)}>
-                upload
+        <span className="photomosaic">
+            <button onClick={()=> photomosaic(originalImage, sampleList , setPhotoMosaic)}>
+                Photo Mosaic
             </button>
         </span>    
     );

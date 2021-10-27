@@ -1,13 +1,13 @@
 import {useState} from "react"
 
 import Footer from "./footer"
-import ImageSelector from "./imageSelector";
-import Samples from "./searcher";
-import Display from "./display";
+import ImageSelector from "./dndDisplay/imageSelector";
+import Samples from "./samples/samples";
+import Display from "./dndDisplay/display";
 import "./app.css"
 
-import PhotoMosaic from "./photomosaic";
-import Download from "./download";
+import PhotoMosaic from "./photomosaic/photomosaic";
+import Download from "./photomosaic/download";
 
 export default function App() {
     const [displayImage , setDisplay] = useState();
@@ -25,7 +25,7 @@ export default function App() {
             </div>
 
             <div className="options">
-                <PhotoMosaic setPhotoMosaic={setPhotoMosaic} setDisplay={setDisplay} originalImage={originalImage} sampleList={sampleList}/>
+                <PhotoMosaic originalImage={originalImage} sampleList={sampleList} setPhotoMosaic={setPhotoMosaic} setDisplay={setDisplay}/>
                 <Download image={photoMosaic} />
             </div>
 
