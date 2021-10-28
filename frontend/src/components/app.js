@@ -17,7 +17,9 @@ export default function App() {
 
     return (
         <div className="container">
-            <header><h1>Photo Mosaic</h1></header>
+            <header>
+                <h1>Photo Mosaic</h1>
+            </header>
 
             <div className="display-selector">
                 <ImageSelector setOriginal={setOriginal} setDisplay={setDisplay}/>
