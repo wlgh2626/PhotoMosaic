@@ -1,6 +1,6 @@
 
-const port = "8081";
-const url = "http://ec2-3-16-232-112.us-east-2.compute.amazonaws.com";
+const port = process.env.PHOTO_MOSAIC_PORT
+const url = process.env.PHOTO_MOSAIC_URL;
 const targetURL = new URL(url + ":" + port);
 
 const params = {
@@ -14,16 +14,15 @@ const params = {
 export default async function BackEnd( directory ) {
 
     return new Promise((resolve,reject) =>{
-        console.log("dr is:" + directory);
         fetch( targetURL.href + "photomosaic?s3=" + directory, params).then(res=> {
             if(res.ok){
-                console.log("successful return");
+                console.log("successful mosaic return");
                 res.text().then(body=>{
                     console.log(body);
                     resolve(body);
                 })
             } else {
-                console.log("unsuccessful return");   
+                console.log("unsuccessful mosaic return");   
                 reject("Failed to Retrieve");
             }
         })

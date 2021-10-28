@@ -1,38 +1,30 @@
-import AWS from "aws-sdk";
 import Path from "path";
 
-const s3Region = "us-east-2";
-const s3BucketName = process.env.REACT_APP_S3_BUCKET_NAME
-const s3AccessKey = process.env.REACT_APP_S3_ACCESS
-const s3SecretKey = process.env.REACT_APP_S3_SECRET
-
-//The exact attribute name is important!
-AWS.config.update({
-    accessKeyId: s3AccessKey,
-    secretAccessKey: s3SecretKey,
-    region: s3Region
-})
-const s3 = new AWS.S3();
+const s3ProviderUrl = process.env.S3_CONNECTOR_SERVER_URL + ":" + process.env.S3_CONNECTOR_PORT;
 
 export default async function S3Connector(directory , originalImage , sampleList) {
-    
     async function upload(image , imageKey){
-        var params = ({
-            Bucket: s3BucketName,
-            Key: imageKey,
-            Body: image,
+        //receive a signed S3 URL from the server
+        const url = await fetch(s3ProviderUrl + "/requestS3Url?key=" + imageKey).then(res => {
+            return res.text()
+        });
+
+        const params = ({
+            method: "PUT",
+            body: image
         })
-        
+
         return new Promise((resolve,reject)=>{
-            s3.putObject( params , (err , data)=> {
-                if(data){
-                    console.log("Successfully uploaded");
-                    resolve(true);
-                } if(err) {
-                    reject(false);
+            fetch(url , params ).then(res=>{
+                if (res.ok){
+                    console.log("Succesfully uploaded ")
+                    resolve(true)
+                } else {
+                    console.log("Upload failed ")
+                    reject(false)
                 }
-            });  
-        })     
+            })
+        })
     }
 
     async function uploadMultiple(files, prefix){
@@ -48,15 +40,10 @@ export default async function S3Connector(directory , originalImage , sampleList
     }
 
     if((originalImage) && (sampleList.length !== 0)){
-
         console.log("Started Uploading...")
         const originalUploaded = await upload(originalImage , directory+"/original"+ Path.extname(originalImage.name))
         const samplesUploaded = await uploadMultiple(sampleList , directory+"/sample");
-        if((originalUploaded && samplesUploaded)){
-            console.log("Finished All Uploads")
-        } else {
-            console.log("Uploading to S3 Failed...")
-        }
+
         return Promise.resolve( (originalUploaded && samplesUploaded));
     } else {
         return Promise.reject(false);
