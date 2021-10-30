@@ -1,6 +1,6 @@
 
-const port = process.env.PHOTO_MOSAIC_PORT
-const url = process.env.PHOTO_MOSAIC_URL;
+const port = process.env.REACT_APP_PHOTO_MOSAIC_PORT
+const url = process.env.REACT_APP_PHOTO_MOSAIC_URL;
 const targetURL = new URL(url + ":" + port);
 
 const params = {
