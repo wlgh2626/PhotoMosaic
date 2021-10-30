@@ -1,6 +1,6 @@
 import Path from "path";
 
-const s3ProviderUrl = process.env.REACT_APP_S3_CONNECTOR_URL + ":" + process.env.REACT_APP_S3_CONNECTOR_PORT;
+const s3ProviderUrl = (process.env.REACT_APP_S3_CONNECTOR_URL) + ":" + (process.env.REACT_APP_S3_CONNECTOR_PORT);
 
 export default async function S3Connector(directory , originalImage , sampleList) {
     async function upload(image , imageKey){
