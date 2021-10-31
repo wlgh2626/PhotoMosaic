@@ -1,0 +1,15 @@
+{
+  "name": "s3connector",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.1016.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

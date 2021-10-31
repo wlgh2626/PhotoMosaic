@@ -1,0 +1,14 @@
+.main-display {
+    border: 3px solid #F7CAC9;
+    max-height: 700px;
+    max-width: 55%;
+}
+
+.display-container {
+    margin:auto;
+}
+
+.display-image {
+    width: 100%;
+    height: 100%;
+}
