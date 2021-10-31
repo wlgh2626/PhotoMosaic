@@ -29,3 +29,4 @@ photomosaic/images/sample
 #auth
 **/apikey/**
 **/.env
+**/cert/
