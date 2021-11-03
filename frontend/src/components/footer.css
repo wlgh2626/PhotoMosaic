@@ -1,21 +1,32 @@
+span {
+    margin-right: 10px;
+}
+
 a:link {
     color: #A0A0A0;
     background-color: transparent;
     text-decoration: none;
 }
 
-.icons{
-    width : 20px;
-    height: 20px;
-}
-
-footer {
-    padding: 30px;
-    color: black;
-    font-size: 10px;
+.footer-container {
+    height: 100px;
+    margin-top: auto;
+    background-color: #353935;
+    align-content: center;
     text-align: center;
+    vertical-align: middle;
 }
 
-span {
+.author-name {
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    font-style: italic;
     margin-right: 10px;
+}
+
+.icons{
+    margin-top: 40px;
+    width: 25px;
+    height: 25px;
 }

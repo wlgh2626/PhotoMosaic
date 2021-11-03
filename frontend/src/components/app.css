@@ -1,16 +1,38 @@
 header {
+    margin-bottom: 50px;
+    font-size: 15px;
+    text-align: left;
+    color: white;
+    background-color: #353935; 
+}
+
+h1 {
+    margin-left: 10%;
+    font-style: italic;
     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+footer {
+    height: 75px;
+    margin-top: 100px;
+    
+    color: black;
+    font-size: 10px;
     text-align: center;
-    font-size: 20px;
 }
 
 .container {
     display: grid;
     height: 100vh;
-    grid-template-rows: auto 700px 100px 500px auto 
+    grid-template-rows: auto 700px 150px 500px auto; 
 }
 
 .display-selector {
+    height: 700px;
     display: grid;
     grid-template: 1fr / 1fr;
     place-items: center;
@@ -31,12 +53,4 @@ header {
 
 .options {
     margin: auto auto;
-}
-
-.photomosaic{
-    padding-right: 10px;
-}
-
-.download{
-    padding-right: 10px;
 }

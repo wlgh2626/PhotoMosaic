@@ -1,5 +1,9 @@
 .dnd-container {
-    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: scroll;
+    background: #FFEFBA;
 }
 
 .sample {
