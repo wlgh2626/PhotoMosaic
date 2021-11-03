@@ -2,14 +2,12 @@ import download from "../../icons/download.png"
 import React from 'react'
 
 import "./download.css"
-export default function Download( {image} ){
-    function downloadImage(){
-        console.log("Downloading...")
-    }
-
+export default function Download( {targetImageURL} ){
     return (
         <span className="download-option">
-            <img className="download-icon" src={download} alt="download" onClick={downloadImage}/>
+            <a href={targetImageURL} download>
+                <img className="download-icon" src={download} alt="download" />
+            </a>
         </span>  
     )
 }

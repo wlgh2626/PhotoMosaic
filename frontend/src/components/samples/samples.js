@@ -3,23 +3,9 @@ import {useDropzone} from 'react-dropzone'
 import SampleContainer from "./sampleContainer"
 import "./samples.css"
 
-class imageFile {
-  constructor(file){
-    this.file = file;
-    this.name = file.name;
-    this.preview = URL.createObjectURL(file);
-  }
-}
 export default function Samples( {fileList, setFile }) {
-    function addFiles(files){
-      var newImages = files.map((file) =>
-        new imageFile(file) 
-      )
-      setFile( fileList => [...fileList , ...newImages]); 
-    }
-   
     const onDrop = useCallback(acceptedFiles => {
-      addFiles(acceptedFiles)
+      setFile( fileList => [...fileList , ...acceptedFiles]); 
     }, [])
 
     const {getRootProps, getInputProps} = useDropzone({noClick:true , onDrop})
@@ -31,4 +17,3 @@ export default function Samples( {fileList, setFile }) {
       </div>
     )
   }
-

@@ -11,8 +11,8 @@ const params = {
     }
 };
 
+//returns the S3 URL for photomosaic image
 export default async function BackEnd( directory ) {
-
     return new Promise((resolve,reject) =>{
         fetch( targetURL.href + "photomosaic?s3=" + directory, params).then(res=> {
             if(res.ok){

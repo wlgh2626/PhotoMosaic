@@ -31,7 +31,7 @@ export default async function S3Connector(directory , originalImage , sampleList
         var i = 0;
         const promises = files.map(async file =>{
             var imageKey = prefix + (i++) + Path.extname(file.name); 
-            const isUploaded = await upload(file.file , imageKey);
+            const isUploaded = await upload(file , imageKey);
             return isUploaded;
         })
 
