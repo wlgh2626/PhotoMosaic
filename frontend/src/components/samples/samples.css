@@ -4,6 +4,8 @@
     margin-right: auto;
     overflow: scroll;
     background: #FFEFBA;
+
+    
 }
 
 .sample {
@@ -30,4 +32,21 @@
     height: 100px;
     border-radius: 50%;
     border: 3px solid #F7CAC9; 
+}
+
+.sample-dnd-style {
+    padding-top: 100px;
+    width: 600px;
+    height: 300px;
+
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+    color: grey;
 }

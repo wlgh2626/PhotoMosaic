@@ -1,6 +1,5 @@
 .main-display {
     display: block;
-    border: 3px solid #F7CAC9;
     max-height: 600px;
     max-width: 600px;
 }

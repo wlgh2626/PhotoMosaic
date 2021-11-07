@@ -18,6 +18,6 @@ export default function SampleContainer( {fileList, setFile} ){
     return(
         <div className="sample-container">
             {images}
-        </div> 
+        </div>      
     )
 }

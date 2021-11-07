@@ -16,6 +16,7 @@ export default function Retrieve( {originalImage , sampleList , setPhotoMosaic ,
 
     return (
         <span className="photomosaic">
+            <label className="photomosaic-label">Step 3: </label> 
             <button className="photomosaic-button" onClick={()=> photomosaic(originalImage, sampleList , setPhotoMosaic)}>
                 PhotoMosaic
             </button>
