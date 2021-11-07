@@ -11,6 +11,7 @@ import Download from "./photomosaic/download";
 
 export default function App() {
     const [displayImageURL , setDisplayURL] = useState(); //URL.createObjectURL
+    const [isLoading, setIsLoading] = useState(false);
     const [photoMosaicURL , setPhotoMosaicURL] = useState(); //URL.createObjectURL
     const [originalImage, setOriginal] = useState();
     const [sampleList, setSamples] = useState([]);
@@ -23,11 +24,16 @@ export default function App() {
 
             <div className="display-selector">
                 <ImageSelector setOriginal={setOriginal} setDisplay={setDisplayURL}/>
-                <Display displayImage={displayImageURL} />
+                <Display displayImage={displayImageURL} isLoading={isLoading} />
             </div>
 
             <div className="options">
-                <PhotoMosaic originalImage={originalImage} sampleList={sampleList} setPhotoMosaic={setPhotoMosaicURL} setDisplay={setDisplayURL}/>
+                <PhotoMosaic 
+                    originalImage={originalImage} 
+                    sampleList={sampleList} 
+                    setPhotoMosaic={setPhotoMosaicURL} 
+                    setDisplay={setDisplayURL}
+                    setIsLoading={setIsLoading}/>
                 <Download targetImageURL={photoMosaicURL} />
             </div>
 

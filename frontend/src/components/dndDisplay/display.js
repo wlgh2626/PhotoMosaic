@@ -1,7 +1,8 @@
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import "./display.css"
+import "./display.css";
+import loading from "../../icons/loading.gif";
 
-export default function Display( {displayImage} ){
+export default function Display( {displayImage, isLoading} ){
     return (
         <div className="main-display">
             <TransformWrapper 
@@ -15,6 +16,12 @@ export default function Display( {displayImage} ){
                     <img className="display-image" src={displayImage} alt=""/>
                 </TransformComponent>
             </TransformWrapper>
+            {
+                isLoading && (
+                    <div className="loading-animation-container">
+                        <img className="loading-animation" src={loading}/>
+                    </div>
+            )}
         </div>
     )
 }
