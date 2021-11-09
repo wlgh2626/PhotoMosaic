@@ -14,6 +14,10 @@ app.get('/requestS3Url', async (req, res) => {
   res.send(data);
 })
 
+app.get('/ping', async (req, res) => {
+  res.send("pong");
+})
+
 const sslServer = https.createServer({
   key: fs.readFileSync("./cert/key.pem"),
   cert: fs.readFileSync("./cert/cert.pem")
