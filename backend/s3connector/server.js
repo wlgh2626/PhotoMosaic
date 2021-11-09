@@ -4,10 +4,15 @@ import cors from "cors"
 import fs from "fs"
 import { S3ConnectionURL } from './s3Connector.js'
 
+var corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200,
+}
+
 const portNumber = process.env.SERVER_PORT
 const app = express();
 
-app.use(cors({origin: true}));
+app.use(cors(corsOptions));
 app.get('/requestS3Url', async (req, res) => {
   const data = await S3ConnectionURL(req.query.key);
   console.log(data);
