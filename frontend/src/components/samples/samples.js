@@ -4,12 +4,24 @@ import SampleContainer from "./sampleContainer"
 import dnd from "../../icons/dnd.png"
 import "./samples.css"
 
+function isFileImage(file) {
+  const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+  return file && acceptedImageTypes.includes(file['type'])
+}
+
 export default function Samples( {fileList, setFile }) {
     const onDrop = useCallback(acceptedFiles => {
-      setFile( fileList => [...fileList , ...acceptedFiles]); 
+      acceptedFiles.map( file =>{
+        if(isFileImage(file)){
+          setFile( fileList => [...fileList , file]); 
+        }
+      })
     }, [])
 
-    const {getRootProps, getInputProps} = useDropzone({noClick:true , onDrop})
+    const {getRootProps, getInputProps} = useDropzone({
+      accept: "image/*",
+      noClick:true, 
+      onDrop})
     
     return (
       <div className="dnd-container" {...getRootProps()}>
