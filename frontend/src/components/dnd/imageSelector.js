@@ -25,7 +25,7 @@ export default function ImageSelecter( {setOriginal, setDisplay} ) {
     return (
         <div className="main-selector" {...getRootProps()}>
             <input {...getInputProps()} />
-            {
+            {   //If there is an image open, dont show the Drag image guide
                 !isOpened && ( 
                     <div className="selector-style">
                         Step 1: Drag Image

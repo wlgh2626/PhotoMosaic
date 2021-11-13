@@ -1,13 +1,13 @@
 import {useState} from "react"
 
-import Footer from "./footer"
-import ImageSelector from "./dndDisplay/imageSelector";
+import Footer from "./footer/footer"
+import ImageSelector from "./dnd/imageSelector";
 import Samples from "./samples/samples";
-import Display from "./dndDisplay/display";
-import "./app.css"
+import Display from "./mainDisplay/display";
+import "./app.css";
 
 import PhotoMosaic from "./photomosaic/photomosaic";
-import Download from "./photomosaic/download";
+import Download from "./download/download";
 
 export default function App() {
     const [displayImageURL , setDisplayURL] = useState(); //URL.createObjectURL
