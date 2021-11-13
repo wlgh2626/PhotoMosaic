@@ -13,7 +13,15 @@ export default function SelectWindow({
       <ImageSelector setOriginal={setOriginal} setDisplay={setDisplayURL} />
       <Display displayImage={displayImageURL} isLoading={isLoading} />
       <div className="options-container">
-        <button className="selector-button">Choose Image</button>
+        <div className="choose">
+          <button>Choose Image</button>
+        </div>
+        <div className="previous">
+          <button>Previous</button>
+        </div>
+        <div className="next">
+          <button>Next</button>
+        </div>
       </div>
     </div>
   );
