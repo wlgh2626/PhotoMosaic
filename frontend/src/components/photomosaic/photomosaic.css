@@ -1,13 +1,12 @@
 .photomosaic-button {
-  font-size: 12px;
-  height: 30px;
+  font-size: 20px;
+  height: 100%;
+  width: 100%;
   border-radius: 4px;
   border: none;
   color: white;
   font-weight: bold;
   background-color: #98fb98;
-  margin-right: 10px;
-  cursor: pointer;
   animation: glow 1s infinite alternate;
 }
 
@@ -18,11 +17,4 @@
   to {
     box-shadow: 0 0 3px 3px #aef4af;
   }
-}
-
-.photomosaic-label {
-  font-family: "Times New Roman", Times, serif;
-  font-weight: bold;
-  font-size: 20px;
-  color: grey;
 }

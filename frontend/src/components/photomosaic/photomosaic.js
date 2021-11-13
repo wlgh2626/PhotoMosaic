@@ -28,15 +28,13 @@ export default function Retrieve({
   }
 
   return (
-    <span className="photomosaic-option">
-      <button
-        className="photomosaic-button"
-        onClick={() =>
-          photomosaic(originalImage, sampleList, setPhotoMosaic, setIsLoading)
-        }
-      >
-        PhotoMosaic
-      </button>
-    </span>
+    <button
+      className="photomosaic-button"
+      onClick={() =>
+        photomosaic(originalImage, sampleList, setPhotoMosaic, setIsLoading)
+      }
+    >
+      PhotoMosaic
+    </button>
   );
 }

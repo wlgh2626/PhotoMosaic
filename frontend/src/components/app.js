@@ -38,8 +38,14 @@ export default function App() {
           setIsLoading={setIsLoading}
         />
         <Download targetImageURL={photoMosaicURL} />
-        <div className="guide">Tutorial</div>
-        <div className="source-code">source</div>
+        <div className="options-item">
+          <button className="tutorial-button">Tutorial</button>
+        </div>
+        <div className="options-item">
+          <a href="https://github.com/wlgh2626/PhotoMosaic">
+            <button className="source-button">Source</button>
+          </a>
+        </div>
       </div>
 
       <footer>
