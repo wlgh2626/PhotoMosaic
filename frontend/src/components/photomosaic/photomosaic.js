@@ -28,8 +28,7 @@ export default function Retrieve({
   }
 
   return (
-    <span className="photomosaic">
-      <label className="photomosaic-label">Step 3: </label>
+    <span className="photomosaic-option">
       <button
         className="photomosaic-button"
         onClick={() =>

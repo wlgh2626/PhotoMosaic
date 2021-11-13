@@ -1,7 +1,6 @@
 .dnd-container {
-  width: 80%;
+  width: 90%;
   margin-left: auto;
-  margin-right: auto;
   overflow: scroll;
   background: #ffefba;
 }

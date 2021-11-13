@@ -1,4 +1,5 @@
 header {
+  grid-area: header;
   margin-bottom: 50px;
   font-size: 15px;
   text-align: left;
@@ -17,6 +18,7 @@ body {
 }
 
 footer {
+  grid-area: footer;
   height: 75px;
   margin-top: 100px;
 
@@ -28,10 +30,27 @@ footer {
 .container {
   display: grid;
   height: 100vh;
-  grid-template-rows: auto 700px 150px 500px auto;
+  grid-template-rows: auto 700px 400px auto;
+  grid-template-columns: 75% 25%;
+  grid-template-areas:
+    "header header"
+    "main   main"
+    "sample option"
+    "footer footer";
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+}
+
+.column-container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 75% 25%;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
 }
 
 .display-selector {
+  grid-area: main;
   height: 700px;
   display: grid;
   grid-template: 1fr / 1fr;
@@ -51,6 +70,16 @@ footer {
   z-index: 1;
 }
 
+.dnd-container {
+  grid-area: sample;
+}
+
 .options {
-  margin: auto auto;
+  width: 100%;
+  grid-area: option;
+  margin-right: auto;
+
+  display: grid;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 50% 50%;
 }

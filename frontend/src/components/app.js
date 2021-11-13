@@ -27,6 +27,8 @@ export default function App() {
         <Display displayImage={displayImageURL} isLoading={isLoading} />
       </div>
 
+      <Samples fileList={sampleList} setFile={setSamples} />
+
       <div className="options">
         <PhotoMosaic
           originalImage={originalImage}
@@ -36,9 +38,10 @@ export default function App() {
           setIsLoading={setIsLoading}
         />
         <Download targetImageURL={photoMosaicURL} />
+        <div className="guide">Tutorial</div>
+        <div className="source-code">source</div>
       </div>
 
-      <Samples fileList={sampleList} setFile={setSamples} />
       <footer>
         <Footer />
       </footer>
