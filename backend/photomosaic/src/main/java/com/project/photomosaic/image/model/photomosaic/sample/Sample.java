@@ -19,7 +19,7 @@ public class Sample extends ModifiedImage {
 		super(image, DEFAULT_DIMENSION, DEFAULT_DIMENSION);
 		dimension = DEFAULT_DIMENSION;
 		setDimension(dimension);
-		rgb = new RGB(getRGBAverage(image , 0 , 0 , image.getWidth() , image.getHeight()));
+		rgb = new RGB(getRGBAverage(image , 0 , 0 , image.getWidth() , image.getHeight(), 8));
 	}
 
 	public BufferedImage getDownSampled() {
@@ -39,8 +39,7 @@ public class Sample extends ModifiedImage {
 	 * resizes the down sample to the specified dimension. the down sample is always
 	 * a square.
 	 * 
-	 * @param dimension specifies the dimension of the down sampled version of the
-	 *                  image
+	 * @param dimension the desired length and width of the resized image
 	 */
 	public void setDimension(int dimension) {
 		this.dimension = dimension;
