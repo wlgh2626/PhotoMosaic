@@ -3,6 +3,7 @@ package com.project.photomosaic.image.model.photomosaic.base;
 import java.lang.RuntimeException;
 /**
  * Converts between different color models.
+ * Mainly between RGB and YUV
  * Only supports 8 bit color depth
  */
 public class ColorModel {
