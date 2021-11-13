@@ -1,8 +1,8 @@
 # java backend
-photomosaic/target
-photomosaic/.classpath
-photomosaic/.settings
-photomosaic/images/sample
+**/target
+**/.classpath
+**/.settings
+**/images/sample
 
 # dependencies
 **/node_modules
