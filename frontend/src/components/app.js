@@ -1,9 +1,8 @@
 import { useState } from "react";
 
 import Footer from "./footer/footer";
-import ImageSelector from "./dnd/imageSelector";
 import Samples from "./samples/samples";
-import Display from "./mainDisplay/display";
+import SelectWindow from "./selectWindow";
 import "./app.css";
 
 import PhotoMosaic from "./photomosaic/photomosaic";
@@ -22,11 +21,14 @@ export default function App() {
         <h1>Photo Mosaic</h1>
       </header>
 
-      <div className="display-selector">
-        <ImageSelector setOriginal={setOriginal} setDisplay={setDisplayURL} />
-        <Display displayImage={displayImageURL} isLoading={isLoading} />
+      <div className="main">
+        <SelectWindow
+          displayImageURL={displayImageURL}
+          isLoading={isLoading}
+          setOriginal={setOriginal}
+          setDisplayURL={setDisplayURL}
+        />
       </div>
-
       <Samples fileList={sampleList} setFile={setSamples} />
 
       <div className="options">

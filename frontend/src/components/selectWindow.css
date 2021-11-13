@@ -1,0 +1,28 @@
+.display-selector {
+  height: 700px;
+  width: 700px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-areas: "drag-display options";
+  place-items: center;
+}
+
+.main-selector {
+  grid-area: drag-display;
+  z-index: 1;
+}
+
+.main-display {
+  grid-area: drag-display;
+  z-index: 2;
+}
+
+.options-container {
+  grid-area: options;
+  display: grid;
+  grid-template-rows: 20% 20%;
+}
+.selector-button {
+  grid-area: choose-button;
+}

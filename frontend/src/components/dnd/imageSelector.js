@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import "./imageSelector.css";
-import dnd from "../../icons/dnd.png";
 
 function isFileImage(file) {
   const acceptedImageTypes = ["image/gif", "image/jpeg", "image/png"];
@@ -31,8 +30,11 @@ export default function ImageSelecter({ setOriginal, setDisplay }) {
         //If there is an image open, dont show the Drag image guide
         !isOpened && (
           <div className="selector-style">
-            Step 1: Drag Image
-            <img style={{ padding: "10px" }} src={dnd} />
+            Step 1 of 3:
+            <br />
+            Choose a photo
+            <br />
+            or drag a photo
           </div>
         )
       }
