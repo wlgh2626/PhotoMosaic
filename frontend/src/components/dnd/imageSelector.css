@@ -1,28 +1,28 @@
-.main-selector{  
-    background: linear-gradient(to top, #ffdde1, #ee9ca7); 
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    align-items: center;
+.main-selector {
+  background: linear-gradient(to top, #ffdde1, #ee9ca7);
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
 }
 
 .selector-style {
-    width: 600px;
-    height: 400px;
-    border-width: 2px;
-    border-radius: 2px;
-    border-style: dashed;
-    border-color: grey;
+  width: 600px;
+  height: 400px;
+  border-width: 2px;
+  border-radius: 2px;
+  border-style: dashed;
+  border-color: grey;
 
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-size: 20px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 
-    color: grey;
+  color: grey;
 }

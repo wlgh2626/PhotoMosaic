@@ -1,50 +1,50 @@
 .dnd-container {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: scroll;
-    background: #FFEFBA;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: scroll;
+  background: #ffefba;
 }
 
 .sample {
-    display: inline-block;
-    margin: 15px;
-    height: 115px;
-    width: 115px; 
+  display: inline-block;
+  margin: 15px;
+  height: 115px;
+  width: 115px;
 }
 
 .sample-option {
-    opacity: 0;
-    z-index: -1;
-    float: right;
-    width: 15px;
-    height: 15px;
+  opacity: 0;
+  z-index: -1;
+  float: right;
+  width: 15px;
+  height: 15px;
 }
 
 .sample:hover > .sample-option {
-    opacity: 1;
+  opacity: 1;
 }
 
 .sample-preview {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 3px solid #F7CAC9; 
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #f7cac9;
 }
 
 .sample-dnd-style {
-    padding-top: 100px;
-    width: 600px;
-    height: 300px;
+  padding-top: 100px;
+  width: 600px;
+  height: 300px;
 
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-size: 20px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 
-    color: grey;
+  color: grey;
 }
