@@ -9,19 +9,30 @@
 .selector-style {
   width: 600px;
   height: 400px;
-  border-width: 2px;
-  border-radius: 2px;
-  border-style: dashed;
-  border-color: grey;
 
   font-family: "Times New Roman", Times, serif;
   font-weight: bold;
-  font-size: 20px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "step"
+    "instruction";
+  place-items: center;
   margin: auto;
 
-  color: grey;
+  color: #a6b9de;
+}
+
+.step {
+  font-size: 35px;
+  letter-spacing: 1px;
+  margin-top: auto;
+  color: #339c87;
+}
+
+.instruction {
+  font-size: 20px;
+  margin-bottom: auto;
+  color: #339c87;
 }
