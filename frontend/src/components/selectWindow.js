@@ -14,7 +14,7 @@ export default function SelectWindow({
       <Display displayImage={displayImageURL} isLoading={isLoading} />
       <div className="options-container">
         <div className="choose">
-          <button>Choose Image</button>
+          <button>Choose Photo</button>
         </div>
         <div className="previous">
           <button>Previous</button>

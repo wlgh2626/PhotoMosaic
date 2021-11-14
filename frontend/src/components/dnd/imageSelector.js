@@ -30,11 +30,8 @@ export default function ImageSelecter({ setOriginal, setDisplay }) {
         //If there is an image open, dont show the Drag image guide
         !isOpened && (
           <div className="selector-style">
-            Step 1 of 3:
-            <br />
-            Choose a photo
-            <br />
-            or drag a photo
+            <label className="step">Step 1 of 3</label>
+            <label className="instruction">Choose or Drag Photo</label>
           </div>
         )
       }
