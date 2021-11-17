@@ -1,4 +1,3 @@
-import download from "../../icons/download.png";
 import React from "react";
 
 import "./download.css";

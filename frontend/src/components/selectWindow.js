@@ -7,32 +7,31 @@ export default function SelectWindow({
   originalDisplay,
   resultDisplay,
   imageSelector,
+  download,
 }) {
   const maxWindow = 3;
   const [currentWindow, setWindow] = useState(1);
-  function nextWindow() {
-    if (currentWindow < maxWindow) {
-      setWindow(currentWindow + 1);
-    }
-  }
-  function prevWindow() {
-    if (currentWindow - 1 > 0) {
-      setWindow(currentWindow - 1);
-    }
-  }
 
   const options = (
     <div className="options-container">
-      <div className="choose">
-        <button>Choose Photo</button>
-      </div>
       <div className="previous">
-        <button onClick={() => prevWindow()}>Previous</button>
+        <button disabled={currentWindow <= 1} onClick={() => setWindow(currentWindow - 1)}>
+          Previous
+        </button>
       </div>
       <div className="next">
-        <button onClick={() => nextWindow()}>Next</button>
+        <button disabled={currentWindow >= maxWindow} onClick={() => setWindow(currentWindow + 1)}>
+          Next
+        </button>
       </div>
+
+      {currentWindow != maxWindow && (
+        <div className="choose">
+          <button>Choose Photo</button>
+        </div>
+      )}
       {currentWindow == 2 && <div className="photomosaic">{photoMosaic}</div>}
+      {currentWindow == 3 && <div className="choose">{download}</div>}
     </div>
   );
 

@@ -1,6 +1,5 @@
 .select-window {
-  height: 100%;
-  margin: auto;
+  height: 70%;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 100%;
@@ -9,11 +8,11 @@
 
 .select-window > * {
   grid-area: main-window;
-  height: 70%;
-  width: 700px;
+  height: 100%;
+  width: 900px;
   margin: auto;
   display: grid;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 80% 20%;
   grid-template-areas: "drag-display options";
   grid-column-gap: 20px;
   place-items: center;
@@ -36,23 +35,28 @@
 }
 
 .options-container {
+  padding-top: 5%;
+  padding-left: 5%;
   grid-area: options;
-  height: 70%;
+  height: 100%;
   width: 100%;
+  background-color: white;
   display: grid;
-  grid-template-rows: 10% 5% 5%;
-  grid-template-columns: 49% 49%;
+  grid-template-rows: 5% 10% 10%;
+  grid-template-columns: 45% 45%;
   grid-template-areas:
-    "choose choose"
     "previous next"
-    "other other";
+    "b1 b1"
+    "b2 b2";
   grid-row-gap: 5px;
   grid-column-gap: 5px;
+
+  border-radius: 4px;
 }
 
 .choose {
   width: 100%;
-  grid-area: choose;
+  grid-area: b1;
 }
 
 .choose > button {
@@ -103,4 +107,33 @@
   border: none;
   border-radius: 4px;
   font-weight: bold;
+}
+
+.photomosaic {
+  grid-area: b2;
+}
+
+.photomosaic > button {
+  font-size: 20px;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: #98fb98;
+  animation: glowPhotomosaic 1s infinite alternate;
+}
+
+@keyframes glowPhotomosaic {
+  from {
+    box-shadow: 0 0 3px -3px #aef4af;
+  }
+  to {
+    box-shadow: 0 0 3px 3px #aef4af;
+  }
+}
+
+button:disabled {
+  background-color: grey;
 }

@@ -5,16 +5,16 @@ import Footer from "./footer/footer";
 import Samples from "./samples/samples";
 import SelectWindow from "./selectWindow";
 import ImageSelector from "./dnd/imageSelector";
-import "./app.css";
-
 import PhotoMosaic from "./photomosaic/photomosaic";
 import Download from "./download/download";
 
+import "./app.css";
+
 export default function App() {
-  const [displayImageURL, setDisplayURL] = useState(); //URL.createObjectURL
-  const [isLoading, setIsLoading] = useState(false);
-  const [photoMosaicURL, setPhotoMosaicURL] = useState(); //URL.createObjectURL
   const [originalImage, setOriginal] = useState();
+  const [originalImageURL, setOriginalURL] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [photoMosaicURL, setPhotoMosaicURL] = useState();
   const [sampleList, setSamples] = useState([]);
 
   const photoMosaic = (
@@ -22,19 +22,14 @@ export default function App() {
       originalImage={originalImage}
       sampleList={sampleList}
       setPhotoMosaic={setPhotoMosaicURL}
-      setDisplay={setDisplayURL}
       setIsLoading={setIsLoading}
     />
   );
-
-  const originalDisplay = <Display displayImage={displayImageURL} />;
-  const resultDisplay = (
-    <Display displayImage={photoMosaicURL} isLoading={isLoading} />
-  );
+  const originalDisplay = <Display displayImage={originalImageURL} />;
+  const resultDisplay = <Display displayImage={photoMosaicURL} isLoading={isLoading} />;
   const samples = <Samples fileList={sampleList} setFile={setSamples} />;
-  const imageSelector = (
-    <ImageSelector setOriginal={setOriginal} setDisplay={setDisplayURL} />
-  );
+  const imageSelector = <ImageSelector setOriginal={setOriginal} setDisplay={setOriginalURL} />;
+  const download = <Download targetImageURL={photoMosaicURL} />;
 
   return (
     <div className="container">
@@ -49,20 +44,11 @@ export default function App() {
           originalDisplay={originalDisplay}
           resultDisplay={resultDisplay}
           imageSelector={imageSelector}
+          download={download}
         />
       </div>
 
-      <div className="options">
-        <Download targetImageURL={photoMosaicURL} />
-        <div className="options-item">
-          <button className="tutorial-button">Tutorial</button>
-        </div>
-        <div className="options-item">
-          <a href="https://github.com/wlgh2626/PhotoMosaic">
-            <button className="source-button">Source</button>
-          </a>
-        </div>
-      </div>
+      <div className="options"></div>
 
       <footer>
         <Footer />
