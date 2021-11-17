@@ -1,8 +1,10 @@
 import { useState } from "react";
 
+import Display from "./mainDisplay/display";
 import Footer from "./footer/footer";
 import Samples from "./samples/samples";
 import SelectWindow from "./selectWindow";
+import ImageSelector from "./dnd/imageSelector";
 import "./app.css";
 
 import PhotoMosaic from "./photomosaic/photomosaic";
@@ -15,6 +17,25 @@ export default function App() {
   const [originalImage, setOriginal] = useState();
   const [sampleList, setSamples] = useState([]);
 
+  const photoMosaic = (
+    <PhotoMosaic
+      originalImage={originalImage}
+      sampleList={sampleList}
+      setPhotoMosaic={setPhotoMosaicURL}
+      setDisplay={setDisplayURL}
+      setIsLoading={setIsLoading}
+    />
+  );
+
+  const originalDisplay = <Display displayImage={displayImageURL} />;
+  const resultDisplay = (
+    <Display displayImage={photoMosaicURL} isLoading={isLoading} />
+  );
+  const samples = <Samples fileList={sampleList} setFile={setSamples} />;
+  const imageSelector = (
+    <ImageSelector setOriginal={setOriginal} setDisplay={setDisplayURL} />
+  );
+
   return (
     <div className="container">
       <header>
@@ -23,22 +44,15 @@ export default function App() {
 
       <div className="main">
         <SelectWindow
-          displayImageURL={displayImageURL}
-          isLoading={isLoading}
-          setOriginal={setOriginal}
-          setDisplayURL={setDisplayURL}
+          photoMosaic={photoMosaic}
+          samples={samples}
+          originalDisplay={originalDisplay}
+          resultDisplay={resultDisplay}
+          imageSelector={imageSelector}
         />
       </div>
-      <Samples fileList={sampleList} setFile={setSamples} />
 
       <div className="options">
-        <PhotoMosaic
-          originalImage={originalImage}
-          sampleList={sampleList}
-          setPhotoMosaic={setPhotoMosaicURL}
-          setDisplay={setDisplayURL}
-          setIsLoading={setIsLoading}
-        />
         <Download targetImageURL={photoMosaicURL} />
         <div className="options-item">
           <button className="tutorial-button">Tutorial</button>

@@ -1,5 +1,15 @@
-.display-selector {
+.select-window {
   height: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  grid-template-areas: "main-window";
+}
+
+.select-window > * {
+  grid-area: main-window;
+  height: 70%;
   width: 700px;
   margin: auto;
   display: grid;
@@ -9,9 +19,6 @@
   place-items: center;
 }
 
-.display-selector > * {
-  height: 60%;
-}
 .main-selector {
   border-width: 2px;
   border-radius: 2px;
@@ -30,14 +37,15 @@
 
 .options-container {
   grid-area: options;
-  height: 60%;
+  height: 70%;
   width: 100%;
   display: grid;
   grid-template-rows: 10% 5% 5%;
   grid-template-columns: 49% 49%;
   grid-template-areas:
     "choose choose"
-    "previous next";
+    "previous next"
+    "other other";
   grid-row-gap: 5px;
   grid-column-gap: 5px;
 }

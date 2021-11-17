@@ -55,17 +55,11 @@ export default function Samples({ fileList, setFile }) {
   ));
 
   return (
-    <div className="dnd-container" {...getRootProps()}>
-      <input {...getInputProps()} />
-      {samples}
-      {
-        //Show instructions to drag in images, if the dbd-container is empty
-        fileList.length === 0 && (
-          <div className="sample-dnd-style">
-            Step 2: Drag Samples <img style={{ padding: "10px" }} src={dnd} />
-          </div>
-        )
-      }
+    <div className="samples">
+      <div className="dnd-container" {...getRootProps()}>
+        <input {...getInputProps()} />
+        {samples}
+      </div>
     </div>
   );
 }
