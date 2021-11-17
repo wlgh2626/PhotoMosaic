@@ -46,11 +46,7 @@ export default function Samples({ fileList, setFile }) {
         className="sample-option"
         onClick={() => removeItem(file)}
       />
-      <img
-        src={URL.createObjectURL(file)}
-        alt="preview here"
-        className="sample-preview"
-      />
+      <img src={URL.createObjectURL(file)} alt="preview here" className="sample-preview" />
     </span>
   ));
 
@@ -59,6 +55,10 @@ export default function Samples({ fileList, setFile }) {
       <div className="dnd-container" {...getRootProps()}>
         <input {...getInputProps()} />
         {samples}
+      </div>
+      <div className="selector-style">
+        <label className="step">Step 2 of 3</label>
+        <label className="instruction">Choose or Drag Photos to Sample</label>
       </div>
     </div>
   );

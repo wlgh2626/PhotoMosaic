@@ -49,6 +49,5 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background: linear-gradient(to top, #e3a1ab, #fadfbd);
+  background: linear-gradient(to top, #c4c7f5, #a6b9de);
 }

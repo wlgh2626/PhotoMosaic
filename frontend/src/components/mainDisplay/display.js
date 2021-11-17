@@ -5,17 +5,12 @@ import loading from "../../icons/loading.gif";
 export default function Display({ displayImage, isLoading }) {
   return (
     <div className="main-display">
-      <TransformWrapper
-        className="display-container"
-        initialScale={1}
-        maxPositionX={100}
-        maxPositionY={100}
-        limitToBounds={true}
-      >
+      <TransformWrapper minScale={0.1} initialScale={1} limitToBounds={false}>
         <TransformComponent>
           <img className="display-image" src={displayImage} alt="" />
         </TransformComponent>
       </TransformWrapper>
+
       {isLoading && (
         <div className="loading-animation-container">
           <img className="loading-animation" src={loading} />

@@ -1,5 +1,5 @@
 .select-window {
-  height: 70%;
+  height: 80%;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 100%;
@@ -9,7 +9,10 @@
 .select-window > * {
   grid-area: main-window;
   height: 100%;
-  width: 900px;
+  max-height: 100%;
+  min-width: 500px;
+  width: 1300px;
+  max-width: 1500px;
   margin: auto;
   display: grid;
   grid-template-columns: 80% 20%;
@@ -19,12 +22,7 @@
 }
 
 .main-selector {
-  border-width: 2px;
-  border-radius: 2px;
-  border-style: dashed;
-  border-color: #339c87;
-
-  background-color: white;
+  background-color: whitesmoke;
   grid-area: drag-display;
   z-index: 1;
 }
@@ -40,7 +38,7 @@
   grid-area: options;
   height: 100%;
   width: 100%;
-  background-color: white;
+  background-color: whitesmoke;
   display: grid;
   grid-template-rows: 5% 10% 10%;
   grid-template-columns: 45% 45%;
@@ -60,7 +58,7 @@
 }
 
 .choose > button {
-  background-color: #7b91ff;
+  background-color: #dabbfa;
   width: 100%;
   height: 100%;
   border-radius: 4px;
@@ -76,10 +74,10 @@
 
 @keyframes glowChoose {
   from {
-    box-shadow: 0 0 2px -2px #7b91ff;
+    box-shadow: 0 0 2px -2px #dabbfa;
   }
   to {
-    box-shadow: 0 0 2px 2px #7b91ff;
+    box-shadow: 0 0 2px 2px #dabbfa;
   }
 }
 
@@ -87,7 +85,7 @@
   grid-area: next;
 }
 .next > button {
-  background-color: #48d9bc;
+  background-color: #bbe1fa;
   color: WhiteSmoke;
   width: 100%;
   height: 100%;
@@ -100,7 +98,7 @@
   grid-area: previous;
 }
 .previous > button {
-  background-color: #48d9bc;
+  background-color: #bbe1fa;
   color: WhiteSmoke;
   width: 100%;
   height: 100%;
@@ -136,4 +134,5 @@
 
 button:disabled {
   background-color: grey;
+  animation: none;
 }

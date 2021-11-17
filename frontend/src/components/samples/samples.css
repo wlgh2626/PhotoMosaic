@@ -1,14 +1,23 @@
 .samples {
   height: 100%;
   width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  grid-template-areas: "main";
 }
 
 .dnd-container {
+  grid-area: main;
   width: 100%;
   height: 100%;
   margin: auto;
   overflow: scroll;
-  background: white;
+  background: whitesmoke;
+}
+
+.selector-style {
+  grid-area: main;
 }
 
 .sample {
@@ -35,4 +44,23 @@
   height: 100px;
   border-radius: 50%;
   border: 3px solid #f7cac9;
+}
+
+.selector-style {
+  outline: 2px dashed #bbe1fa;
+  width: 600px;
+  height: 400px;
+
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+
+  display: grid;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "step"
+    "instruction";
+  place-items: center;
+  margin: auto;
+
+  color: #bbe1fa;
 }

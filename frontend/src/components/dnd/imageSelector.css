@@ -7,6 +7,7 @@
 }
 
 .selector-style {
+  outline: 2px dashed #bbe1fa;
   width: 600px;
   height: 400px;
 
@@ -21,18 +22,18 @@
   place-items: center;
   margin: auto;
 
-  color: #a6b9de;
+  color: #bbe1fa;
 }
 
 .step {
   font-size: 35px;
   letter-spacing: 1px;
   margin-top: auto;
-  color: #339c87;
+  color: #bbe1fa;
 }
 
 .instruction {
   font-size: 20px;
   margin-bottom: auto;
-  color: #339c87;
+  color: #bbe1fa;
 }

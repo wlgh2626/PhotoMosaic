@@ -15,7 +15,10 @@ export default function Retrieve({ originalImage, sampleList, setPhotoMosaic, se
   }
 
   return (
-    <button onClick={() => photomosaic(originalImage, sampleList, setPhotoMosaic, setIsLoading)}>
+    <button
+      disabled={!originalImage || !sampleList}
+      onClick={() => photomosaic(originalImage, sampleList, setPhotoMosaic, setIsLoading)}
+    >
       PhotoMosaic
     </button>
   );
