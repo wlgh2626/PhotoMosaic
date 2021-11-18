@@ -56,10 +56,12 @@ export default function Samples({ fileList, setFile }) {
         <input {...getInputProps()} />
         {samples}
       </div>
-      <div className="selector-style">
-        <label className="step">Step 2 of 3</label>
-        <label className="instruction">Choose or Drag Photos to Sample</label>
-      </div>
+      {fileList.length === 0 && (
+        <div className="selector-style">
+          <label className="step">Step 2 of 3</label>
+          <label className="instruction">Choose or Drag Photos to Sample</label>
+        </div>
+      )}
     </div>
   );
 }

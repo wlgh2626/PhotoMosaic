@@ -5,19 +5,18 @@
   grid-template-columns: 100%;
   grid-template-rows: 100%;
   grid-template-areas: "main";
+  background: whitesmoke;
 }
 
 .dnd-container {
+  z-index: 5;
+  background: transparent;
   grid-area: main;
   width: 100%;
   height: 100%;
   margin: auto;
   overflow: scroll;
-  background: whitesmoke;
-}
-
-.selector-style {
-  grid-area: main;
+  background: transparent;
 }
 
 .sample {
@@ -47,6 +46,7 @@
 }
 
 .selector-style {
+  grid-area: main;
   outline: 2px dashed #bbe1fa;
   width: 600px;
   height: 400px;

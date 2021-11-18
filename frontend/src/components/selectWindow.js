@@ -30,7 +30,11 @@ export default function SelectWindow({
           <button>Choose Photo</button>
         </div>
       )}
-      {currentWindow == 2 && <div className="photomosaic">{photoMosaic}</div>}
+      {currentWindow == 2 && (
+        <div className="photomosaic" onClick={() => setWindow(currentWindow + 1)}>
+          {photoMosaic}
+        </div>
+      )}
       {currentWindow == 3 && <div className="choose">{download}</div>}
     </div>
   );

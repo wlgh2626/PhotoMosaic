@@ -7,6 +7,7 @@
 }
 
 .selector-style {
+  z-index: 0;
   outline: 2px dashed #bbe1fa;
   width: 600px;
   height: 400px;
