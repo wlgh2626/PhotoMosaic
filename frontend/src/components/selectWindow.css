@@ -31,7 +31,13 @@
   grid-area: drag-display;
   z-index: 2;
 }
-
+.result-view > .main-display {
+  background-color: whitesmoke;
+  min-height: 560px;
+  max-height: 560px;
+  min-width: 100%;
+  max-width: 100%;
+}
 .options-container {
   padding-top: 5%;
   padding-left: 5%;

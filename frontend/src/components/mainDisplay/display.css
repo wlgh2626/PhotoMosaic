@@ -1,6 +1,5 @@
 .main-display {
   height: 550px;
-
   max-width: 96%;
   display: grid;
   grid-template: 1fr / 1fr;
