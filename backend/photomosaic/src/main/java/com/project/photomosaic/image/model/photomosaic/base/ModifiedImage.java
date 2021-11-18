@@ -14,9 +14,9 @@ public abstract class ModifiedImage implements ImageInterface {
 	/**
 	 * length and height is rounded up to the nearest digit
 	 * 
-	 * @param original Holds the original Image before modification
-	 * @param length   Holds the modified image length
-	 * @param height   Holds the modified image height
+	 * @param original the original image before change
+	 * @param length   the modified image length
+	 * @param height   the modified image height
 	 */
 	public ModifiedImage(BufferedImage original, Number length, Number height) {
 		this.original = original;
@@ -39,12 +39,28 @@ public abstract class ModifiedImage implements ImageInterface {
 		return length;
 	}
 	
+	/**
+	 * Returns the average RGB value at the specified location of the given
+	 * image. Default increment is 1, which is the slowest
+	 * 
+	 * @param image the target image
+	 * @param xPos starting x position in target image
+	 * @param yPos starting y position in target image
+	 * @param length total length of the pixels to calculate from xPos
+	 * @param height total height of the pixels to calculate from yPos
+	 * @param increment the next pixel to be calculated will be increment distance away.
+	 * @return the average RGB value of the image in unsigned 24-bit value
+	 */
 	protected static int getRGBAverage(BufferedImage image , int xPos , int yPos , int length , int height) {
+		return getRGBAverage(image , xPos , yPos , length , height, 1);
+	}
+	
+	protected static int getRGBAverage(BufferedImage image , int xPos , int yPos , int length , int height, int increment) {
 		int size = length * height;
 		float r = 0 , g = 0 , b =0;
 		
-		for (int y = yPos; y < yPos+height; y++) {
-			for (int x = xPos; x < xPos+length; x++) {
+		for (int y = yPos; y < yPos+height; y+=increment) {
+			for (int x = xPos; x < xPos+length; x+=increment) {
 				if((y < image.getHeight()) && (x < image.getWidth())){
 					RGB rgb = new RGB(image.getRGB(x, y));
 					r += rgb.r() * rgb.r();
