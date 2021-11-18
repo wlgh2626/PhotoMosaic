@@ -8,6 +8,8 @@ export default function SelectWindow({
   resultDisplay,
   imageSelector,
   download,
+  originalFileChooser,
+  samplesFileChooser,
 }) {
   const maxWindow = 3;
   const [currentWindow, setWindow] = useState(1);
@@ -28,6 +30,7 @@ export default function SelectWindow({
       {currentWindow != maxWindow && (
         <div className="choose">
           <button>Choose Photo</button>
+          {originalFileChooser}
         </div>
       )}
       {currentWindow == 2 && (

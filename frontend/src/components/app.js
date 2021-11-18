@@ -7,7 +7,7 @@ import SelectWindow from "./selectWindow";
 import ImageSelector from "./dnd/imageSelector";
 import PhotoMosaic from "./photomosaic/photomosaic";
 import Download from "./download/download";
-
+import FileChooser from "../fileChooser";
 import "./app.css";
 
 export default function App() {
@@ -25,8 +25,11 @@ export default function App() {
       setIsLoading={setIsLoading}
     />
   );
+
+  const originalFileChooser = <FileChooser setFile={setOriginal} setFileUrl={setOriginalURL} />;
   const originalDisplay = <Display displayImage={originalImageURL} />;
   const resultDisplay = <Display displayImage={photoMosaicURL} isLoading={isLoading} />;
+  const samplesFileChooser = <FileChooser setFile={setSamples} />;
   const samples = <Samples fileList={sampleList} setFile={setSamples} />;
   const imageSelector = <ImageSelector setOriginal={setOriginal} setDisplay={setOriginalURL} />;
   const download = <Download targetImageURL={photoMosaicURL} />;
@@ -41,7 +44,9 @@ export default function App() {
         <SelectWindow
           photoMosaic={photoMosaic}
           samples={samples}
+          samplesFileChooser={samplesFileChooser}
           originalDisplay={originalDisplay}
+          originalFileChooser={originalFileChooser}
           resultDisplay={resultDisplay}
           imageSelector={imageSelector}
           download={download}
