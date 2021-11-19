@@ -47,7 +47,8 @@
 
 .selector-style {
   grid-area: main;
-  outline: 2px dashed #bbe1fa;
+  outline: 2px dashed #dabbfa;
+  color: #dabbfa;
   width: 600px;
   height: 400px;
 
@@ -61,6 +62,4 @@
     "instruction";
   place-items: center;
   margin: auto;
-
-  color: #bbe1fa;
 }
