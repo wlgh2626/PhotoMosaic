@@ -16,7 +16,7 @@ export default function Retrieve({ originalImage, sampleList, setPhotoMosaic, se
 
   return (
     <button
-      disabled={!originalImage || !sampleList}
+      disabled={sampleList.length < 1 || !originalImage}
       onClick={() => photomosaic(originalImage, sampleList, setPhotoMosaic, setIsLoading)}
     >
       PhotoMosaic
