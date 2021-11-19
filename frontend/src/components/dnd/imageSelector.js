@@ -7,14 +7,11 @@ function isFileImage(file) {
   return file && acceptedImageTypes.includes(file["type"]);
 }
 
-export default function ImageSelecter({ setOriginal, setDisplay }) {
-  const [isOpened, setIsOpened] = useState(false);
-
+export default function ImageSelecter({ Image, setImage, setDisplay }) {
   const onDrop = useCallback((acceptedFiles) => {
     if (isFileImage(acceptedFiles[0])) {
       setDisplay(URL.createObjectURL(acceptedFiles[0]));
-      setOriginal(acceptedFiles[0]);
-      setIsOpened(true);
+      setImage(acceptedFiles[0]);
     }
   }, []);
 
@@ -26,15 +23,12 @@ export default function ImageSelecter({ setOriginal, setDisplay }) {
   return (
     <div className="main-selector" {...getRootProps()}>
       <input {...getInputProps()} />
-      {
-        //If there is an image open, dont show the Drag image guide
-        !isOpened && (
-          <div className="selector-style">
-            <label className="step">Step 1 of 3</label>
-            <label className="instruction">Choose or Drag Photo</label>
-          </div>
-        )
-      }
+      {!Image && (
+        <div className="selector-style">
+          <label className="step">Step 1 of 3</label>
+          <label className="instruction">Choose or Drag Photo</label>
+        </div>
+      )}
     </div>
   );
 }

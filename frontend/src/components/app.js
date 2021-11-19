@@ -31,7 +31,9 @@ export default function App() {
   const resultDisplay = <Display displayImage={photoMosaicURL} isLoading={isLoading} />;
   const samplesFileChooser = <FileChooser setFile={setSamples} />;
   const samples = <Samples fileList={sampleList} setFile={setSamples} />;
-  const imageSelector = <ImageSelector setOriginal={setOriginal} setDisplay={setOriginalURL} />;
+  const imageSelector = (
+    <ImageSelector Image={originalImage} setImage={setOriginal} setDisplay={setOriginalURL} />
+  );
   const download = <Download targetImageURL={photoMosaicURL} />;
 
   return (
