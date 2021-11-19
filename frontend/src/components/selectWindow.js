@@ -27,8 +27,18 @@ export default function SelectWindow({
         </button>
       </div>
 
-      {currentWindow == 1 && <div className="choose-label">{originalFileChooser}</div>}
-      {currentWindow == 2 && <div className="choose-label">{samplesFileChooser}</div>}
+      {currentWindow == 1 && (
+        <div className="choose-label">
+          <label className="choose">{originalFileChooser}</label>
+          <div className="label">Choose Photos</div>
+        </div>
+      )}
+      {currentWindow == 2 && (
+        <div className="choose-label">
+          <label className="choose">{samplesFileChooser}</label>
+          <div className="label">Choose Photos</div>
+        </div>
+      )}
       {currentWindow == 2 && (
         <div className="photomosaic" onClick={() => setWindow(currentWindow + 1)}>
           {photoMosaic}

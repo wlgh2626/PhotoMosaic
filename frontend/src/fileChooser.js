@@ -1,24 +1,21 @@
 export default function FileChooser({ setFile, setFileUrl }) {
-  function selectFile(files) {
-    if (files.length == 1) {
-      setFile(files[0]);
-      setFileUrl(URL.createObjectURL(files[0]));
+  function selectFile(chosenFiles) {
+    if (setFileUrl) {
+      setFile(chosenFiles[0]);
+      setFileUrl(URL.createObjectURL(chosenFiles[0]));
     } else {
-      setFile(files);
+      setFile([...chosenFiles]);
     }
   }
 
   return (
-    <label>
-      Choose Photos
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(event) => {
-          selectFile(event.target.files);
-        }}
-        hidden
-      />
-    </label>
+    <input
+      type="file"
+      accept="image/*"
+      onChange={(event) => {
+        selectFile(event.target.files);
+      }}
+      hidden
+    />
   );
 }
