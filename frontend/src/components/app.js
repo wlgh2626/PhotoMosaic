@@ -3,11 +3,14 @@ import { useState } from "react";
 import Display from "./mainDisplay/display";
 import Footer from "./footer/footer";
 import Samples from "./samples/samples";
-import SelectWindow from "./selectWindow";
+import SelectWindow from "./selectWindow/selectWindow";
 import ImageSelector from "./dnd/imageSelector";
 import PhotoMosaic from "./photomosaic/photomosaic";
 import Download from "./download/download";
 import FileChooser from "../fileChooser";
+
+import DuckPhoto from "../photos/Ducksaic.png";
+import HalfPhoto from "../photos/Halfsaic.jpg";
 import "./app.css";
 
 export default function App() {
@@ -55,7 +58,10 @@ export default function App() {
         />
       </div>
 
-      <div className="options"></div>
+      <div className="show-case">
+        <h2>What is Photo Mosaic</h2>
+        <a href={DuckPhoto} target="_blank"><img src={HalfPhoto} /></a>
+      </div>
 
       <footer>
         <Footer />
