@@ -4,11 +4,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
-
 
 /**
  * Given a path, manages the all Files intended to be used as a sample
@@ -27,12 +24,12 @@ public class SampleIO {
 		fileList = new ArrayList<File>();
 		directory = new File(pathToSamples);
 		fileNames = directory.list((dir, name) -> matchExtension(name));
-		for(String fileName: fileNames) {
+		for (String fileName : fileNames) {
 			File file = new File(directory.getPath() + "/" + fileName);
 			fileList.add(file);
 		}
 	}
-	
+
 	public File getDirectory() {
 		return directory;
 	}
@@ -40,8 +37,8 @@ public class SampleIO {
 	public String[] getFileNames() {
 		return fileNames;
 	}
-	
-	public ArrayList<File> getFileList(){
+
+	public ArrayList<File> getFileList() {
 		return fileList;
 	}
 
@@ -54,9 +51,11 @@ public class SampleIO {
 		}
 		return false;
 	}
+
 	public ArrayList<BufferedImage> generateImage() throws InterruptedException {
+		ImageIO.setUseCache(false);
 		ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
-		for(File file : fileList) {
+		for (File file : fileList) {
 			try {
 				images.add(ImageIO.read(file));
 			} catch (IOException e) {
@@ -65,10 +64,10 @@ public class SampleIO {
 		}
 		return images;
 	}
-	
+
 	public static void write(BufferedImage image, String fileName) {
 		try {
-			fileName  = SampleIO.SAMPLE_DEFAULT_PATH + "/" + fileName + ".jpg";
+			fileName = SampleIO.SAMPLE_DEFAULT_PATH + "/" + fileName + ".jpg";
 			ImageIO.write(image, "jpg", new File(fileName));
 		} catch (IOException e) {
 			e.printStackTrace();
