@@ -30,7 +30,7 @@ import com.project.photomosaic.image.model.s3.S3Connector;
 public class MainController {
 	S3Connector s3 = new S3Connector();
 
-	@RequestMapping(value = "/api/**", method = RequestMethod.OPTIONS)
+	@RequestMapping(value = "/**", method = RequestMethod.OPTIONS)
 	public void corsHeaders(HttpServletResponse response) {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
