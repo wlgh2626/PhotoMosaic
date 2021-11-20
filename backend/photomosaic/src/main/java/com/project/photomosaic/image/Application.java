@@ -11,10 +11,11 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-	
+
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext context) {
 		return args -> {
+			System.setProperty("server.connection-timeout", "120000");
 			System.out.println("Succesfully started");
 		};
 	}
