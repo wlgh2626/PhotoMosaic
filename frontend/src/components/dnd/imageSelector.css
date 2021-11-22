@@ -8,8 +8,7 @@
 
 .selector-style {
   z-index: 0;
-  outline: 2px dashed #dabbfa;
-  color: #dabbfa;
+  outline: 2px dashed #666666;
   width: 600px;
   height: 400px;
 
@@ -29,11 +28,11 @@
   font-size: 35px;
   letter-spacing: 1px;
   margin-top: auto;
-  color: #dabbfa;
+  color: #666666;
 }
 
 .instruction {
   font-size: 20px;
   margin-bottom: auto;
-  color: #dabbfa;
+  color: #666666;
 }

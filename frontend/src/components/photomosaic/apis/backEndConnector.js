@@ -8,6 +8,7 @@ const params = {
   headers: {
     "Access-Control-Allow-Origin": targetURL.origin,
   },
+  timeout: 120000,
 };
 
 //returns the S3 URL for photomosaic image
