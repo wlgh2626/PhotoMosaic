@@ -1,4 +1,4 @@
-package com.project.photomosaic;
+package com.project.photomosaic.model.cse;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,11 +11,12 @@ import org.springframework.context.annotation.Configuration;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.project.photomosaic.image.model.Config;
+import com.project.photomosaic.image.Config;
 import com.project.photomosaic.image.model.cse.CustomSearch;
 
 @Configuration
-public class TestConfig {
+public class CSTestConfig {
+	public static final String SAMPLE_DEFAULT_PATH = System.getProperty("user.dir") + "/images/sample";
 	private Logger logger = Logger.getLogger(Config.class.getName());
 
 	@Bean(name = "testSearch")
@@ -45,5 +46,4 @@ public class TestConfig {
 		ArrayList<String> links = CustomSearch.extractLinks(br);
 		return links;
 	}
-
 }

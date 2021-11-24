@@ -7,9 +7,15 @@ import java.awt.image.BufferedImage;
 import com.project.photomosaic.image.model.photomosaic.base.ModifiedImage;
 import com.project.photomosaic.image.model.photomosaic.base.RGB;
 
-//stores the image, and its average RGB value of the image
+/**
+ * Takes in a buffered image, and stores its total average RGB and its
+ * down-sampled version of the image.
+ * 
+ * @author Jiho
+ *
+ */
 public class Sample extends ModifiedImage {
-	public static final int DEFAULT_DIMENSION = 40;	// Bigger takes longer time to get AverageRGB
+	public static final int DEFAULT_DIMENSION = 40; // Bigger takes longer time to get AverageRGB
 
 	private final RGB rgb;
 	private int dimension;
@@ -19,7 +25,7 @@ public class Sample extends ModifiedImage {
 		super(image, DEFAULT_DIMENSION, DEFAULT_DIMENSION);
 		dimension = DEFAULT_DIMENSION;
 		setDimension(dimension);
-		rgb = new RGB(getRGBAverage(image , 0 , 0 , image.getWidth() , image.getHeight(), 8));
+		rgb = new RGB(getRGBAverage(image, 0, 0, image.getWidth(), image.getHeight(), 8));
 	}
 
 	public BufferedImage getDownSampled() {
@@ -36,7 +42,7 @@ public class Sample extends ModifiedImage {
 	}
 
 	/**
-	 * resizes the down sample to the specified dimension. the down sample is always
+	 * resizes the down sample to the specified dimension. the down-sample is always
 	 * a square.
 	 * 
 	 * @param dimension the desired length and width of the resized image

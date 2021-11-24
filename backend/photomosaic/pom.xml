@@ -82,7 +82,13 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                 	<mainClass>com.project.photomosaic.image.Application</mainClass>
+                	<executable>true</executable>
+		            <jvmArguments>
+		                -Xms1g
+		                -Xmx3g
+		            </jvmArguments>
             	</configuration>
+           
             </plugin>
         </plugins>
         <resources>     

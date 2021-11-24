@@ -1,41 +1,38 @@
 package com.project.photomosaic.model.photomosaic;
 
-import java.io.File;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.photomosaic.model.photomosaic.PhotomosaicTestConfig;
 import com.project.photomosaic.image.model.photomosaic.Photomosaic;
-import com.project.photomosaic.image.model.photomosaic.sample.SampleIO;
-import com.project.photomosaic.util.ImageDisplay;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@ContextConfiguration(classes = { PhotomosaicTestConfig.class })
+public class PhotoMosaicTest {
 
-public class PhotoMosaicTest extends Application{
-	private File sample = new File(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
-	
+	@Autowired
+	@Qualifier("duckImage")
+	private BufferedImage duck;
+
+	@Autowired
+	@Qualifier("sampleImages")
+	private ArrayList<BufferedImage> samples;
 
 	@Test
 	public void photoMosaicTest() throws Exception {
-		launch();
-	}
-
-	@Override
-	public void start(Stage primaryStage) throws Exception {
 		long start = System.currentTimeMillis();
-		Photomosaic mosaic = new Photomosaic( ImageDisplay.DUCK , sample);
-		
+		Photomosaic mosaic = new Photomosaic(duck, samples);
 		long end = System.currentTimeMillis();
-		System.out.println("Time to construct PhotoMosaic: " + (end - start)/1000.0 + " seconds");
-		ImageDisplay display = new ImageDisplay(mosaic.getImage());
-
-		HBox hbox = new HBox(display.getImageView());
-		Scene scene = new Scene(hbox);
-
-		primaryStage.setTitle("ImageView");
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		System.out.println("Time to construct PhotoMosaic: " + (end - start) / 1000.0 + " seconds");
 	}
+
 }

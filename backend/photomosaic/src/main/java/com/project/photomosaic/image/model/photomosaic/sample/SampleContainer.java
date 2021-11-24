@@ -3,28 +3,16 @@ package com.project.photomosaic.image.model.photomosaic.sample;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-
 import com.project.photomosaic.image.model.photomosaic.base.RGB;
 
 //Contains all the Images used to build the original
 public class SampleContainer {
 	private int sampleDimension = Sample.DEFAULT_DIMENSION;
-	private ArrayList<Sample> samples =  new ArrayList<Sample>();
-	private SampleIO sampleIO;
+	private ArrayList<Sample> samples = new ArrayList<Sample>();
 
 	public SampleContainer(ArrayList<BufferedImage> images) throws Exception {
 		SampleFactory factory = new SampleFactory(images);
-		samples.addAll(factory.generateSamples());
-	}
-	
-	public SampleContainer(String pathToSamples) throws Exception {
-		ImageIO.setUseCache(false);
-		sampleIO = new SampleIO(pathToSamples);
-		ArrayList<BufferedImage> images = sampleIO.generateImage();
-		
-		SampleFactory factory = new SampleFactory(images);
-		samples.addAll(factory.generateSamples());
+		samples.addAll(factory.asSamples());
 	}
 
 	public BufferedImage getBestImage(int targetRGB) {
@@ -36,8 +24,8 @@ public class SampleContainer {
 			double distR = rgb.r() - sample.getRGB().r();
 			double distG = rgb.g() - sample.getRGB().g();
 			double distB = rgb.b() - sample.getRGB().b();
-			
-			double avg = Math.sqrt( distR*distR + distG*distG + distB*distB);
+
+			double avg = Math.sqrt(distR * distR + distG * distG + distB * distB);
 			if (avg < currentBest) {
 				currentBest = avg;
 				index = i;
@@ -45,10 +33,6 @@ public class SampleContainer {
 		}
 
 		return samples.get(index).getDownSampled();
-	}
-
-	public String[] getFileNames() {
-		return sampleIO.getFileNames();
 	}
 
 	public int getDimension() {
@@ -61,8 +45,6 @@ public class SampleContainer {
 
 	@Override
 	public String toString() {
-		return "File Directory: " + sampleIO.getDirectory().toPath() + "\n" + "Total Number of Samples: "
-				+ sampleIO.getFileNames().length + "\n" + "Listed File names:\n"
-				+ String.join("\n", sampleIO.getFileNames());
+		return "Total Number of Samples: " + samples.size() + "\n";
 	}
 }
