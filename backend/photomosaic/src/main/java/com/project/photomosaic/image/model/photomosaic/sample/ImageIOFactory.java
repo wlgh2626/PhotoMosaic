@@ -1,7 +1,7 @@
 package com.project.photomosaic.image.model.photomosaic.sample;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -31,11 +31,11 @@ public class ImageIOFactory {
 
 	/**
 	 * 
-	 * @param files image files to turn in to BufferedImage
+	 * @param fileBytes image file bytes to turn in to BufferedImage
 	 * @return ArrayList of BufferedImage from files
 	 * @throws InterruptedException
 	 */
-	public ArrayList<BufferedImage> asBufferedImages(ArrayList<File> files) throws InterruptedException {
+	public ArrayList<BufferedImage> asBufferedImages(ArrayList<byte[]> fileBytesList) throws InterruptedException {
 		// Initialize Runnables
 		runnables = new ImageIORunnable[numThreads];
 		for (int i = 0; i < numThreads; i++) {
@@ -43,14 +43,14 @@ public class ImageIOFactory {
 		}
 
 		// assign images based on image sizes
-		for (File file : files) {
+		for (byte[] fileBytes : fileBytesList) {
 			int smallestIndex = 0;
 			for (int i = 0; i < runnables.length; i++) {
 				if (runnables[i].getTaskSize() < runnables[smallestIndex].getTaskSize()) {
 					smallestIndex = i;
 				}
 			}
-			runnables[smallestIndex].add(file);
+			runnables[smallestIndex].add(fileBytes);
 		}
 
 		// run the threads to generate samples
@@ -77,16 +77,16 @@ public class ImageIOFactory {
 
 	private class ImageIORunnable implements Runnable {
 		private long taskSize = 0;
-		private ArrayList<File> files = new ArrayList<File>();
+		private ArrayList<byte[]> fileBytesList = new ArrayList<byte[]>();
 		private ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
 
 		public long getTaskSize() {
 			return taskSize;
 		}
 
-		public void add(File file) {
-			files.add(file);
-			taskSize += (long) file.length();
+		public void add(byte[] fileBytes) {
+			fileBytesList.add(fileBytes);
+			taskSize += (long) fileBytes.length;
 		}
 
 		public ArrayList<BufferedImage> getImages() {
@@ -96,9 +96,9 @@ public class ImageIOFactory {
 		@Override
 		public void run() {
 
-			for (File file : files) {
+			for (byte[] fileBytes : fileBytesList) {
 				try {
-					images.add(ImageIO.read(file));
+					images.add(ImageIO.read(new ByteArrayInputStream(fileBytes)));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
