@@ -5,19 +5,24 @@ import java.awt.image.BufferedImage;
 import com.project.photomosaic.image.model.photomosaic.base.ModifiedImage;
 
 public class DitheredImage extends ModifiedImage {
-	public static final int DEFAULT_DITHER_SIZE = 4; // Will tile every 16x16 of the image
+	public static final int DEFAULT_DITHER_SIZE = 4; // Will tile every 4x4 of the image
 	private BufferedImage dithered;
 	private long[][] data;
 	private int ditherSize; // original image gets sectioned to (size x size)
+	int length, height;
 
 	public DitheredImage(BufferedImage image) {
-		super(image, (double) image.getWidth() / DEFAULT_DITHER_SIZE, (double) image.getHeight() / DEFAULT_DITHER_SIZE);
+		super(image);
+		length = (int) Math.ceil((double) image.getWidth() / DEFAULT_DITHER_SIZE);
+		height = (int) Math.ceil((double) image.getHeight() / DEFAULT_DITHER_SIZE);
 		ditherSize = DEFAULT_DITHER_SIZE;
 		build();
 	}
 
 	public DitheredImage(BufferedImage image, int ditherSize) {
-		super(image, (double) image.getWidth() / ditherSize, (double) image.getHeight() / ditherSize);
+		super(image);
+		length = (int) Math.ceil((double) image.getWidth() / ditherSize);
+		height = (int) Math.ceil((double) image.getHeight() / ditherSize);
 		this.ditherSize = ditherSize;
 		build();
 	}
@@ -39,7 +44,15 @@ public class DitheredImage extends ModifiedImage {
 		}
 	}
 
-	public int getSize() {
+	public int getLength() {
+		return length;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public int getDitherSize() {
 		return ditherSize;
 	}
 

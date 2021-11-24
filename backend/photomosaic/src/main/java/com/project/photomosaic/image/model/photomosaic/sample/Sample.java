@@ -22,7 +22,7 @@ public class Sample extends ModifiedImage {
 	private BufferedImage downSampled;
 
 	public Sample(BufferedImage image) {
-		super(image, DEFAULT_DIMENSION, DEFAULT_DIMENSION);
+		super(image);
 		dimension = DEFAULT_DIMENSION;
 		setDimension(dimension);
 		rgb = new RGB(getRGBAverage(image, 0, 0, image.getWidth(), image.getHeight(), 8));
@@ -39,6 +39,10 @@ public class Sample extends ModifiedImage {
 	@Override
 	public String toString() {
 		return "Down Sample Dimension: " + dimension + "\n" + "Average RGB Value: " + rgb.rgb() + "\n";
+	}
+
+	public int getDimension() {
+		return dimension;
 	}
 
 	/**
