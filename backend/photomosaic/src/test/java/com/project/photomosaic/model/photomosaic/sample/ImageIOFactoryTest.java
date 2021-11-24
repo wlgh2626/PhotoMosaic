@@ -15,8 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.project.photomosaic.TestConfig;
 import com.project.photomosaic.image.model.photomosaic.sample.ImageIOFactory;
+import com.project.photomosaic.model.photomosaic.PhotomosaicTestConfig;
 
 /**
  * Note, the test may fail, if there are not enough sample images and make
@@ -27,7 +27,7 @@ import com.project.photomosaic.image.model.photomosaic.sample.ImageIOFactory;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ContextConfiguration(classes = { TestConfig.class })
+@ContextConfiguration(classes = { PhotomosaicTestConfig.class })
 public class ImageIOFactoryTest {
 	@Autowired
 	@Qualifier("testFiles")

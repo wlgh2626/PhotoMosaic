@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.project.photomosaic.TestConfig;
 import com.project.photomosaic.image.model.s3.S3Connector;
 import com.project.photomosaic.util.ImageDisplay;
 
@@ -17,7 +16,7 @@ import javafx.stage.Stage;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ContextConfiguration(classes = { TestConfig.class })
+@ContextConfiguration(classes = { S3TestConfig.class })
 public class S3ConnectorTest extends Application {
 
 	S3Connector s3 = new S3Connector();

@@ -12,7 +12,6 @@ import javax.imageio.ImageIO;
  *
  */
 public class SampleIO {
-	public static final int DEFAULT_THREAD_COUNT = 2;
 	public static final String SAMPLE_DEFAULT_PATH = System.getProperty("user.dir") + "/images/sample";
 	public static final String[] ACCEPTED_EXTENSIONS = new String[] { ".gif", ".png", ".tif", ".jpg" };
 
