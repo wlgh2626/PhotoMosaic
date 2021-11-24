@@ -11,7 +11,7 @@ public class SampleContainer {
 	private ArrayList<Sample> samples = new ArrayList<Sample>();
 
 	public SampleContainer(ArrayList<BufferedImage> images) throws Exception {
-		SampleFactory factory = new SampleFactory(images);
+		SampleThreads factory = new SampleThreads(images);
 		samples.addAll(factory.asSamples());
 	}
 

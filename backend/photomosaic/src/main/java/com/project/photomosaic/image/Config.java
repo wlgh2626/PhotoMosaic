@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.project.photomosaic.image.model.cse.CustomSearch;
-import com.project.photomosaic.image.model.photomosaic.sample.ImageIOFactory;
+import com.project.photomosaic.image.model.utils.ImageThreads;
 
 @Configuration
 @ComponentScan
@@ -32,8 +32,8 @@ public class Config {
 	}
 
 	@Bean
-	public ImageIOFactory imageIOFactory() {
-		return new ImageIOFactory(Runtime.getRuntime().availableProcessors());
+	public ImageThreads imageIOFactory() {
+		return new ImageThreads(Runtime.getRuntime().availableProcessors());
 	}
 
 	@Bean(name = "search")

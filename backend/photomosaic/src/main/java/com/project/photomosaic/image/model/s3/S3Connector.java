@@ -25,14 +25,14 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.project.photomosaic.image.Config;
-import com.project.photomosaic.image.model.photomosaic.sample.ImageIOFactory;
+import com.project.photomosaic.image.model.utils.ImageThreads;
 
 @ContextConfiguration(classes = { Config.class })
 public class S3Connector {
 	private static final Logger logger = Logger.getLogger(S3Connector.class.getName());
 	private static final String AUTH_PATH = System.getProperty("user.dir") + "/apikey/s3auth.js";
 
-	private ImageIOFactory imageIOFactory = new ImageIOFactory(Runtime.getRuntime().availableProcessors());
+	private ImageThreads imageIOFactory = new ImageThreads(Runtime.getRuntime().availableProcessors());
 
 	private String bucketName, accessKey, secretKey, folderName;
 	private Regions region = Regions.US_EAST_2;

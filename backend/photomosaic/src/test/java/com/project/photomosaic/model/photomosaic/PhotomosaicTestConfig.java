@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.project.photomosaic.image.model.photomosaic.Photomosaic;
-import com.project.photomosaic.image.model.photomosaic.sample.ImageIOFactory;
+import com.project.photomosaic.image.model.utils.ImageThreads;
 
 @Configuration
 public class PhotomosaicTestConfig {
@@ -23,13 +23,13 @@ public class PhotomosaicTestConfig {
 	public static File LENA = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/lena.tif");
 
 	@Bean(name = "singleCore")
-	public ImageIOFactory getSingleImageIOFactory() {
-		return new ImageIOFactory(1);
+	public ImageThreads getSingleImageIOFactory() {
+		return new ImageThreads(1);
 	}
 
 	@Bean(name = "multiCore")
-	public ImageIOFactory getMultiImageIOFactory() {
-		return new ImageIOFactory(Runtime.getRuntime().availableProcessors());
+	public ImageThreads getMultiImageIOFactory() {
+		return new ImageThreads(Runtime.getRuntime().availableProcessors());
 	}
 
 	@Bean(name = "testFiles")
@@ -55,7 +55,7 @@ public class PhotomosaicTestConfig {
 
 	@Bean(name = "sampleImages")
 	public ArrayList<BufferedImage> getSampleImages() throws InterruptedException, IOException {
-		ImageIOFactory factory = getMultiImageIOFactory();
+		ImageThreads factory = getMultiImageIOFactory();
 		return factory.asBufferedImages(getFileBytesList());
 	}
 

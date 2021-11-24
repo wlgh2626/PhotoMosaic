@@ -3,12 +3,12 @@ package com.project.photomosaic.image.model.photomosaic.sample;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class SampleFactory {
+public class SampleThreads {
 	public static final int DEFAULT_THREAD_COUNT = 4;
 	private SampleRunnable[] runnables;
 	private ArrayList<BufferedImage> images;
 
-	public SampleFactory(ArrayList<BufferedImage> images) {
+	public SampleThreads(ArrayList<BufferedImage> images) {
 		this.images = images;
 	}
 

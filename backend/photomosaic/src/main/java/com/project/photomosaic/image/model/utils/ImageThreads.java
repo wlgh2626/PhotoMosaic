@@ -1,4 +1,4 @@
-package com.project.photomosaic.image.model.photomosaic.sample;
+package com.project.photomosaic.image.model.utils;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -12,16 +12,16 @@ import javax.imageio.ImageIO;
  * 
  * @author Jiho
  */
-public class ImageIOFactory {
+public class ImageThreads {
 	public static final int DEFAULT_THREAD_COUNT = 2;
 	private ImageIORunnable[] runnables;
 	private int numThreads;
 
-	public ImageIOFactory() {
+	public ImageThreads() {
 		this.numThreads = DEFAULT_THREAD_COUNT;
 	}
 
-	public ImageIOFactory(int numThreads) {
+	public ImageThreads(int numThreads) {
 		if (numThreads > 0) {
 			this.numThreads = numThreads;
 		} else {

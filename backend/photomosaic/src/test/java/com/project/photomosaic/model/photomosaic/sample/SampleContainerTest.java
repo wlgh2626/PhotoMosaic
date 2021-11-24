@@ -12,8 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.project.photomosaic.image.model.photomosaic.sample.ImageIOFactory;
 import com.project.photomosaic.image.model.photomosaic.sample.SampleContainer;
+import com.project.photomosaic.image.model.utils.ImageThreads;
 import com.project.photomosaic.model.photomosaic.PhotomosaicTestConfig;
 
 @RunWith(SpringRunner.class)
@@ -30,11 +30,11 @@ public class SampleContainerTest {
 
 	@Autowired
 	@Qualifier("singleCore")
-	ImageIOFactory singleFactory;
+	ImageThreads singleFactory;
 
 	@Autowired
 	@Qualifier("multiCore")
-	ImageIOFactory multiFactory;
+	ImageThreads multiFactory;
 
 	@Test
 	public void simpleContainerTest() throws Exception {
