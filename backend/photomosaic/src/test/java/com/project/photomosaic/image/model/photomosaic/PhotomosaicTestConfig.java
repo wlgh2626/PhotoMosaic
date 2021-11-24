@@ -1,4 +1,4 @@
-package com.project.photomosaic.model.photomosaic;
+package com.project.photomosaic.image.model.photomosaic;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,11 +9,12 @@ import java.util.Arrays;
 import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.project.photomosaic.image.model.photomosaic.Photomosaic;
-import com.project.photomosaic.image.model.utils.ImageThreads;
+import com.project.photomosaic.image.model.utils.ImageIOThreads;
 
 @Configuration
 public class PhotomosaicTestConfig {
@@ -23,40 +24,34 @@ public class PhotomosaicTestConfig {
 	public static File LENA = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/lena.tif");
 
 	@Bean(name = "singleCore")
-	public ImageThreads getSingleImageIOFactory() {
-		return new ImageThreads(1);
+	public ImageIOThreads singleImageIOThreads() {
+		return new ImageIOThreads(1);
 	}
 
 	@Bean(name = "multiCore")
-	public ImageThreads getMultiImageIOFactory() {
-		return new ImageThreads(Runtime.getRuntime().availableProcessors());
+	public ImageIOThreads multiImageIOThreads() {
+		return new ImageIOThreads(Runtime.getRuntime().availableProcessors());
 	}
 
 	@Bean(name = "testFiles")
-	public ArrayList<File> getTestFiles() {
+	public ArrayList<File> testFiles() {
 		File targetPath = new File(SAMPLE_DEFAULT_PATH);
 		File[] files = targetPath.listFiles();
 		return new ArrayList<File>(Arrays.asList(files));
 	}
 
 	@Bean(name = "testFileBytesList")
-	public ArrayList<byte[]> getFileBytesList() throws IOException {
+	public ArrayList<byte[]> fileBytesList() throws IOException {
 		ArrayList<byte[]> fileBytesList = new ArrayList<byte[]>();
-		for (File file : getTestFiles()) {
+		for (File file : testFiles()) {
 			fileBytesList.add(FileUtils.readFileToByteArray(file));
 		}
 		return fileBytesList;
 	}
 
 	@Bean(name = "duckImage")
-	public BufferedImage getDuckImage() throws IOException {
+	public BufferedImage duckImage() throws IOException {
 		return ImageIO.read(DUCK);
-	}
-
-	@Bean(name = "sampleImages")
-	public ArrayList<BufferedImage> getSampleImages() throws InterruptedException, IOException {
-		ImageThreads factory = getMultiImageIOFactory();
-		return factory.asBufferedImages(getFileBytesList());
 	}
 
 }

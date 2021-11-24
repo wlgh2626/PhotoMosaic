@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.project.photomosaic.image.model.cse.CustomSearch;
 import com.project.photomosaic.image.model.s3.S3Connector;
-import com.project.photomosaic.image.model.utils.ImageThreads;
+import com.project.photomosaic.image.model.utils.ImageIOThreads;
 
 @Configuration
 @ComponentScan
@@ -31,8 +31,8 @@ public class Config {
 	}
 
 	@Bean
-	public ImageThreads imageIOFactory() {
-		return new ImageThreads(Runtime.getRuntime().availableProcessors());
+	public ImageIOThreads imageIOFactory() {
+		return new ImageIOThreads(Runtime.getRuntime().availableProcessors());
 	}
 
 	@Bean(name = "search")

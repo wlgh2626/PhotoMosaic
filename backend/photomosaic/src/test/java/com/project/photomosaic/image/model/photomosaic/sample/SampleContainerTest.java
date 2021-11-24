@@ -1,4 +1,4 @@
-package com.project.photomosaic.model.photomosaic.sample;
+package com.project.photomosaic.image.model.photomosaic.sample;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,9 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.photomosaic.image.model.photomosaic.PhotomosaicTestConfig;
 import com.project.photomosaic.image.model.photomosaic.sample.SampleContainer;
-import com.project.photomosaic.image.model.utils.ImageThreads;
-import com.project.photomosaic.model.photomosaic.PhotomosaicTestConfig;
+import com.project.photomosaic.image.model.utils.ImageIOThreads;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -30,11 +30,11 @@ public class SampleContainerTest {
 
 	@Autowired
 	@Qualifier("singleCore")
-	ImageThreads singleFactory;
+	ImageIOThreads singleFactory;
 
 	@Autowired
 	@Qualifier("multiCore")
-	ImageThreads multiFactory;
+	ImageIOThreads multiFactory;
 
 	@Test
 	public void simpleContainerTest() throws Exception {

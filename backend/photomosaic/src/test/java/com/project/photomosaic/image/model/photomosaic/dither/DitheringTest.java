@@ -1,4 +1,4 @@
-package com.project.photomosaic.model.photomosaic.dither;
+package com.project.photomosaic.image.model.photomosaic.dither;
 
 import javax.imageio.ImageIO;
 
@@ -8,9 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.photomosaic.image.model.photomosaic.PhotomosaicTestConfig;
 import com.project.photomosaic.image.model.photomosaic.dither.DitheredImage;
-import com.project.photomosaic.model.photomosaic.PhotomosaicTestConfig;
-import com.project.photomosaic.util.ImageDisplay;
+import com.project.photomosaic.image.util.ImageDisplay;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

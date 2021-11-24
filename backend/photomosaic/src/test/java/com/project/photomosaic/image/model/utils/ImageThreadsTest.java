@@ -1,4 +1,4 @@
-package com.project.photomosaic.model.utils;
+package com.project.photomosaic.image.model.utils;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,8 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.project.photomosaic.image.model.utils.ImageThreads;
-import com.project.photomosaic.model.photomosaic.PhotomosaicTestConfig;
+import com.project.photomosaic.image.model.photomosaic.PhotomosaicTestConfig;
+import com.project.photomosaic.image.model.utils.ImageIOThreads;
 
 /**
  * Note, the test may fail, if there are not enough sample images and make
@@ -42,14 +42,14 @@ public class ImageThreadsTest {
 		int numThreads = Runtime.getRuntime().availableProcessors();
 		System.out.println("There are " + numThreads + " available cores");
 
-		ImageThreads factory1 = new ImageThreads(1); // 1 core only
+		ImageIOThreads factory1 = new ImageIOThreads(1); // 1 core only
 		long start1 = System.currentTimeMillis();
 		ArrayList<BufferedImage> images1 = factory1.asBufferedImages(fileBytesList);
 		long end1 = System.currentTimeMillis();
 		long singleCoreTime = end1 - start1;
 		System.out.println("Time for single core: " + singleCoreTime / 1000 + "seconds");
 
-		ImageThreads factory2 = new ImageThreads(numThreads); // all cores
+		ImageIOThreads factory2 = new ImageIOThreads(numThreads); // all cores
 		long start2 = System.currentTimeMillis();
 		ArrayList<BufferedImage> images2 = factory2.asBufferedImages(fileBytesList);
 		long end2 = System.currentTimeMillis();

@@ -1,4 +1,4 @@
-package com.project.photomosaic.model.s3;
+package com.project.photomosaic.image.model.s3;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.project.photomosaic.image.model.s3.S3Connector;
-import com.project.photomosaic.util.ImageDisplay;
+import com.project.photomosaic.image.util.ImageDisplay;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

@@ -1,4 +1,4 @@
-package com.project.photomosaic.util;
+package com.project.photomosaic.image.util;
 
 import java.awt.image.BufferedImage;
 

@@ -1,4 +1,4 @@
-package com.project.photomosaic.model;
+package com.project.photomosaic.image.model;
 
 import java.io.BufferedReader;
 import java.io.File;

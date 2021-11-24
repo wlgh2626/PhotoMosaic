@@ -1,4 +1,4 @@
-package com.project.photomosaic.model.cse;
+package com.project.photomosaic.image.model.cse;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

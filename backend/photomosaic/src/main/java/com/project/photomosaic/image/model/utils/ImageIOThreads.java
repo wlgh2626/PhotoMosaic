@@ -12,16 +12,16 @@ import javax.imageio.ImageIO;
  * 
  * @author Jiho
  */
-public class ImageThreads {
+public class ImageIOThreads {
 	public static final int DEFAULT_THREAD_COUNT = 2;
 	private ImageIORunnable[] runnables;
 	private int numThreads;
 
-	public ImageThreads() {
+	public ImageIOThreads() {
 		this.numThreads = DEFAULT_THREAD_COUNT;
 	}
 
-	public ImageThreads(int numThreads) {
+	public ImageIOThreads(int numThreads) {
 		if (numThreads > 0) {
 			this.numThreads = numThreads;
 		} else {
