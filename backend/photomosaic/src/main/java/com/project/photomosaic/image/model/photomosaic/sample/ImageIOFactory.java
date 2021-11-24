@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
  * @author Jiho
  */
 public class ImageIOFactory {
-	public static final int DEFAULT_THREAD_COUNT = 4;
+	public static final int DEFAULT_THREAD_COUNT = 2;
 	private ImageIORunnable[] runnables;
 	private int numThreads;
 
@@ -22,7 +22,11 @@ public class ImageIOFactory {
 	}
 
 	public ImageIOFactory(int numThreads) {
-		this.numThreads = numThreads;
+		if (numThreads > 0) {
+			this.numThreads = numThreads;
+		} else {
+			this.numThreads = DEFAULT_THREAD_COUNT;
+		}
 	}
 
 	/**
