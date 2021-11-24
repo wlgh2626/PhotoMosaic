@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.project.photomosaic.image.model.cse.CustomSearch;
+import com.project.photomosaic.image.model.s3.S3Connector;
 import com.project.photomosaic.image.model.utils.ImageThreads;
 
 @Configuration
@@ -19,16 +20,14 @@ import com.project.photomosaic.image.model.utils.ImageThreads;
 public class Config {
 	private Logger logger = Logger.getLogger(Config.class.getName());
 
-	/*
-	 * @Bean(name = "photomosaic") public Photomosaic photomosaic() throws Exception
-	 * { File LENA = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/lena.tif"); File
-	 * SAMPLE = new File(SampleIO.SAMPLE_DEFAULT_PATH); return new Photomosaic(LENA,
-	 * SAMPLE); }
-	 */
+	@Bean
+	public String testString() {
+		return "testing 1 2 3";
+	}
 
 	@Bean
-	public String getTestString() {
-		return "testing 1 2 3";
+	S3Connector s3Connector() {
+		return new S3Connector();
 	}
 
 	@Bean

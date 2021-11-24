@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 /**
- * Reads Files and produces BufferedImage in parallel
+ * Reads Files and produces BufferedImage in parallel with fine granularity
  * 
  * @author Jiho
  */

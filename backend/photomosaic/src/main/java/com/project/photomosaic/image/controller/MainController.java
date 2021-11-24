@@ -10,7 +10,6 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,18 +27,10 @@ import com.project.photomosaic.image.model.s3.S3Connector;
 @RestController
 @ContextConfiguration(classes = { Config.class })
 public class MainController {
-	S3Connector s3 = new S3Connector();
-
-	@RequestMapping(value = "/**", method = RequestMethod.OPTIONS)
-	public void corsHeaders(HttpServletResponse response) {
-		response.addHeader("Access-Control-Allow-Origin", "*");
-		response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-		response.addHeader("Access-Control-Allow-Headers", "origin, content-type, accept, x-requested-with");
-		response.addHeader("Access-Control-Max-Age", "72000");
-	}
+	@Autowired
+	S3Connector s3;
 
 	@Autowired
-	@Qualifier("search")
 	private CustomSearch cse;
 
 	@GetMapping(value = "/ping")
@@ -47,6 +38,14 @@ public class MainController {
 	@ResponseBody
 	public String ping() {
 		return "pong";
+	}
+
+	@RequestMapping(value = "/**", method = RequestMethod.OPTIONS)
+	public void corsHeaders(HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+		response.addHeader("Access-Control-Allow-Headers", "origin, content-type, accept, x-requested-with");
+		response.addHeader("Access-Control-Max-Age", "72000");
 	}
 
 	@GetMapping(value = "/photomosaic")
