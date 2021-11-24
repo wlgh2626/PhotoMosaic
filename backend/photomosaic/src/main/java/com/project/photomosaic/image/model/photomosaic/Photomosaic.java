@@ -17,8 +17,8 @@ public class Photomosaic {
 	private BufferedImage photoMosaic;
 	private int length, height;
 
-	public Photomosaic(BufferedImage originalImage, ArrayList<BufferedImage> samples) throws Exception {
-		sampleContainer = new SampleContainer(samples);
+	public Photomosaic(BufferedImage originalImage, ArrayList<BufferedImage> sampleImages) throws Exception {
+		sampleContainer = new SampleContainer(sampleImages);
 		this.originalImage = originalImage;
 		build();
 	}

@@ -12,7 +12,7 @@ public class SampleFactory {
 		this.images = images;
 	}
 
-	public ArrayList<Sample> generateSamples() throws InterruptedException {
+	public ArrayList<Sample> asSamples() throws InterruptedException {
 		// Initialize Runnables
 		runnables = new SampleRunnable[DEFAULT_THREAD_COUNT];
 		for (int i = 0; i < DEFAULT_THREAD_COUNT; i++) {

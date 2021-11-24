@@ -12,7 +12,7 @@ public class SampleContainer {
 
 	public SampleContainer(ArrayList<BufferedImage> images) throws Exception {
 		SampleFactory factory = new SampleFactory(images);
-		samples.addAll(factory.generateSamples());
+		samples.addAll(factory.asSamples());
 	}
 
 	public BufferedImage getBestImage(int targetRGB) {
