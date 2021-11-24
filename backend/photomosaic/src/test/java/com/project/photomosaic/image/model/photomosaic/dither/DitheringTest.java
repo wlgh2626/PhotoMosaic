@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ContextConfiguration(classes = { PhotomosaicTestConfig.class })
+@ContextConfiguration(classes = PhotomosaicTestConfig.class)
 public class DitheringTest extends Application {
 
 	@Test

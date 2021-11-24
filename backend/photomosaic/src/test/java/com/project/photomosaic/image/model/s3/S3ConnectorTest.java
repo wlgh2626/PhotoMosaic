@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ContextConfiguration(classes = { S3TestConfig.class })
+@ContextConfiguration(classes = S3TestConfig.class)
 public class S3ConnectorTest extends Application {
 
 	S3Connector s3 = new S3Connector();

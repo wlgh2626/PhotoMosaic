@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -16,7 +17,6 @@ import com.project.photomosaic.image.model.s3.S3Connector;
 import com.project.photomosaic.image.model.utils.ImageIOThreads;
 
 @Configuration
-@ComponentScan
 public class Config {
 	private Logger logger = Logger.getLogger(Config.class.getName());
 
@@ -25,8 +25,8 @@ public class Config {
 		return "testing 1 2 3";
 	}
 
-	@Bean
-	S3Connector s3Connector() {
+	@Bean(name = "s3Connector")
+	public S3Connector s3Connector() {
 		return new S3Connector();
 	}
 

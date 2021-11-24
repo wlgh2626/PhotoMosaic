@@ -16,7 +16,7 @@ import com.project.photomosaic.image.model.cse.CustomSearch;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ContextConfiguration(classes = { CSTestConfig.class })
+@ContextConfiguration(classes = CSTestConfig.class)
 public class CustomSearchIT {
 
 	@Autowired

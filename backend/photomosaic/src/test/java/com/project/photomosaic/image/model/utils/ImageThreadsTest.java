@@ -27,7 +27,7 @@ import com.project.photomosaic.image.model.utils.ImageIOThreads;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ContextConfiguration(classes = { PhotomosaicTestConfig.class })
+@ContextConfiguration(classes = PhotomosaicTestConfig.class)
 public class ImageThreadsTest {
 	@Autowired
 	@Qualifier("testFiles")

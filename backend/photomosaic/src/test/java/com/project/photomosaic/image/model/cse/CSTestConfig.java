@@ -9,13 +9,15 @@ import java.util.logging.Logger;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.project.photomosaic.image.Config;
 import com.project.photomosaic.image.model.cse.CustomSearch;
 
-@Configuration
+@TestConfiguration
+@Import({ Config.class })
 public class CSTestConfig {
 	public static final String SAMPLE_DEFAULT_PATH = System.getProperty("user.dir") + "/images/sample";
 	private Logger logger = Logger.getLogger(Config.class.getName());

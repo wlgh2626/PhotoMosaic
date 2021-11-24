@@ -12,11 +12,14 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
+import com.project.photomosaic.image.Config;
 import com.project.photomosaic.image.model.photomosaic.Photomosaic;
 import com.project.photomosaic.image.model.utils.ImageIOThreads;
 
-@Configuration
+@TestConfiguration
+@Import({ Config.class })
 public class PhotomosaicTestConfig {
 	public static final String SAMPLE_DEFAULT_PATH = System.getProperty("user.dir") + "/images/sample/test";
 	public static final String[] ACCEPTED_EXTENSIONS = new String[] { ".gif", ".png", ".tif", ".jpg" };

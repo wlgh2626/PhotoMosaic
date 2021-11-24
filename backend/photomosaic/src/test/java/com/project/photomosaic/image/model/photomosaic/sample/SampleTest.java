@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ContextConfiguration(classes = { PhotomosaicTestConfig.class })
+@ContextConfiguration(classes = PhotomosaicTestConfig.class)
 public class SampleTest extends Application {
 	private File file = new File(PhotomosaicTestConfig.DUCK.getPath());
 
