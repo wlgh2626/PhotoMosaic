@@ -16,6 +16,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.project.photomosaic.TestConfig;
 import com.project.photomosaic.image.model.photomosaic.sample.ImageIOFactory;
 
+/**
+ * Note, the test may fail, if there are not enough sample images and make
+ * Thread overhead to slow down the parallel process.
+ * 
+ * @author Jiho
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration(classes = { TestConfig.class })
@@ -26,18 +33,22 @@ public class ImageIOFactoryTest {
 
 	@Test
 	public void ParallelImageIOTest() throws InterruptedException {
-		System.out.println("There are " + Runtime.getRuntime().availableProcessors() + " available cores");
-		ImageIOFactory factory1 = new ImageIOFactory();
+		int numThreads = Runtime.getRuntime().availableProcessors();
+		System.out.println("There are " + numThreads + " available cores");
+
+		ImageIOFactory factory1 = new ImageIOFactory(1); // 1 core only
 		long start1 = System.currentTimeMillis();
 		ArrayList<BufferedImage> images1 = factory1.asBufferedImages(testFiles);
 		long end1 = System.currentTimeMillis();
 		long singleCoreTime = end1 - start1;
+		System.out.println("Time for single core: " + singleCoreTime / 1000 + "seconds");
 
-		ImageIOFactory factory2 = new ImageIOFactory(Runtime.getRuntime().availableProcessors());
+		ImageIOFactory factory2 = new ImageIOFactory(numThreads); // all cores
 		long start2 = System.currentTimeMillis();
 		ArrayList<BufferedImage> images2 = factory2.asBufferedImages(testFiles);
 		long end2 = System.currentTimeMillis();
 		long multiCoreTime = end2 - start2;
+		System.out.println("Time for " + numThreads + " cores: " + multiCoreTime / 1000 + "seconds");
 
 		Assert.assertTrue(multiCoreTime < singleCoreTime);
 	}
