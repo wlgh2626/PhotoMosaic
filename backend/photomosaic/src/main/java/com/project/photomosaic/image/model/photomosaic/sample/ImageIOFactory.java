@@ -8,23 +8,33 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 /**
- * Reads File and produces buffered image in parallel
+ * Reads Files and produces BufferedImage in parallel
  * 
  * @author Jiho
  */
 public class ImageIOFactory {
-	public static final int DEFAULT_THREAD_COUNT = 2;
+	public static final int DEFAULT_THREAD_COUNT = 4;
 	private ImageIORunnable[] runnables;
-	private ArrayList<File> files;
+	private int numThreads;
 
-	public ImageIOFactory(ArrayList<File> files) {
-		this.files = files;
+	public ImageIOFactory() {
+		this.numThreads = DEFAULT_THREAD_COUNT;
 	}
 
-	public ArrayList<BufferedImage> getImages() throws InterruptedException {
+	public ImageIOFactory(int numThreads) {
+		this.numThreads = numThreads;
+	}
+
+	/**
+	 * 
+	 * @param files image files to turn in to BufferedImage
+	 * @return ArrayList of BufferedImage from files
+	 * @throws InterruptedException
+	 */
+	public ArrayList<BufferedImage> asBufferedImages(ArrayList<File> files) throws InterruptedException {
 		// Initialize Runnables
-		runnables = new ImageIORunnable[DEFAULT_THREAD_COUNT];
-		for (int i = 0; i < DEFAULT_THREAD_COUNT; i++) {
+		runnables = new ImageIORunnable[numThreads];
+		for (int i = 0; i < numThreads; i++) {
 			runnables[i] = new ImageIORunnable();
 		}
 
@@ -45,7 +55,6 @@ public class ImageIOFactory {
 		for (ImageIORunnable runnable : runnables) {
 			threads.add(new Thread(runnable));
 		}
-		// -----------------------------------
 
 		for (Thread thread : threads) {
 			thread.start();
@@ -53,6 +62,7 @@ public class ImageIOFactory {
 		for (Thread thread : threads) {
 			thread.join();
 		}
+		// -----------------------------------
 
 		ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
 		for (ImageIORunnable runnable : runnables) {
