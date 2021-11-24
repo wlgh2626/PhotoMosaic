@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.photomosaic.image.model.Config;
+import com.project.photomosaic.image.Config;
 import com.project.photomosaic.image.model.cse.CustomSearch;
 import com.project.photomosaic.image.model.photomosaic.Photomosaic;
 import com.project.photomosaic.image.model.s3.S3Connector;

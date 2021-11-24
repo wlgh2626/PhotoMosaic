@@ -13,13 +13,20 @@ import org.springframework.context.annotation.Configuration;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.project.photomosaic.image.model.Config;
+import com.project.photomosaic.image.Config;
 import com.project.photomosaic.image.model.cse.CustomSearch;
 import com.project.photomosaic.image.model.photomosaic.sample.SampleIO;
+import com.project.photomosaic.image.model.s3.S3Connector;
 
 @Configuration
 public class TestConfig {
 	private Logger logger = Logger.getLogger(Config.class.getName());
+
+	@Bean(name = "testS3Connector")
+	public S3Connector getS3Connector() {
+		S3Connector s3 = new S3Connector();
+		return s3;
+	}
 
 	@Bean(name = "testFiles")
 	public ArrayList<File> getTestFiles() {

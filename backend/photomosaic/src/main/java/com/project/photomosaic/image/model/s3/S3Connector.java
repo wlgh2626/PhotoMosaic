@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -24,14 +24,15 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.project.photomosaic.image.Config;
 import com.project.photomosaic.image.model.photomosaic.sample.ImageIOFactory;
 
+@ContextConfiguration(classes = { Config.class })
 public class S3Connector {
-	@Autowired
-	private ImageIOFactory factory;
-
 	private static final Logger logger = Logger.getLogger(S3Connector.class.getName());
 	private static final String AUTH_PATH = System.getProperty("user.dir") + "/apikey/s3auth.js";
+
+	private ImageIOFactory imageIOFactory = new ImageIOFactory(Runtime.getRuntime().availableProcessors());
 
 	private String bucketName, accessKey, secretKey, folderName;
 	private Regions region = Regions.US_EAST_2;
@@ -82,12 +83,12 @@ public class S3Connector {
 		try {
 			ObjectListing s3Objects = s3.listObjects(bucketName, prefix);
 			ArrayList<byte[]> fileBytesList = new ArrayList<byte[]>();
-
 			for (S3ObjectSummary summary : s3Objects.getObjectSummaries()) {
 				S3Object obj = s3.getObject(bucketName, summary.getKey());
 				fileBytesList.add(IOUtils.toByteArray(obj.getObjectContent()));
 			}
-			images.addAll(factory.asBufferedImages(fileBytesList));
+			images.addAll(imageIOFactory.asBufferedImages(fileBytesList));
+
 			return images;
 		} catch (SdkClientException e) {
 			logger.severe("Could not sucessfully retrieve from S3: " + e.toString());

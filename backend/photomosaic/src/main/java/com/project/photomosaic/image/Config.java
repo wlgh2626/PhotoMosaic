@@ -1,4 +1,4 @@
-package com.project.photomosaic.image.model;
+package com.project.photomosaic.image;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -26,6 +26,16 @@ public class Config {
 	 * SAMPLE); }
 	 */
 
+	@Bean
+	public String getTestString() {
+		return "testing 1 2 3";
+	}
+
+	@Bean
+	public ImageIOFactory imageIOFactory() {
+		return new ImageIOFactory(Runtime.getRuntime().availableProcessors());
+	}
+
 	@Bean(name = "search")
 	public CustomSearch searchEngine() {
 		String csid = "", apiKey = "";
@@ -37,11 +47,6 @@ public class Config {
 			logger.warning("Could not open the file. search ID and api key may be blank");
 		}
 		return new CustomSearch(csid, apiKey);
-	}
-
-	@Bean(name = "ImageIOFactory")
-	public ImageIOFactory getImageIOFactory() {
-		return new ImageIOFactory(Runtime.getRuntime().availableProcessors());
 	}
 
 }
