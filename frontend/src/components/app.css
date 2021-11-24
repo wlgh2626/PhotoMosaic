@@ -37,7 +37,7 @@ footer {
     "main   main"
     "show show"
     "footer footer";
-  grid-row-gap: 20px;
+  grid-row-gap: 100px;
   grid-column-gap: 20px;
 }
 
