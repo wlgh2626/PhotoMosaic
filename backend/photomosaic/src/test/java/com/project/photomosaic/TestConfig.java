@@ -1,9 +1,11 @@
 package com.project.photomosaic;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import org.springframework.context.annotation.Bean;
@@ -13,10 +15,18 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.project.photomosaic.image.model.Config;
 import com.project.photomosaic.image.model.cse.CustomSearch;
+import com.project.photomosaic.image.model.photomosaic.sample.SampleIO;
 
 @Configuration
 public class TestConfig {
 	private Logger logger = Logger.getLogger(Config.class.getName());
+
+	@Bean(name = "testFiles")
+	public ArrayList<File> getTestFiles() {
+		File targetPath = new File(SampleIO.SAMPLE_DEFAULT_PATH + "/test");
+		File[] files = targetPath.listFiles();
+		return new ArrayList<File>(Arrays.asList(files));
+	}
 
 	@Bean(name = "testSearch")
 	public CustomSearch getTestSearchEngine() {
