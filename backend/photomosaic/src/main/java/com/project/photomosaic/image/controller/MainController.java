@@ -23,6 +23,7 @@ import com.project.photomosaic.image.model.photomosaic.Photomosaic;
 import com.project.photomosaic.image.model.s3.S3Connector;
 
 @RestController
+@CrossOrigin
 @ContextConfiguration(classes = { Config.class })
 public class MainController {
 	@Autowired
@@ -33,8 +34,6 @@ public class MainController {
 	int ditherSize;
 
 	@GetMapping(value = "/ping")
-	@CrossOrigin
-	@ResponseBody
 	public String ping() {
 		return "pong";
 	}
@@ -48,8 +47,6 @@ public class MainController {
 	}
 
 	@GetMapping(value = "/photomosaic")
-	@CrossOrigin
-	@ResponseBody
 	public String request(@RequestParam(name = "s3") String s3FolderName) throws Exception {
 		try {
 			s3.setFolderName(s3FolderName);
