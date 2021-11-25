@@ -52,6 +52,7 @@ public class MainController {
 			s3.listAll();
 
 			Photomosaic photomosaic = new Photomosaic(s3.getOriginalImage(), s3.getSamples());
+			photomosaic.build();
 
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
 			ImageIO.write(photomosaic.getImage(), "png", os);
