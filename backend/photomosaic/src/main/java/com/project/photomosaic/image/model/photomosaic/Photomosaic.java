@@ -7,7 +7,12 @@ import java.util.ArrayList;
 import com.project.photomosaic.image.model.photomosaic.dither.DitheredImage;
 import com.project.photomosaic.image.model.photomosaic.sample.SampleContainer;
 
-//main class for interacting and creating photomosaic
+/**
+ * Creates a photomosaic of a given image, with the given sample images
+ * 
+ * @author Jiho
+ *
+ */
 public class Photomosaic {
 	public static final int MAX_IMAGE_SIZE = Integer.MAX_VALUE / 4;
 
@@ -16,6 +21,14 @@ public class Photomosaic {
 	private SampleContainer sampleContainer;
 	private int ditherSize;
 
+	/**
+	 * 
+	 * @param originalImage image to be photo mosaiced.
+	 * @param sampleImages  images that will replace the original image tile by
+	 *                      tile.
+	 * @param ditherSize    size of the each tiles that will be replaced
+	 * @throws Exception
+	 */
 	public Photomosaic(BufferedImage originalImage, ArrayList<BufferedImage> sampleImages, int ditherSize)
 			throws Exception {
 		sampleContainer = new SampleContainer(sampleImages);
@@ -23,6 +36,9 @@ public class Photomosaic {
 		this.ditherSize = ditherSize;
 	}
 
+	/**
+	 * method that generates the photo mosaic image.
+	 */
 	public void build() {
 		while ((long) getLength(ditherSize) * (long) getHeight(ditherSize) < MAX_IMAGE_SIZE) {
 			ditherSize++;
