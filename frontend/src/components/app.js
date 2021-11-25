@@ -3,12 +3,15 @@ import { useState } from "react";
 import Display from "./mainDisplay/display";
 import Footer from "./footer/footer";
 import Samples from "./samples/samples";
-import SelectWindow from "./selectWindow";
+import SelectWindow from "./selectWindow/selectWindow";
 import ImageSelector from "./dnd/imageSelector";
 import PhotoMosaic from "./photomosaic/photomosaic";
 import Download from "./download/download";
 import FileChooser from "../fileChooser";
+import Showcase from "./showcase";
+
 import "./app.css";
+
 
 export default function App() {
   const [originalImage, setOriginal] = useState();
@@ -55,7 +58,9 @@ export default function App() {
         />
       </div>
 
-      <div className="options"></div>
+      <div className="show">
+        <Showcase />
+      </div>
 
       <footer>
         <Footer />
