@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.photomosaic.image.TestApplication;
 import com.project.photomosaic.image.model.photomosaic.PhotomosaicTestConfig;
 import com.project.photomosaic.image.model.photomosaic.dither.DitheredImage;
 import com.project.photomosaic.image.util.ImageDisplay;
@@ -18,7 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = TestApplication.class)
 @ContextConfiguration(classes = PhotomosaicTestConfig.class)
 public class DitheringTest extends Application {
 

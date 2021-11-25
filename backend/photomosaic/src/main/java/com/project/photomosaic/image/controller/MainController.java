@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.photomosaic.image.Config;
+import com.project.photomosaic.image.config.Config;
 import com.project.photomosaic.image.model.photomosaic.Photomosaic;
 import com.project.photomosaic.image.model.s3.S3Connector;
 
@@ -39,7 +39,7 @@ public class MainController {
 		return "pong";
 	}
 
-	@RequestMapping(value = "/**", method = RequestMethod.OPTIONS)
+	@RequestMapping(value = "/photomosaic", method = RequestMethod.OPTIONS)
 	public void corsHeaders(HttpServletResponse response) {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");

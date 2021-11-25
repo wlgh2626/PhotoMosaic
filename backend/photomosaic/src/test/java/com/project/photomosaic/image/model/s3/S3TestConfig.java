@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import com.project.photomosaic.image.Config;
+import com.project.photomosaic.image.config.Config;
 import com.project.photomosaic.image.model.s3.S3Connector;
 
 @TestConfiguration

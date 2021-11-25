@@ -12,12 +12,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.photomosaic.image.TestApplication;
 import com.project.photomosaic.image.model.photomosaic.PhotomosaicTestConfig;
 import com.project.photomosaic.image.model.photomosaic.sample.SampleContainer;
 import com.project.photomosaic.image.model.utils.ImageIOThreads;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = TestApplication.class)
 @ContextConfiguration(classes = PhotomosaicTestConfig.class)
 public class SampleContainerTest {
 	@Autowired

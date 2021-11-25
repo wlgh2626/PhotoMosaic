@@ -24,7 +24,7 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.project.photomosaic.image.Config;
+import com.project.photomosaic.image.config.Config;
 import com.project.photomosaic.image.model.utils.ImageIOThreads;
 
 @ContextConfiguration(classes = { Config.class })

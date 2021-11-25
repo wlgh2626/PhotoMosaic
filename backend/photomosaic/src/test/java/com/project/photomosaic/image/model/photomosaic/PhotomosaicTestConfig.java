@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import com.project.photomosaic.image.Config;
+import com.project.photomosaic.image.config.Config;
 import com.project.photomosaic.image.model.photomosaic.Photomosaic;
 import com.project.photomosaic.image.model.utils.ImageIOThreads;
 

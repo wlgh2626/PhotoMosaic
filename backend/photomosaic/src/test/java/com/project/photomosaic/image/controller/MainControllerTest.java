@@ -9,10 +9,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.photomosaic.image.TestApplication;
 import com.project.photomosaic.image.controller.MainController;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = TestApplication.class)
 @ContextConfiguration(classes = MainControllerTestConfig.class)
 public class MainControllerTest {
 	@Autowired

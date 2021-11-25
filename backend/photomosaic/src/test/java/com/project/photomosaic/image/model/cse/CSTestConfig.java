@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Import;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.project.photomosaic.image.Config;
+import com.project.photomosaic.image.config.Config;
 import com.project.photomosaic.image.model.cse.CustomSearch;
 
 @TestConfiguration

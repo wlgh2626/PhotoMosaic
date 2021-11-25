@@ -12,10 +12,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.photomosaic.image.TestApplication;
 import com.project.photomosaic.image.model.cse.CustomSearch;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = TestApplication.class)
 @ContextConfiguration(classes = CSTestConfig.class)
 public class CustomSearchIT {
 
