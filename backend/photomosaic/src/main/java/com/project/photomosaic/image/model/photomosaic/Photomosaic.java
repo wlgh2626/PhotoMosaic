@@ -9,11 +9,11 @@ import com.project.photomosaic.image.model.photomosaic.sample.SampleContainer;
 
 //main class for interacting and creating photomosaic
 public class Photomosaic {
+	public static final int MAX_IMAGE_SIZE = Integer.MAX_VALUE / 4;
 
-	private BufferedImage originalImage;
+	private BufferedImage originalImage, photoMosaic;
 	private DitheredImage dithered;
 	private SampleContainer sampleContainer;
-	private BufferedImage photoMosaic;
 	private int ditherSize;
 
 	public Photomosaic(BufferedImage originalImage, ArrayList<BufferedImage> sampleImages) throws Exception {
@@ -30,7 +30,7 @@ public class Photomosaic {
 	}
 
 	public void build() {
-		while ((long) getLength(ditherSize) * (long) getHeight(ditherSize) < Integer.MAX_VALUE / 4) {
+		while ((long) getLength(ditherSize) * (long) getHeight(ditherSize) < MAX_IMAGE_SIZE) {
 			ditherSize++;
 		}
 		int length = (originalImage.getWidth() / ditherSize) * sampleContainer.getDimension();
