@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.project.photomosaic.image.Config")
+@ComponentScan(basePackages = "com.project.photomosaic.image")
 public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
