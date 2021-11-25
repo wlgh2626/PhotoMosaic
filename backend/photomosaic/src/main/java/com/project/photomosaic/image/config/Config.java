@@ -1,4 +1,4 @@
-package com.project.photomosaic.image;
+package com.project.photomosaic.image.config;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
