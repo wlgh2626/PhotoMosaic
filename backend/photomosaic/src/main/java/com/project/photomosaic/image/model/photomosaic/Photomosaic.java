@@ -16,12 +16,6 @@ public class Photomosaic {
 	private SampleContainer sampleContainer;
 	private int ditherSize;
 
-	public Photomosaic(BufferedImage originalImage, ArrayList<BufferedImage> sampleImages) throws Exception {
-		sampleContainer = new SampleContainer(sampleImages);
-		this.originalImage = originalImage;
-		this.ditherSize = DitheredImage.DEFAULT_DITHER_SIZE;
-	}
-
 	public Photomosaic(BufferedImage originalImage, ArrayList<BufferedImage> sampleImages, int ditherSize)
 			throws Exception {
 		sampleContainer = new SampleContainer(sampleImages);
@@ -33,11 +27,9 @@ public class Photomosaic {
 		while ((long) getLength(ditherSize) * (long) getHeight(ditherSize) < MAX_IMAGE_SIZE) {
 			ditherSize++;
 		}
-		int length = (originalImage.getWidth() / ditherSize) * sampleContainer.getDimension();
-		int height = (originalImage.getHeight() / ditherSize) * sampleContainer.getDimension();
 
 		dithered = new DitheredImage(originalImage, ditherSize);
-		photoMosaic = new BufferedImage(length, height, BufferedImage.TYPE_INT_RGB);
+		photoMosaic = new BufferedImage(getLength(ditherSize), getHeight(ditherSize), BufferedImage.TYPE_INT_RGB);
 
 		Graphics graphic = photoMosaic.createGraphics();
 		for (int y = 0; y < dithered.getHeight(); y++) {

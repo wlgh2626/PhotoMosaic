@@ -25,6 +25,11 @@ public class Config {
 		return "testing 1 2 3";
 	}
 
+	@Bean(name = "ditherSize")
+	public int ditherSize() {
+		return 4;
+	}
+
 	@Bean(name = "s3Connector")
 	public S3Connector s3Connector() {
 		return new S3Connector();

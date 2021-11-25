@@ -28,6 +28,10 @@ public class MainController {
 	@Autowired
 	S3Connector s3;
 
+	@Autowired
+	@Qualifier("ditherSize")
+	int ditherSize;
+
 	@GetMapping(value = "/ping")
 	@CrossOrigin
 	@ResponseBody
@@ -51,7 +55,7 @@ public class MainController {
 			s3.setFolderName(s3FolderName);
 			s3.listAll();
 
-			Photomosaic photomosaic = new Photomosaic(s3.getOriginalImage(), s3.getSamples());
+			Photomosaic photomosaic = new Photomosaic(s3.getOriginalImage(), s3.getSamples(), ditherSize);
 			photomosaic.build();
 
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
