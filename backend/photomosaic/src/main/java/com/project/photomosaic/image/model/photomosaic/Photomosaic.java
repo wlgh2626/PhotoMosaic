@@ -9,36 +9,38 @@ import com.project.photomosaic.image.model.photomosaic.sample.SampleContainer;
 
 //main class for interacting and creating photomosaic
 public class Photomosaic {
-	public static final String ORIGINAL_DEFAULT_PATH = System.getProperty("user.dir") + "/images/original";
 
 	private BufferedImage originalImage;
 	private DitheredImage dithered;
 	private SampleContainer sampleContainer;
 	private BufferedImage photoMosaic;
-	private int length, height;
+	private int length, height, ditherSize;
 
 	public Photomosaic(BufferedImage originalImage, ArrayList<BufferedImage> sampleImages) throws Exception {
 		sampleContainer = new SampleContainer(sampleImages);
 		this.originalImage = originalImage;
-		build();
+		this.ditherSize = DitheredImage.DEFAULT_DITHER_SIZE;
 	}
 
-	private void build() {
-		int ditherSize = DitheredImage.DEFAULT_DITHER_SIZE;
+	public Photomosaic(BufferedImage originalImage, ArrayList<BufferedImage> sampleImages, int ditherSize)
+			throws Exception {
+		sampleContainer = new SampleContainer(sampleImages);
+		this.originalImage = originalImage;
+		this.ditherSize = ditherSize;
+	}
 
-		/*
-		 * Reduce the size if the resulting image will exceed BufferedImage size limit
-		 */
+	public void build() {
+		int newDitherSize = ditherSize;
 		while (true) {
-			ditherSize = (int) Math.ceil((double) ditherSize * 1.5);
-			length = (originalImage.getWidth() / ditherSize) * sampleContainer.getDimension();
-			height = (originalImage.getHeight() / ditherSize) * sampleContainer.getDimension();
+			newDitherSize = (int) Math.ceil((double) newDitherSize * 1.5);
+			length = (originalImage.getWidth() / newDitherSize) * sampleContainer.getDimension();
+			height = (originalImage.getHeight() / newDitherSize) * sampleContainer.getDimension();
 			if ((long) length * (long) height < Integer.MAX_VALUE / 4) {
 				break;
 			}
 		}
 
-		dithered = new DitheredImage(originalImage, ditherSize);
+		dithered = new DitheredImage(originalImage, newDitherSize);
 		photoMosaic = new BufferedImage(length, height, BufferedImage.TYPE_INT_RGB);
 
 		Graphics graphic = photoMosaic.createGraphics();

@@ -21,10 +21,11 @@ import com.project.photomosaic.image.model.utils.ImageIOThreads;
 @TestConfiguration
 @Import({ Config.class })
 public class PhotomosaicTestConfig {
+	public static final String ORIGINAL_DEFAULT_PATH = System.getProperty("user.dir") + "/images/original";
 	public static final String SAMPLE_DEFAULT_PATH = System.getProperty("user.dir") + "/images/sample/test";
 	public static final String[] ACCEPTED_EXTENSIONS = new String[] { ".gif", ".png", ".tif", ".jpg" };
-	public static File DUCK = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/duck.jpg");
-	public static File LENA = new File(Photomosaic.ORIGINAL_DEFAULT_PATH + "/test/lena.tif");
+	public static File DUCK = new File(ORIGINAL_DEFAULT_PATH + "/test/duck.jpg");
+	public static File LENA = new File(ORIGINAL_DEFAULT_PATH + "/test/lena.tif");
 
 	@Bean(name = "singleCore")
 	public ImageIOThreads singleImageIOThreads() {

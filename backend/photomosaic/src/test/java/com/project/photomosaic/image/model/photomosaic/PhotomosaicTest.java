@@ -37,6 +37,7 @@ public class PhotomosaicTest {
 
 		long start = System.currentTimeMillis();
 		Photomosaic mosaic = new Photomosaic(duck, samples);
+		mosaic.build();
 		long end = System.currentTimeMillis();
 		System.out.println("Time to construct PhotoMosaic: " + (end - start) / 1000.0 + " seconds");
 	}

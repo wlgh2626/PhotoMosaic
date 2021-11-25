@@ -16,6 +16,12 @@ public class SampleContainer {
 		samples.addAll(factory.asSamples());
 	}
 
+	public SampleContainer(ArrayList<BufferedImage> images, int sampleSize) throws Exception {
+		sampleDimension = Sample.DEFAULT_DIMENSION;
+		SampleThreads factory = new SampleThreads(images);
+		samples.addAll(factory.asSamples());
+	}
+
 	public BufferedImage getBestImage(int targetRGB) {
 		RGB rgb = new RGB(targetRGB);
 		int index = 0;
