@@ -4,6 +4,12 @@ import java.awt.image.BufferedImage;
 
 import com.project.photomosaic.image.model.photomosaic.base.ModifiedImage;
 
+/**
+ * Takes an image and tiles it to a group of pixels.
+ * 
+ * @author Jiho
+ *
+ */
 public class DitheredImage extends ModifiedImage {
 	public static final int DEFAULT_DITHER_SIZE = 4; // Will tile every 4x4 of the image
 	private BufferedImage dithered;
@@ -19,6 +25,13 @@ public class DitheredImage extends ModifiedImage {
 		build();
 	}
 
+	/**
+	 * 
+	 * @param image      The image to be tiled
+	 * @param ditherSize Each group of pixels gets tiled to the specified
+	 *                   ditherSize. Smaller ditherSize means better precision, but
+	 *                   slower.
+	 */
 	public DitheredImage(BufferedImage image, int ditherSize) {
 		super(image);
 		length = (int) Math.ceil((double) image.getWidth() / ditherSize);

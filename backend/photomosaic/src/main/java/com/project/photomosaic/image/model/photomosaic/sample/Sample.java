@@ -15,17 +15,24 @@ import com.project.photomosaic.image.model.photomosaic.base.RGB;
  *
  */
 public class Sample extends ModifiedImage {
-	public static final int DEFAULT_DIMENSION = 40; // Bigger takes longer time to get AverageRGB
+	public static final int DEFAULT_DIMENSION = 40;
 
 	private final RGB rgb;
-	private int dimension;
+	private int dimension; // Returns image resized as the dimension.
 	private BufferedImage downSampled;
 
 	public Sample(BufferedImage image) {
 		super(image);
 		dimension = DEFAULT_DIMENSION;
 		setDimension(dimension);
-		rgb = new RGB(getRGBAverage(image, 0, 0, image.getWidth(), image.getHeight(), 8));
+		rgb = new RGB(getRGBAverage(image, 0, 0, image.getWidth(), image.getHeight(), 2));
+	}
+
+	public Sample(BufferedImage image, int dimension) {
+		super(image);
+		this.dimension = dimension;
+		setDimension(dimension);
+		rgb = new RGB(getRGBAverage(image, 0, 0, image.getWidth(), image.getHeight(), 2));
 	}
 
 	public BufferedImage getDownSampled() {

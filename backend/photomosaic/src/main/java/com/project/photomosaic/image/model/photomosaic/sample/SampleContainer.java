@@ -7,10 +7,11 @@ import com.project.photomosaic.image.model.photomosaic.base.RGB;
 
 //Contains all the Images used to build the original
 public class SampleContainer {
-	private int sampleDimension = Sample.DEFAULT_DIMENSION;
+	private int sampleDimension;
 	private ArrayList<Sample> samples = new ArrayList<Sample>();
 
 	public SampleContainer(ArrayList<BufferedImage> images) throws Exception {
+		sampleDimension = Sample.DEFAULT_DIMENSION;
 		SampleThreads factory = new SampleThreads(images);
 		samples.addAll(factory.asSamples());
 	}
