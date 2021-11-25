@@ -40,7 +40,7 @@ public class Photomosaic {
 	 * method that generates the photo mosaic image.
 	 */
 	public void build() {
-		while ((long) getLength(ditherSize) * (long) getHeight(ditherSize) < MAX_IMAGE_SIZE) {
+		while ((long) getLength(ditherSize) * (long) getHeight(ditherSize) > MAX_IMAGE_SIZE) {
 			ditherSize++;
 		}
 
