@@ -2,7 +2,6 @@
 **/target
 **/.classpath
 **/.settings
-**/images/sample
 
 # dependencies
 **/node_modules
