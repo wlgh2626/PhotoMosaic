@@ -23,4 +23,4 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file backend/photomosaic/pom.xml test -Dtest=**/PhotoMosaicTest.java
+      run: mvn -B package --file backend/photomosaic/pom.xml test -Dtest=PhotomosaicTest.java
