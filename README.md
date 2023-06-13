@@ -1,4 +1,4 @@
-# PhotoMosaic https://www.jsphotomosaic.com/
+# PhotoMosaic
 ![alt text](https://js-image-storage.s3.us-east-2.amazonaws.com/SampleResults/duck.jpg)
 ![alt text](https://js-image-storage.s3.us-east-2.amazonaws.com/SampleResults/DucksaicResized.png)
 
