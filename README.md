@@ -33,4 +33,3 @@ Photo mosaic is building an image, thorugh the use of other images
  Step 1: Drag an image you would like to transform.    
  Step 2: Drag images you would like to use to build the transformed with.     
  Step 3: Press "Photomosaic" button and wait. **Note:** It may take up to a minute to generate image, as it is resource intensive.
- ![alt text](https://js-image-storage.s3.us-east-2.amazonaws.com/SampleResults/Instructions.png)
