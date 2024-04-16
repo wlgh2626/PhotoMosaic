@@ -1,5 +1,8 @@
 # PhotoMosaic
 ![alt text](https://js-image-storage.s3.us-east-2.amazonaws.com/SampleResults/duck.jpg)
+
+
+https://js-image-storage.s3.us-east-2.amazonaws.com/SampleResults/DucksaicResized.png (Link to the Photomosaic)
 ![alt text](https://js-image-storage.s3.us-east-2.amazonaws.com/SampleResults/DucksaicResized.png)
 
 # What is Photo Mosaic?
